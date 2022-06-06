@@ -7,41 +7,50 @@ drop table family_info;
 drop table customer_info;
 drop table distribution_area;
 drop table package;
+drop table admin;
+
+create table admin
+(
+    username varchar2(40) primary key,
+    password varchar2(40)
+);
+
+insert into admin(username, password) values('admin', 'admin');
 
 create table package(
     package_no varchar2(8),
     item_name varchar2(30),
-    amount number(3,0),
-    constraint package_package_no_pk primary key(package_no)
+    amount varchar2(30)
+    --constraint package_package_no_pk primary key(package_no)
 );
 
 create table distribution_area(
+    area_code varchar2(20),
     ward_no varchar2(8),
     d_union varchar2(30),
     upazilla varchar2(30),
     district varchar2(20),
-    area_code varchar2(20),
 
     constraint distribution_area_area_code_pk primary key(area_code)
 );
 
 create table customer_info(
     nid varchar2(20),
-    name varchar2(20),
-    occupation varchar2(20),
+    name varchar2(20) not null,
+    occupation varchar2(20) not null,
     spouse varchar2(20),
-    mobile_no varchar2(15),
-    tcb_card_no varchar2(15),
+    mobile_no varchar2(15) not null,
+    tcb_card_no varchar2(15) unique,
     gender varchar2(8),
-    income number(10,3),
+    income number(10,3) not null,
     date_of_birth date,
     no_of_family_members number(5,0),
     age number(4,0),
-    package_no varchar2(8),
+    holding_no varchar2(8),
+    road varchar2(30),
     area_code varchar2(20),
-
+    package_no varchar2(8),
     constraint customer_info_nid_pk primary key(nid),
-    constraint customer_info_package_no_fk foreign key(package_no) references package(package_no) on delete cascade,
     constraint customer_info_area_code_fk foreign key(area_code) references distribution_area(area_code) on delete cascade
 );
 
@@ -76,9 +85,9 @@ create table customer_expenditure(
 create table dealer_info(
     dealer_id varchar2(30),
     organization_name varchar2(30),
-    organization_address varchar2(40),
+    organization_address varchar2(80),
     applicant_name varchar2(30),
-    permanent_address varchar2(40),
+    permanent_address varchar2(80),
     email varchar2(20),
     tin_number varchar2(30),
     date_of_birth date,

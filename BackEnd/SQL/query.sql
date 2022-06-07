@@ -25,3 +25,9 @@ SELECT ci.tcb_card_no "TCB Card NO.",ci.area_code "Area CODE",ci.package_no "Pac
 SELECT name "NAME",ci.area_code "Area CODE",ci.holding_no "Holding no",ci.road "Road no",ward_no "Ward",d_union "Union",upazilla "Upazilla",district "District"
 from customer_info ci, distribution_area da
 where ci.area_code=da.area_code;
+
+--Dealer Area and name
+
+SELECT d.dealer_id "ID",organization_name "Oranization Name",applicant_name "Dealer Name" ,dia.area_code "Area Code",ward_no "Ward",d_union "Union",upazilla "Upazilla",district "District"
+from dealer_info di, distributed_area dia 
+WHERE di.dealer_id=dealer_area.dealer_id and dealer_area.area_code=dia.area_code;

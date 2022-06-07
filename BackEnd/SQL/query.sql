@@ -19,3 +19,6 @@ SELECT ci.tcb_card_no "TCB Card NO.",ci.area_code "Area CODE",ci.package_no "Pac
         AND ci.package_no=p.package_no 
     
     
+SELECT name "NAME",ci.area_code "Area CODE",ci.holding_no "Holding no",ci.road "Road no",ward_no "Ward",d_union "Union",upazilla "Upazilla",district "District"
+from customer_info ci, distribution_area da
+where ci.area_code=da.area_code;

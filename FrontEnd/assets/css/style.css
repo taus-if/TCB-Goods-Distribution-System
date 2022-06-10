@@ -106,6 +106,7 @@ a:active, a:hover {
   outline: 0 none;
 }
 
+
 body {
   background: #fff none repeat scroll 0 0;
   color: #444;
@@ -232,7 +233,7 @@ div#preloader {
   z-index: 997;
   transition: all 0.5s;
   /* background: rgba(0, 0, 0, 1); */
-  background: purple;
+  background: #2A6877;
 }
 #header.header-scrolled {
   background: rgba(0, 0, 0, 0.8);
@@ -318,7 +319,7 @@ div#preloader {
   align-items: center;
   justify-content: space-between;
   padding: 10px 0 10px 30px;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 500;
   color: #fff;
   white-space: nowrap;
@@ -330,7 +331,8 @@ div#preloader {
   margin-left: 5px;
 }
 .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
-  color: #3ec1d5;
+  /* color: #3ec1d5; */
+  color: yellow;
 }
 .navbar .dropdown ul {
   display: block;

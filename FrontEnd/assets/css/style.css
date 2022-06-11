@@ -1441,6 +1441,29 @@ div#preloader {
   border-radius: 30px;
 }
 
+.php-email-form button[type=submit]:hover{
+  background-color: #3ec1d5;
+  color: #e5e5e5;
+}
+
+.Rafat button[type=submit]{
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: 1px solid #ccc;
+  color: #444;
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 8px;
+  padding: 12px 30px;
+  text-transform: uppercase;
+  transition: all 0.3s ease 0s;
+  border-radius: 30px;
+}
+
+.Rafat button[type=submit]:hover{
+  background-color: #3ec1d5;
+  color: #e5e5e5;
+}
+
 @-webkit-keyframes animate-loading {
   0% {
     transform: rotate(0deg);

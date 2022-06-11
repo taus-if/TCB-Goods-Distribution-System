@@ -1,13 +1,8 @@
-/**
-* Template Name: eBusiness - v4.7.0
-* Template URL: https://bootstrapmade.com/ebusiness-bootstrap-corporate-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+#main
+{
+  flex: 1;
+}
 
-/*--------------------------------------------------------------
-# General
---------------------------------------------------------------*/
 html, body {
   height: 100%;
 }
@@ -51,8 +46,8 @@ img {
 }
 
 p {
-  margin: 0 0 15px;
-  color: #444;
+  /*margin: 0 0 15px;*/
+  /*color: #444;*/
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -93,27 +88,28 @@ h6 {
 }
 
 a {
-  transition: all 0.3s ease 0s;
+  /*transition: all 0.3s ease 0s;*/
   text-decoration: none;
 }
 
-a:hover {
+/*a:hover {
   color: #3EC1D5;
   text-decoration: none;
 }
 
 a:active, a:hover {
   outline: 0 none;
-}
+}*/
+
 
 body {
-  background: #fff none repeat scroll 0 0;
+  /*background: #fff none repeat scroll 0 0;
   color: #444;
   font-family: "Open Sans", sans-serif;
   font-size: 14px;
   text-align: left;
   overflow-x: hidden;
-  line-height: 22px;
+  line-height: 22px;*/
 }
 
 /*--------------------------------------------------------------
@@ -232,7 +228,7 @@ div#preloader {
   z-index: 997;
   transition: all 0.5s;
   /* background: rgba(0, 0, 0, 1); */
-  background: purple;
+  background: #2A6877;
 }
 #header.header-scrolled {
   background: rgba(0, 0, 0, 0.8);
@@ -318,7 +314,7 @@ div#preloader {
   align-items: center;
   justify-content: space-between;
   padding: 10px 0 10px 30px;
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 500;
   color: #fff;
   white-space: nowrap;
@@ -330,7 +326,8 @@ div#preloader {
   margin-left: 5px;
 }
 .navbar a:hover, .navbar .active, .navbar .active:focus, .navbar li:hover > a {
-  color: #3ec1d5;
+  /* color: #3ec1d5; */
+  color: yellow;
 }
 .navbar .dropdown ul {
   display: block;
@@ -1444,6 +1441,29 @@ div#preloader {
   border-radius: 30px;
 }
 
+.php-email-form button[type=submit]:hover{
+  background-color: #3ec1d5;
+  color: #e5e5e5;
+}
+
+.Rafat button[type=submit]{
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: 1px solid #ccc;
+  color: #444;
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 8px;
+  padding: 12px 30px;
+  text-transform: uppercase;
+  transition: all 0.3s ease 0s;
+  border-radius: 30px;
+}
+
+.Rafat button[type=submit]:hover{
+  background-color: #3ec1d5;
+  color: #e5e5e5;
+}
+
 @-webkit-keyframes animate-loading {
   0% {
     transform: rotate(0deg);
@@ -2432,4 +2452,89 @@ span.email-notes {
   .slider-content {
     padding: 0;
   }
+}
+
+
+/*custom css for cards*/
+.card {
+  margin: 30px auto;
+  /* max-width: 200px;*/
+  height: 200px; 
+  border-radius: 40px;
+  box-shadow: 5px 5px 30px 7px rgba(0,0,0,0.25), -5px -5px 30px 7px rgba(0,0,0,0.22);
+  cursor: pointer;
+  transition: 0.4s;
+}
+
+.card .card_image {
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
+}
+
+.card .card_image img {
+  width: inherit;
+  height: inherit;
+  border-radius: 40px;
+  object-fit: cover;
+}
+
+.card .card_title {
+  text-align: center;
+  border-radius: 0px 0px 40px 40px;
+  font-family: sans-serif;
+  font-weight: bold;
+  font-size: 30px;
+  height: 40px;
+}
+.card:hover {
+  transform: scale(0.9, 0.9);
+  box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
+    -5px -5px 30px 15px rgba(0,0,0,0.22);
+  background-color: #2A6877;
+  color: white;
+}
+
+.title-white {
+  color: white;
+}
+
+.title-black {
+  color: black;
+}
+
+@media all and (max-width: 500px) {
+  .card-list {
+    /* On small screens, we are no longer using row direction but column */
+    flex-direction: column;
+  }
+}
+
+
+.outterround
+{
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  padding: 3%;
+  margin: 2% 0 2% 0 ;
+}
+
+.custom-icon
+{
+  font-size: 70px;
+  margin-top: 30px;
+}
+
+
+.features
+{
+  padding: 30px 0;
+}
+
+
+.everything
+{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }

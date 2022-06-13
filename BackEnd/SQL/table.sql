@@ -1,12 +1,14 @@
 drop table dealer_area;
 drop table items_distributed;
-drop table dealer_info;
 drop table customer_expenditure;
 drop table goods;
 drop table family_info;
 drop table customer_info;
 drop table distribution_area;
 drop table package;
+drop table dealer_inventory;
+drop table main_inventory;
+drop table dealer_info;
 drop table admin;
 
 create table admin
@@ -50,8 +52,10 @@ create table customer_info(
     road varchar2(30),
     area_code varchar2(20),
     package_no varchar2(8),
+    username varchar2(40),
     constraint customer_info_nid_pk primary key(nid),
-    constraint customer_info_area_code_fk foreign key(area_code) references distribution_area(area_code) on delete cascade
+    constraint customer_info_area_code_fk foreign key(area_code) references distribution_area(area_code) on delete cascade,
+    constraint customer_info_username_fk foreign key(username) references admin(username) on delete cascade
 );
 
 create table family_info(
@@ -68,7 +72,9 @@ create table family_info(
 create table goods(
     item_name varchar2(20),
     unit_price number(8,2),
-    constraint goods_item_name_pk primary key(item_name)
+    username varchar2(40),
+    constraint goods_item_name_pk primary key(item_name),
+    constraint goods_username_fk foreign key(username) references admin(username) on delete cascade
 );
 
 create table customer_expenditure(
@@ -91,8 +97,10 @@ create table dealer_info(
     email varchar2(20),
     tin_number varchar2(30),
     date_of_birth date,
+    username varchar2(40),
 
-    constraint dealer_info_dealer_id_pk primary key(dealer_id) 
+    constraint dealer_info_dealer_id_pk primary key(dealer_id),
+    constraint dealer_info_username_fk foreign key(username) references admin(username) on delete cascade
 );
 
 create table items_distributed(
@@ -112,6 +120,28 @@ create table dealer_area(
     constraint dealer_area_dealer_id_fk foreign key(dealer_id) references dealer_info(dealer_id) on delete cascade,
     constraint dealer_area_area_code_fk foreign key(area_code) references distribution_area(area_code) on delete cascade
 );
+
+create table main_inventory(
+    item_name varchar2(30),
+    quantity number(10,2),
+    date_added date,
+    username varchar2(40),
+
+    constraint main_inventory_item_name_pk primary key(item_name),
+    constraint main_inventory_username_fk foreign key(username) references admin(username) on delete cascade
+
+);
+
+create table dealer_inventory(
+    item_name varchar2(40),
+    date_added date,
+    quantity number(10,2),
+    dealer_id varchar2(30),
+    
+    constraint dealer_inventory_dealer_id_fk foreign key(dealer_id) references dealer_info(dealer_id) on delete cascade
+);
+
+
 
 
 

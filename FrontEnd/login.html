@@ -46,8 +46,17 @@
       <div class="logo">
         <!-- <h1><a href="index.html"><span>e</span>Business</a></h1> -->
         <!-- Uncomment below if you prefer to use an image logo -->
-        <a href="../index.html"><img src="assets/img/tcblogo-removebg-preview (1).png" alt="" class="img-fluid"><span
-            style="font-size: 26px;">Trading Corporation of Bangladesh</span></a>
+        <div class="fullnavname">
+          <a href="../index.html"><img src="assets/img/tcblogo-removebg-preview (1).png" alt=""
+              class="img-fluid"><span class="navname">Trading Corporation of Bangladesh</span></a>
+        </div>
+
+        <div class="shortnavname">
+
+          <a href="../index.html"><img src="assets/img/tcblogo-removebg-preview (1).png" alt=""
+              class="img-fluid"><span class="navname shortnavname">TCB</span></a>
+        </div>
+
       </div>
 
       <nav id="navbar" class="navbar">
@@ -71,9 +80,9 @@
 
       Login Type
       <select class="form-select mb-3" aria-label="Default select example" id="logintype" required>
-        <option value="">Choose login type</option>
+        <option value="">Choose Login Type</option>
         <option value="1" name="admin">Admin </option>
-        <option value="2"name="dealer">Dealer</option>
+        <option value="2" name="dealer">Dealer</option>
       </select>
 
       <form class="Rafat">
@@ -97,18 +106,27 @@
         <!-- <a href="admin.html"> Admin login</a> -->
 
         <script>
-          function login()
-          {
+          function login() {
             var name = document.getElementById('username').value;
             var pass = document.getElementById('pass').value;
+            var option = document.getElementById('logintype').options[document.getElementById('logintype').selectedIndex].text;
 
-            if(name=='admin' && pass=='admin')
-            {
-              location.href = 'admin.html';
+            //alert(option);
+
+            if (option == 'Choose Login Type') {
+              alert('Please choose login type');
             }
-            else if(name=='dealer' && pass=='dealer')
-            {
-              location.href='dealer.html';
+            else {
+
+              if (name == 'admin' && pass == 'admin' && option == 'Admin') {
+                location.href = 'admin.html';
+              }
+              else if (name == 'dealer' && pass == 'dealer' && option == 'Dealer') {
+                location.href = 'dealer.html';
+              }
+              else {
+                alert('Username or Password is wrong')
+              }
             }
           }
         </script>

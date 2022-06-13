@@ -258,6 +258,11 @@ div#preloader {
   font-weight: 700;
 }
 
+.shortnavname
+{
+  display: none;
+}
+
 @media (max-width: 768px) {
   #header {
     height: 64px;
@@ -265,6 +270,16 @@ div#preloader {
   }
   #header .logo h1 {
     font-size: 28px;
+  }
+  .shortnavname
+  {
+    display: inline-block;
+    letter-spacing: 4px;
+    font-size: 30px;
+  }
+  .fullnavname
+  {
+    display: none;
   }
 }
 
@@ -1465,6 +1480,11 @@ div#preloader {
 }
 
 
+.Rafatdealer
+{
+  margin: 100px 0 70px 0;
+}
+
 .Rafatdealer button{
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
   border: 1px solid #ccc;
@@ -2556,4 +2576,9 @@ span.email-notes {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+.navname
+{
+  font-size: 26px;
 }

@@ -258,6 +258,11 @@ div#preloader {
   font-weight: 700;
 }
 
+.shortnavname
+{
+  display: none;
+}
+
 @media (max-width: 768px) {
   #header {
     height: 64px;
@@ -266,6 +271,17 @@ div#preloader {
   #header .logo h1 {
     font-size: 28px;
   }
+  .shortnavname
+  {
+    display: inline-block;
+    letter-spacing: 4px;
+    font-size: 30px;
+  }
+  .fullnavname
+  {
+    display: none;
+  }
+
 }
 
 .header-bg {
@@ -1446,7 +1462,7 @@ div#preloader {
   color: #e5e5e5;
 }
 
-.Rafat button[type=submit]{
+.Rafat button{
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
   border: 1px solid #ccc;
   color: #444;
@@ -1459,7 +1475,31 @@ div#preloader {
   border-radius: 30px;
 }
 
-.Rafat button[type=submit]:hover{
+.Rafat button:hover{
+  background-color: #3ec1d5;
+  color: #e5e5e5;
+}
+
+
+.Rafatdealer
+{
+  margin: 100px 0 70px 0;
+}
+
+.Rafatdealer button{
+  background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+  border: 1px solid #ccc;
+  color: #444;
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 8px;
+  padding: 12px 30px;
+  text-transform: uppercase;
+  transition: all 0.3s ease 0s;
+  border-radius: 30px;
+}
+
+.Rafatdealer button:hover{
   background-color: #3ec1d5;
   color: #e5e5e5;
 }
@@ -2537,4 +2577,9 @@ span.email-notes {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+}
+
+.navname
+{
+  font-size: 26px;
 }

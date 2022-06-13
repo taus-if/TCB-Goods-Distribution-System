@@ -1446,7 +1446,7 @@ div#preloader {
   color: #e5e5e5;
 }
 
-.Rafat button[type=submit]{
+.Rafat button{
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
   border: 1px solid #ccc;
   color: #444;
@@ -1459,13 +1459,13 @@ div#preloader {
   border-radius: 30px;
 }
 
-.Rafat button[type=submit]:hover{
+.Rafat button:hover{
   background-color: #3ec1d5;
   color: #e5e5e5;
 }
 
 
-.Rafatdealer button[type=submit]{
+.Rafatdealer button{
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
   border: 1px solid #ccc;
   color: #444;
@@ -1478,7 +1478,7 @@ div#preloader {
   border-radius: 30px;
 }
 
-.Rafatdealer button[type=submit]:hover{
+.Rafatdealer button:hover{
   background-color: #3ec1d5;
   color: #e5e5e5;
 }

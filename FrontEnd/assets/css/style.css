@@ -228,7 +228,8 @@ div#preloader {
   z-index: 997;
   transition: all 0.5s;
   /* background: rgba(0, 0, 0, 1); */
-  background: #2A6877;
+  background: #609513;
+  /*background: #2A6877 */
 }
 #header.header-scrolled {
   background: rgba(0, 0, 0, 0.8);
@@ -2531,7 +2532,9 @@ span.email-notes {
   transform: scale(0.9, 0.9);
   box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
     -5px -5px 30px 15px rgba(0,0,0,0.22);
-  background-color: #2A6877;
+    background-color:#609513;
+    /* color: red; */
+  /* background-color: #2A6877; */
   color: white;
 }
 

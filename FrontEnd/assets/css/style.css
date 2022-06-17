@@ -1,6 +1,12 @@
 #main
 {
   flex: 1;
+  margin-top: 80px;
+}
+
+#main-login
+{
+  margin-top: 80px;
 }
 
 html, body {
@@ -228,7 +234,8 @@ div#preloader {
   z-index: 997;
   transition: all 0.5s;
   /* background: rgba(0, 0, 0, 1); */
-  background: #2A6877;
+  background: #609513;
+  /*background: #2A6877 */
 }
 #header.header-scrolled {
   background: rgba(0, 0, 0, 0.8);
@@ -270,6 +277,20 @@ div#preloader {
   }
   #header .logo h1 {
     font-size: 28px;
+  }
+  #main
+  {
+    margin-top: 64px;
+  }
+  #main-login
+  {
+    margin-top: 64px;
+  }
+  .login-box
+  {
+    margin-top: 70px !important;
+    border-style: none !important;
+    box-shadow: none  !important;
   }
   .shortnavname
   {
@@ -2531,7 +2552,9 @@ span.email-notes {
   transform: scale(0.9, 0.9);
   box-shadow: 5px 5px 30px 15px rgba(0,0,0,0.25), 
     -5px -5px 30px 15px rgba(0,0,0,0.22);
-  background-color: #2A6877;
+    background-color:#609513;
+    /* color: red; */
+  /* background-color: #2A6877; */
   color: white;
 }
 
@@ -2582,4 +2605,18 @@ span.email-notes {
 .navname
 {
   font-size: 26px;
+}
+
+.login-box
+{
+  max-width: 500px;
+  margin-top: 100px;
+  border-style: solid;
+  /* border-color: #caed94; */
+  /* border-radius: 20px; */
+  padding: 20px;
+  /* background-color: #caed94; */
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  border-color: white;
 }

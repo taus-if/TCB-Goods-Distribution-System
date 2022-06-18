@@ -1,6 +1,12 @@
 #main
 {
   flex: 1;
+  margin-top: 80px;
+}
+
+#main-login
+{
+  margin-top: 80px;
 }
 
 html, body {
@@ -271,6 +277,20 @@ div#preloader {
   }
   #header .logo h1 {
     font-size: 28px;
+  }
+  #main
+  {
+    margin-top: 64px;
+  }
+  #main-login
+  {
+    margin-top: 64px;
+  }
+  .login-box
+  {
+    margin-top: 70px !important;
+    border-style: none !important;
+    box-shadow: none  !important;
   }
   .shortnavname
   {
@@ -2585,4 +2605,18 @@ span.email-notes {
 .navname
 {
   font-size: 26px;
+}
+
+.login-box
+{
+  max-width: 500px;
+  margin-top: 100px;
+  border-style: solid;
+  /* border-color: #caed94; */
+  /* border-radius: 20px; */
+  padding: 20px;
+  /* background-color: #caed94; */
+  box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  border-color: white;
 }

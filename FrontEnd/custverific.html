@@ -79,13 +79,14 @@
                     placeholder="Enter NID Number" required>
 
             </div>
-            <div class="text-center"><button type="button" onclick="submit()">Submit</button></div>
+            <div class="text-center"><button type="button" onclick="verify()">Submit</button></div>
 
         </div>
         <script>
-            function submit() {
+            function verify() {
 
                 var nid = document.getElementById('NIDZ').value;
+                //alert(nid);
                 if (nid == '619345802') {
                     alert('Already Inserted');
                 }

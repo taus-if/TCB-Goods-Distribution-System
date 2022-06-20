@@ -46,6 +46,8 @@
     </script>
     <!-- Date picker end -->
 
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 
 </head>
@@ -85,78 +87,192 @@
         </header><!-- End Header -->
 
 
-        <div>
-            
-        </div>
+        <form class="Rafatdealer row d-flex justify-content-center">
 
-        <div class="verified" style="display: none;">
 
-            <form class="Rafatdealer row d-flex justify-content-center">
-                <div class="col-lg-4 col-md-6 col-sm-10">
-                    <div class="form-group w-70">
-                        <label for="exampleInputEmail1">Applicant Name</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder="Enter Applicant Name" required>
+            <div class="col-sm-10 col-md-8 col-lg-6 outterround">
+
+                <div class="h1 d-flex justify-content-center" style="margin-bottom: 30px;">Dealer Information</div>
+
+                <div class="form-group w-70">
+                    <label for="exampleInputEmail1">Customer Name</label>
+                    <input type="text" class="form-control" id="cust_name" aria-describedby="emailHelp"
+                        placeholder="Enter Name" required>
+
+                </div>
+
+                <div class="form-group w-70 mt-3">
+                    <label for="exampleInputEmail1">Occupation</label>
+                    <input type="text" class="form-control" id="occupation" aria-describedby="emailHelp"
+                        placeholder="Enter Occupation" required>
+
+                </div>
+
+                <div class="w-70 mt-3">
+                    <label for="exampleInputEmail1" class="form-label">Gender</label> <br>
+                    <div class="d-flex justify-content-around">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="Admin">
+                            <label class="form-check-label" for="inlineRadio1">Male</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="Dealer">
+                            <label class="form-check-label" for="inlineRadio2">Female</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group w-70 mt-3">
+                    <label for="exampleInputEmail1">Husband/Wife's Name</label>
+                    <input type="email" class="form-control" id="spousename" aria-describedby="emailHelp"
+                        placeholder="Enter Husband/Wife's Name" required>
+
+                </div>
+
+                <div class="form-group w-70 mt-3">
+                    <label for="exampleInputEmail1">Address</label>
+
+                    <div class="row">
+                        <div class="col mt-3">
+                            <label for="exampleInputEmail1">Holding No</label>
+
+                            <input type="text" class="form-control" id="holding" aria-describedby="emailHelp"
+                                placeholder="Enter Holding No" required>
+                        </div>
+                        <div class="col mt-3">
+                            <label for="exampleInputEmail1">Road No</label>
+
+                            <input type="text" class="form-control" id="road" aria-describedby="emailHelp"
+                                placeholder="Enter Road No" required>
+                        </div>
 
                     </div>
 
-                    <div class="form-group w-70 mt-3">
-                        <label for="exampleInputEmail1">Applicant Address</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder="Enter Applicant Address" required>
+                    <div class="row">
+                        <div class="col mt-3">
+                            <label for="exampleInputEmail1">Ward No</label>
+
+                            <input type="text" class="form-control" id="ward" aria-describedby="emailHelp"
+                                placeholder="Enter Ward No" required>
+                        </div>
+                        <div class="col mt-3">
+                            <label for="exampleInputEmail1">Union</label>
+
+                            <input type="text" class="form-control" id="union" aria-describedby="emailHelp"
+                                placeholder="Enter Ward No" required>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col mt-3">
+                            <label for="exampleInputEmail1">Upazilla</label>
+
+                            <input type="text" class="form-control" id="upazilla" aria-describedby="emailHelp"
+                                placeholder="Enter Ward No" required>
+                        </div>
+                        <div class="col mt-3">
+                            <label for="exampleInputEmail1">District</label>
+
+                            <input type="text" class="form-control" id="district" aria-describedby="emailHelp"
+                                placeholder="Enter Ward No" required>
+                        </div>
 
                     </div>
 
-                    <div class="form-group w-70 mt-3">
-                        <label for="exampleInputEmail1">Email Address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder="Enter Email Address" required>
+                </div>
 
-                    </div>
-
-                    <div class="form-group w-70 mt-3">
-                        <label for="exampleInputEmail1">TIN Number</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder="Enter TIN Number" required>
-
-                    </div>
-
-                    <div class="form-group w-70 mt-3">
-                        <!-- <label for="exampleInputEmail1">Date of Birth</label>
+                <div class="form-group w-70 mt-3">
+                    <!-- <label for="exampleInputEmail1">Date of Birth</label>
                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                     placeholder="Enter Date of Birth"> -->
-                        <label for="datepicker">Date of Birth</label>
-                        <input type="text" id="datepicker" class="form-control" placeholder="Enter Date of Birth"
-                            required>
-                    </div>
-
-                    <div class="form-group w-70 mt-3">
-                        <label for="exampleInputEmail1">Organization Name</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder="Enter Organization Name" required>
-
-                    </div>
-
-                    <div class="form-group w-70 mt-3">
-                        <label for="exampleInputEmail1">Organization Address</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                            placeholder="Enter Organization Address" required>
-
-                    </div>
-
-
-                    <div class="form-group w-70 mt-3">
-                        <label for="exampleInputPassword1">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1"
-                            placeholder="Enter Password" required>
-                    </div>
-
-                    <div class="text-center" style="margin-top:20px;"><button type="button">Submit</button></div>
+                    <label for="datepicker">Date of Birth</label>
+                    <input type="text" id="datepicker" class="form-control" placeholder="Enter Date of Birth" required>
                 </div>
-            </form>
+
+                <div class="form-group w-70 mt-3">
+                    <label for="exampleInputEmail1">Income</label>
+                    <input type="text" class="form-control" id="income" aria-describedby="emailHelp"
+                        placeholder="Enter Monthly Income" required>
+
+                </div>
+
+                <div id='member-input'>
+
+                    <div class="form-group w-70 mt-3">
+                        <label for="exampleInputEmail1">Number of Family Members</label>
+                        <!-- <input type="text" class="form-control" id="familymemberNo" aria-describedby="emailHelp"
+                        placeholder="Enter Number of Family Members" onkeyup="showbox()" required> -->
+
+                        <div class="input-group mb-3">
+                            <input type="text" id="familymemberNo" class="form-control"
+                                placeholder="Enter Number of Family Members" aria-label="Recipient's username"
+                                aria-describedby="button-addon2">
+                            <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+                                onclick="showbox()">Add</button>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group w-70 mt-3" id="member-1" style="display: none;">
+                        <label for="exampleInputEmail1">Family Member <span>1</span></label>
+                        <!-- <input type="text" class="form-control" id="members" aria-describedby="emailHelp"
+                        placeholder="Enter Number of Family Members" required> -->
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="nid-fam" placeholder="name@example.com">
+                            <label for="floatingInput">NID No</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="occupation-fam" placeholder="name@example.com">
+                            <label for="floatingInput">Occupation</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="income-fam" placeholder="name@example.com">
+                            <label for="floatingInput">Income</label>
+                        </div>
 
 
-        </div>
+                    </div>
+
+                </div>
+
+                <script>
+
+                    function showbox() {
+                        
+                        var koyta = document.getElementById('familymemberNo').value;
+                        var lp = parseInt(koyta);
+                        if (lp == 0) return;
+
+
+                
+
+                        document.getElementById('member-1').style.display = "block";
+                        
+                        let i;
+                        for (i = 0; i < lp - 1; i++) {
+                            var clone = document.getElementById('member-1').cloneNode(true);
+                            clone.children[0].children[0].innerHTML = (i + 2).toString();
+                            console.log('hoise ' + (i + 2).toString());
+                            document.getElementById('member-input').appendChild(clone);
+                            // document.getElementById('member-info').style.display="block";
+                            clone.style.display = "block";
+                            clone.id = 'member-'+(i+2).toString();
+                        }
+
+
+
+                    }
+
+                </script>
+
+
+                <div class="text-center" style="margin-top:20px;"><button class="buttonn" type="button">Submit</button>
+                </div>
+            </div>
+        </form>
+
+
+
 
 
 

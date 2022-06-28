@@ -1,8 +1,8 @@
 /**
 * Template Name: eBusiness - v4.7.0
-* Template URL: https://bootstrapmade.com/ebusiness-bootstrap-corporate-template/
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
+* Template URL: https://Group-5 /ebusiness-bootstrap-corporate-template/
+* Author: Group-5 
+* License: https://Group-5 /license/
 */
 (function() {
   "use strict";

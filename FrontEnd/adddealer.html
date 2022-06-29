@@ -141,6 +141,64 @@
                         placeholder="Enter Organization Address" required>
 
                 </div>
+                
+
+                <div id='member-input'>
+
+                    <div class="form-group w-70 mt-3">
+                        <label for="exampleInputEmail1">Number of Distribution Areas</label>
+                        <!-- <input type="text" class="form-control" id="familymemberNo" aria-describedby="emailHelp"
+                        placeholder="Enter Number of Family Members" onkeyup="showbox()" required> -->
+
+                        <div class="input-group mb-3">
+                            <input type="text" id="familymemberNo" class="form-control"
+                                placeholder="Enter Number of Distribution Areas" aria-label="Recipient's username"
+                                aria-describedby="button-addon2">
+                            <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+                                onclick="showbox()">Add</button>
+                        </div>
+
+                    </div>
+
+                    <div class="form-group w-70 mt-3" id="member-1" style="display: none;">
+                        <label for="exampleInputEmail1">Area Code <span>1</span></label>
+                        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="Enter Area Code" required>
+
+                    </div>
+
+                </div>
+
+                <script>
+
+                    function showbox() {
+                        
+                        var koyta = document.getElementById('familymemberNo').value;
+                        var lp = parseInt(koyta);
+                        if (lp == 0) return;
+
+
+                
+
+                        document.getElementById('member-1').style.display = "block";
+                        
+                        let i;
+                        for (i = 0; i < lp - 1; i++) {
+                            var clone = document.getElementById('member-1').cloneNode(true);
+                            clone.children[0].children[0].innerHTML = (i + 2).toString();
+                            console.log('hoise ' + (i + 2).toString());
+                            document.getElementById('member-input').appendChild(clone);
+                            // document.getElementById('member-info').style.display="block";
+                            clone.style.display = "block";
+                            clone.id = 'member-'+(i+2).toString();
+                        }
+
+
+
+                    }
+
+                </script>
+
 
 
                 <div class="form-group w-70 mt-3">

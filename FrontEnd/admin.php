@@ -146,7 +146,7 @@
 
           <div class="col-md-4 col-lg-4 ">
             <div class="card d-flex align-items-stretch outterround">
-              <a href="allocategoods.html" class="stretched-link"></a>
+              <a href="admin.html" class="stretched-link"></a>
               <i class="bi bi-box-arrow-up-right custom-icon d-flex justify-content-center"></i>
               <div class="card_title d-flex justify-content-center">
                 <p>Allocate Goods</p>
@@ -175,7 +175,7 @@
               </div>
               <div class="credits">
 
-                Designed by <a href="https://Group-5 /">Group-5 (14,31,32,34,36)</a>
+                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
               </div>
             </div>
           </div>

@@ -1,3 +1,39 @@
+<?php
+  session_start();
+  $wrongInfo = false;
+  $conn = oci_connect('XE', 'XE', 'localhost/xe')
+  or die(oci_error());
+
+  if(!$conn){
+    echo "not connected";
+  }else{
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+      $username = $_POST['username'];
+      $password = $_POST['password'];
+      $_SESSION['uname']= $username;
+      $_SESSION['profile'] = $username;
+      $sql = "select * from dealer_info natural join info where dealer_id='$username' and password='$password'";
+      $stid=oci_parse($conn, $sql);
+      $r=oci_execute($stid);
+      $row= oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS);
+      if($row==NULL){
+        $sql = "select * from admin where username= '$username' and password= '$password'";
+        $stid=oci_parse($conn, $sql);
+        $r=oci_execute($stid);
+        $row= oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS);
+        if($row!=NULL){
+          header("Location: admin.php");
+        }else{
+          $wrongInfo=true;
+        }
+      }else{
+        header("Location: dealer2.php");
+      }
+    }
+  }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -74,30 +110,34 @@
 
       <div class="container login-box">
 
+      <?php
+        if($wrongInfo==true){
+          echo "<o style='color:red'> Wrong Info</p>";
+        }
+      ?>
+
         <div class="login-title h1 d-flex justify-content-center" style="margin-bottom: 30px;">Login</div>
 
-        <label for="exampleInputEmail1" class="form-label">Login Type</label> <br>
-
-        <div class="d-flex justify-content-around">
+        <!-- <div class="d-flex justify-content-around">
           <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="logintype" id="inlineRadio1" value="Admin">
             <label class="form-check-label" for="inlineRadio1">Admin</label>
           </div>
-          <div class="form-check form-check-inline mb-3">
+          <div class="form-check form-check-inline">
             <input class="form-check-input" type="radio" name="logintype" id="inlineRadio2" value="Dealer">
             <label class="form-check-label" for="inlineRadio2">Dealer</label>
           </div>
-        </div>
+        </div> -->
 
-        <form class="Rafat">
+        <form action="login.php" method="post" class="Rafat">
           <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">Username or Email</label>
-            <input type="text" class="form-control" id="username" aria-describedby="emailHelp" required>
+            <label for="exampleInputEmail1" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Username" name="username" aria-describedby="emailHelp" required>
             <!-- <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div> -->
           </div>
           <div class="mb-3">
             <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" class="form-control" id="pass" required>
+            <input type="password" class="form-control" id="pass" placeholder="Password" name="password" required>
           </div>
           <!-- <div class="mb-3 form-check">
               <input type="checkbox" class="form-check-input" id="exampleCheck1">
@@ -105,36 +145,36 @@
             </div> -->
           <!-- <button type="submit" class="btn btn-primary">Login</button> -->
 
-          <div class="text-center"><button type="button" onclick="login()">Login</button></div>
+          <div class="text-center"><button type="submit" class="btn btn-primary btn-block">Login</button></div>
 
           <!-- <a href="admin.html"> Admin login</a> -->
 
           <script>
-            function login() {
-              var name = document.getElementById('username').value;
-              var pass = document.getElementById('pass').value;
-              //var option = document.getElementById('logintype').options[document.getElementById('logintype').selectedIndex].text;
-              var option = document.querySelector('input[name="logintype"]:checked');
-              //alert(option);
+            // function login() {
+            //   var name = document.getElementById('username').value;
+            //   var pass = document.getElementById('pass').value;
+            //   //var option = document.getElementById('logintype').options[document.getElementById('logintype').selectedIndex].text;
+            //   var option = document.querySelector('input[name="logintype"]:checked').value;
+            //   //alert(option);
 
-              //alert(option);
+            //   //alert(option);
 
-              if (option == null) {
-                alert('Please choose login type');
-              }
-              else {
+            //   if (option == 'Choose Login Type') {
+            //     alert('Please choose login type');
+            //   }
+            //   else {
 
-                if (name == 'admin' && pass == 'admin' && option.value == 'Admin') {
-                  location.href = 'admin.html';
-                }
-                else if (name == 'dealer' && pass == 'dealer' && option.value == 'Dealer') {
-                  location.href = 'dealer2.html';
-                }
-                else {
-                  alert('Username or Password is wrong')
-                }
-              }
-            }
+            //     if (name == 'admin' && pass == 'admin' && option == 'Admin') {
+            //       location.href = 'admin.html';
+            //     }
+            //     else if (name == 'dealer' && pass == 'dealer' && option == 'Dealer') {
+            //       location.href = 'dealer2.html';
+            //     }
+            //     else {
+            //       alert('Username or Password is wrong')
+            //     }
+            //   }
+            // }
           </script>
 
 
@@ -157,7 +197,7 @@
                 </p>
               </div>
               <div class="credits">
-                Designed by <a href="https://Group-5 /">Group-5 (14,31,32,34,36)</a>
+                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
               </div>
             </div>
           </div>

@@ -62,8 +62,8 @@
 
         <nav id="navbar" class="navbar">
           <ul>
-            <li><a class="nav-link scrollto" href="../index.html">Home</a></li>
-            <li><a class="nav-link scrollto active" href="dealer2.html">Dealer</a></li>
+            <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
+            <li><a class="nav-link scrollto active" href="dealer2.php">Dealer</a></li>
             <!-- <li><a class="nav-link scrollto" href="">Notification</a></li> -->
             <li class="nav-item dropdown notification">
               <a class="nav-link nav-icons" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -107,7 +107,7 @@
 
           <div class="col-md-3 col-lg-3 ">
             <div class="card d-flex align-items-stretch outterround">
-              <a href="dealer_inventory.html" class="stretched-link"></a>
+              <a href="dealer_inventory.php" class="stretched-link"></a>
               <i class="bi bi-bag custom-icon d-flex justify-content-center"></i>
               <div class="card_title d-flex justify-content-center">
                 <p>My Inventory</p>
@@ -117,7 +117,7 @@
 
           <div class="col-md-3 col-lg-3 ">
             <div class="card d-flex align-items-stretch outterround">
-              <a href="dealer_customer.html" class="stretched-link"></a>
+              <a href="dealer_customer.php" class="stretched-link"></a>
               <i class="bi bi-file-earmark-person custom-icon d-flex justify-content-center"></i>
               <div class="card_title d-flex justify-content-center">
                 <p>My Customers</p>
@@ -177,10 +177,6 @@
                 <p>
                   &copy; Copyright <strong>TCB BD </strong>. All Rights Reserved
                 </p>
-              </div>
-              <div class="credits">
-
-                Designed by <a href="">Rifat</a>
               </div>
             </div>
           </div>

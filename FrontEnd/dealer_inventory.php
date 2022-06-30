@@ -1,3 +1,17 @@
+<?php
+  session_start();
+  $uname = $_SESSION['uname'];
+  $conn = oci_connect('XE', 'XE', 'localhost/xe')
+  or die(oci_error());
+
+  if(!$conn){
+    echo "not connected";
+  }else{
+    
+  }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -62,7 +76,7 @@
         <nav id="navbar" class="navbar">
           <ul>
             <li><a class="nav-link scrollto" href="../index.html">Home</a></li>
-            <li><a class="nav-link scrollto active" href="dealer2.html">Dealer</a></li>
+            <li><a class="nav-link scrollto active" href="dealer2.html"><?php echo $uname ?></a></li>
             <li><a class="nav-link scrollto" href="">Notification</a></li>
 
           </ul>
@@ -137,17 +151,17 @@
               <div class="row">
                 <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                   <div class="page-header">
-                    <h2 class="pageheader-title" style="text-align: center;">CUSTOMERS UNDER ME</h2>
+                    <h2 class="pageheader-title" style="text-align: center;">MY INVENTORY</h2>
                     <div>
                       <div class="page-breadcrumb">
                         <nav aria-label="breadcrumb">
                           <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="dealer2.html" class="breadcrumb-link">Dealer</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Dealer's Customer</li>
+                            <li class="breadcrumb-item active" aria-current="page">Dealer Inventory</li>
                           </ol>
                         </nav>
                       </div>
-                      <div class="main-content container-fluid p-0" class="col-lg-12">
+                      <!-- <div class="main-content container-fluid p-0" class="col-lg-12">
                         <div class="email-search">
                           <div class="input-group input-search">
                             <input class="form-control" type="text" placeholder="Search in Result Register..."><span
@@ -156,7 +170,7 @@
                                   class="bi bi-search"></i></button></span>
                           </div>
                         </div>
-                      </div>
+                      </div> -->
                     </div>
                   </div>
                 </div>
@@ -193,67 +207,30 @@
               <table class="table">
                 <thead>
                   <tr>
-                    <th>Customer ID</th>
-                    <th>CUstomer Name</th>
-                    <th>Package no </th>
-                    <th>Mobile no </th>
-                    <th>Last Received</th>
+                    <th>Items No</th>
+                    <th>Item Name</th>
+                    <th>Unit</th>
+                    <th>Quantity</th>
+                    <th>Date Added</th>
                     <th></th>
                   </tr>
                 </thead>
-                <tbody>
-                  <tr>
-                    <td data-label="Pers No">tcb0001</td>
-                    <td data-label="Name">M N ALom Siddique</td>
-                    <td data-label="Unit">2</td>
-                    <td data-label="Prac">01755112233</td>
-                    <td data-label="Hit">12/05/22</td>
-                    <!-- <td data-label="Missed">4</td> -->
+                <?php
+                  $sql = "select * from dealer_inventory where dealer_id = '$uname'";
+                  $stid = oci_parse($conn, $sql);
+                  $r = oci_execute($stid);
+                  while($row=oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)){
+                    echo "
+                    <tr>
+                    <td>1</td>
+                    <td>".$row['ITEM_NAME']."</td>
+                    <td>Kg</td>
+                    <td>". $row['QUANTITY']."</td>
+                    <td>".$row['DATE_ADDED']."</td>
                   </tr>
-
-                  <tr>
-                    <td data-label="Pers No">tcb0002</td>                    
-                    <td data-label="Name">Saifur Rahman</td>
-                    <td data-label="Unit">1</td>
-                    <td data-label="Prac">01988776655</td>
-                    <td data-label="Hit">01/02/22</td>
-                    <td data-label="Missed">10</td>
-                  </tr>
-
-                  <tr>
-                    <td data-label="Pers No">tcb0003</td>                   
-                    <td data-label="Name">Samee Sevas  </td>
-                    <td data-label="Unit">1</td>
-                    <td data-label="Prac">01877665544</td>
-                    <td data-label="Hit">12/05/22</td>
-                    <td data-label="Missed">15</td>
-                  </tr>
-                  <tr>
-                    <td data-label="Pers No">tcb0004</td>                    
-                    <td data-label="Name">Khaled Hasan</td>
-                    <td data-label="Unit">2 </td>
-                    <td data-label="Prac">01477889900</td>
-                    <td data-label="Hit">12/05/22</td>
-                    <td data-label="Missed">4</td>
-                  </tr>
-
-                  <tr>
-                    <td data-label="Pers No">tcb0005</td>                    
-                    <td data-label="Name">Easin Arafat </td>
-                    <td data-label="Unit">4</td>
-                    <td data-label="Prac">01399008877</td>
-                    <td data-label="Hit">12/05/22</td>
-                    <td data-label="Missed">10</td>
-                  </tr>
-
-                  <tr>
-                    <td data-label="Pers No">tcb0006</td>                    
-                    <td data-label="Name">Enan Abdullah</td>
-                    <td data-label="Unit">3</td>
-                    <td data-label="Prac">01522113344</td>
-                    <td data-label="Hit">12/05/22</td>
-                    <td data-label="Missed">15</td>
-                  </tr>
+                    ";
+                  }
+                ?>
 
                 </tbody>
 
@@ -389,7 +366,7 @@
             <div class="col-md-12 col-sm-12 col-xs-12">
               <div class="copyright text-center">
                 <p>
-                  &copy; Copyright <strong>TCB BD</strong>. All Rights Reserved
+                  &copy; Copyright <strong>TCB BD </strong>. All Rights Reserved
                 </p>
               </div>
               <div class="credits">

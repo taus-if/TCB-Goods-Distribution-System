@@ -1,3 +1,17 @@
+<?php
+  session_start();
+  $uname = $_SESSION['uname'];
+  $conn = oci_connect('XE', 'XE', 'localhost/xe')
+  or die(oci_error());
+
+  if(!$conn){
+    echo "not connected";
+  }else{
+    
+  }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -200,56 +214,29 @@
                                     <th>Package 1</th>
                                     <th>Package 2</th>
                                     <th>Package 3</th>
-                                    <th>Unit price (tk)</th>
+                                    <th>Unit</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td data-label="Pers No">01</td>
-                                    <td data-label="Name">Rice</td>
-                                    <td data-label="Unit">2</td>
-                                    <td data-label="Prac">3</td>
-                                    <td data-label="Hit">4</td>
-                                    <td data-label="Missed">50 </td>
-                                </tr>
+                            <?php
+                              $sql = "select * from package";
+                              $stid = oci_parse($conn, $sql);
+                              $r = oci_execute($stid);
 
+                              while($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)){
+                                echo "
                                 <tr>
-                                    <td data-label="Pers No">02</td>
-                                    <td data-label="Name">Onion</td>
-                                    <td data-label="Unit">1/2</td>
-                                    <td data-label="Prac">1</td>
-                                    <td data-label="Hit">1.5</td>
-                                    <td data-label="Missed">30</td>
+                                    <td>".$row['SL_NO']."</td>
+                                    <td>".$row['ITEM_NAME']."</td>
+                                    <td>".$row['PK1']."</td>
+                                    <td>".$row['PK2']."</td>
+                                    <td>".$row['PK3']."</td>
+                                    <td>".$row['UNIT']."</td>
                                 </tr>
-
-                                <tr>
-                                    <td data-label="Pers No">03</td>
-                                    <td data-label="Name">Soabean Oil </td>
-                                    <td data-label="Unit">1/2</td>
-                                    <td data-label="Prac">1</td>
-                                    <td data-label="Hit">1.5</td>
-                                    <td data-label="Missed">80</td>
-                                </tr>
-                                <tr>
-                                    <td data-label="Pers No">04</td>
-                                    <td data-label="Name">Pulses</td>
-                                    <td data-label="Unit">1</td>
-                                    <td data-label="Prac">2</td>
-                                    <td data-label="Hit">2.5</td>
-                                    <td data-label="Missed">60</td>
-                                </tr>
-
-                                <tr>
-                                    <td data-label="Pers No">05</td>
-                                    <td data-label="Name">Potato</td>
-                                    <td data-label="Unit">2</td>
-                                    <td data-label="Prac">3</td>
-                                    <td data-label="Hit">4</td>
-                                    <td data-label="Missed">25</td>
-                                </tr>
-
-
+                                ";
+                              }
+                              ?>
                             </tbody>
 
                         </table>

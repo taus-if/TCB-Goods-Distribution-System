@@ -1,6 +1,6 @@
 drop table dealer_area;
 drop table items_distributed;
-drop table customer_expenditure;
+drop table cust_exp;
 drop table goods;
 drop table family_info;
 drop table customer_info;
@@ -20,10 +20,12 @@ create table admin
 insert into admin(username, password) values('admin', 'admin');
 
 create table package(
-    package_no varchar2(8),
+    sl_no varchar2(8),
     item_name varchar2(30),
-    amount varchar2(30)
-    --constraint package_package_no_pk primary key(package_no)
+    pk1 number(4,1),
+    pk2 number(4,1),
+    pk3 number(4,1),
+    unit varchar2(12)
 );
 
 create table distribution_area(
@@ -77,15 +79,15 @@ create table goods(
     constraint goods_username_fk foreign key(username) references admin(username) on delete cascade
 );
 
-create table customer_expenditure(
+create table cust_exp(
     nid varchar2(20),
     item_name varchar2(20),
     totalspent number(10,3),
     last_buy_date date,
     amount number(3,0),
 
-    constraint customer_expenditure_nid_fk foreign key(nid) references customer_info(nid) on delete cascade,
-    constraint customer_expenditure_item_name_fk foreign key(item_name) references goods(item_name)
+    constraint cust_exp_nid_fk foreign key(nid) references customer_info(nid) on delete cascade,
+    constraint cust_exp_item_name_fk foreign key(item_name) references goods(item_name)
 );
 
 create table dealer_info(
@@ -143,44 +145,23 @@ create table dealer_inventory(
 
 
 
+insert into package(sl_no, item_name, pk1, pk2, pk3, unit)
+values('1', 'Soyabin oil', 3, 2, 1, 'ltr');
 
+insert into package(sl_no, item_name, pk1, pk2, pk3, unit)
+values('2', 'Sugar', 2, 2, 1, 'kg');
 
+insert into package(sl_no, item_name, pk1, pk2, pk3, unit)
+values('3', 'Lentil', 2, 2, 1, 'kg');
 
+insert into package(sl_no, item_name, pk1, pk2, pk3, unit)
+values('4', 'Rice', 5, 5, 3, 'kg');
 
-insert into package(package_no, item_name, amount)
-values('1', 'Soyabin oil', '2ltr');
+insert into package(sl_no, item_name, pk1, pk2, pk3, unit)
+values('5', 'Onion', 3, 2, 1, 'kg');
 
-insert into package(package_no, item_name, amount)
-values('1', 'Sugar', '1kg');
-insert into package(package_no, item_name, amount)
-values('1', 'Lentil', '2kg');
-
-insert into package(package_no, item_name, amount)
-values('1', 'Rice', '5kg');
-
-insert into package(package_no, item_name, amount)
-values('2', 'Soyabin oil', '3ltr');
-
-insert into package(package_no, item_name, amount)
-values('2', 'Sugar', '1kg');
-
-insert into package(package_no, item_name, amount)
-values('2', 'Lentil', '3kg');
-
-insert into package(package_no, item_name, amount)
-values('2', 'Rice', '8kg');
-
-insert into package(package_no, item_name, amount)
-values('3', 'Soyabin oil', '5ltr');
-
-insert into package(package_no, item_name, amount)
-values('3', 'Sugar', '2kg');
-
-insert into package(package_no, item_name, amount)
-values('3', 'Lentil', '3kg');
-
-insert into package(package_no, item_name, amount)
-values('3', 'Rice', '10kg');
+insert into package(sl_no, item_name, pk1, pk2, pk3, unit)
+values('6', 'Potato', 3, 3, 2, 'kg');
 
 
 
@@ -254,19 +235,19 @@ values('lentil', 70);
 
 
 
-insert into customer_expenditure(nid, item_name, totalspent, last_buy_date, amount)
+insert into cust_exp(nid, item_name, totalspent, last_buy_date, amount)
 values('1903189467218', 'Rice', 200, to_date('31-12-2021', 'dd-mm-yyyy'), 3);
 
-insert into customer_expenditure(nid, item_name, totalspent, last_buy_date, amount)
+insert into cust_exp(nid, item_name, totalspent, last_buy_date, amount)
 values('1903189467218', 'Soyabin Oil', 240, to_date('31-12-2021', 'dd-mm-yyyy'), 3);
 
-insert into customer_expenditure(nid, item_name, totalspent, last_buy_date, amount)
+insert into cust_exp(nid, item_name, totalspent, last_buy_date, amount)
 values('1903189467451', 'Rice', 100, to_date('01-01-2022', 'dd-mm-yyyy'), 2);
 
-insert into customer_expenditure(nid, item_name, totalspent, last_buy_date, amount)
+insert into cust_exp(nid, item_name, totalspent, last_buy_date, amount)
 values('1903189467451', 'Sugar', 60, to_date('01-01-2022', 'dd-mm-yyyy'), 1);
 
-insert into customer_expenditure(nid, item_name, totalspent, last_buy_date, amount)
+insert into cust_exp(nid, item_name, totalspent, last_buy_date, amount)
 values('1903189467258', 'Soyabin Oil', 360, to_date('03-01-2022', 'dd-mm-yyyy'), 3);
 
 

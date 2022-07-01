@@ -10,14 +10,26 @@ drop table dealer_inventory;
 drop table main_inventory;
 drop table dealer_info;
 drop table admin;
+drop table info;
 
 create table admin
 (
     username varchar2(40) primary key,
     password varchar2(40)
 );
-
 insert into admin(username, password) values('admin', 'admin');
+
+create table info
+(
+    dealer_id varchar2(40) primary key,
+    password varchar2(40)
+);
+
+--insert into info(username, password) values('admin', 'admin');
+insert into info(dealer_id, password) values('123', '123');
+insert into info(dealer_id, password) values('122', '122');
+insert into info(dealer_id, password) values('121', '121');
+insert into info(dealer_id, password) values('120', '120');
 
 create table package(
     sl_no varchar2(8),
@@ -142,6 +154,10 @@ create table dealer_inventory(
     
     constraint dealer_inventory_dealer_id_fk foreign key(dealer_id) references dealer_info(dealer_id) on delete cascade
 );
+
+
+
+
 
 
 

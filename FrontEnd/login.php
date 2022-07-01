@@ -11,7 +11,7 @@
       $username = $_POST['username'];
       $password = $_POST['password'];
       $_SESSION['uname']= $username;
-      $_SESSION['profile'] = $username;
+      $_SESSION['profile'] = $username;      
       $sql = "select * from dealer_info natural join info where dealer_id='$username' and password='$password'";
       $stid=oci_parse($conn, $sql);
       $r=oci_execute($stid);

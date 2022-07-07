@@ -30,6 +30,7 @@
         header("Location: dealer2.php");
       }
     }
+    echo 'nai';
   }
 
 ?>
@@ -112,7 +113,7 @@
 
       <?php
         if($wrongInfo==true){
-          echo "<o style='color:red'> Wrong Info</p>";
+          echo "<p style='color:red'> Wrong Info</p>";
         }
       ?>
 
@@ -186,7 +187,7 @@
     </main><!-- End #main -->
 
     <!-- ======= Footer ======= -->
-    <footer class="">
+    <footer class="fixed-bottom">
       <div class="footer-area-bottom">
         <div class="container">
           <div class="row">

@@ -78,7 +78,7 @@
         <nav id="navbar" class="navbar">
           <ul>
             <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
-            <li><a class="nav-link scrollto active" href="dealer2.php"><?php echo $uname ?></a></li>
+            <li><a class="nav-link scrollto active" href=""><?php echo $uname ?></a></li>
             <!-- <li><a class="nav-link scrollto" href="">Notification</a></li> -->
             <li class="nav-item dropdown notification">
               <a class="nav-link nav-icons" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

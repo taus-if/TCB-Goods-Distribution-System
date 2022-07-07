@@ -96,14 +96,15 @@
 
                 <div class="form-group w-70">
                     <label for="exampleInputEmail1">Customer Name</label>
-                    <input type="text" class="form-control" id="cust_name" aria-describedby="emailHelp"
+                    <input type="text" class="form-control" id="cust_name" name="cus_name" aria-describedby="emailHelp"
                         placeholder="Enter Name" required>
 
                 </div>
+                
 
                 <div class="form-group w-70 mt-3">
                     <label for="exampleInputEmail1">Occupation</label>
-                    <input type="text" class="form-control" id="occupation" aria-describedby="emailHelp"
+                    <input type="text" class="form-control" id="occupation" name="cus_occupation" aria-describedby="emailHelp"
                         placeholder="Enter Occupation" required>
 
                 </div>
@@ -207,7 +208,7 @@
                             <input type="text" id="familymemberNo" class="form-control"
                                 placeholder="Enter Number of Family Members" aria-label="Recipient's username"
                                 aria-describedby="button-addon2">
-                            <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+                            <button class="btn btn-outline-secondary" type="submit" id="button-addon2"
                                 onclick="showbox()">Add</button>
                         </div>
 
@@ -266,10 +267,11 @@
                 </script>
 
 
-                <div class="text-center" style="margin-top:20px;"><button class="buttonn" type="button">Submit</button>
+                <div class="text-center" style="margin-top:20px;"><button class="buttonn" name="sbmt" type="button">Submit</button>
                 </div>
+                
             </div>
-        </form>
+                </form>
 
 
 

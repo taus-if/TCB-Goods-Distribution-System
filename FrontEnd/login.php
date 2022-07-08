@@ -77,16 +77,16 @@
       <div class="container d-flex justify-content-between">
 
         <div class="logo">
-          <!-- <h1><a href="index.html"><span>e</span>Business</a></h1> -->
+          <!-- <h1><a href="index.php"><span>e</span>Business</a></h1> -->
           <!-- Uncomment below if you prefer to use an image logo -->
           <div class="fullnavname">
-            <a href="../index.html"><img src="assets/img/tcblogo-removebg-preview (1).png" alt=""
+            <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt=""
                 class="img-fluid"><span class="navname">Trading Corporation of Bangladesh</span></a>
           </div>
 
           <div class="shortnavname">
 
-            <a href="../index.html"><img src="assets/img/tcblogo-removebg-preview (1).png" alt=""
+            <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt=""
                 class="img-fluid"><span class="navname shortnavname">TCB</span></a>
           </div>
 
@@ -94,7 +94,7 @@
 
         <nav id="navbar" class="navbar">
           <ul>
-            <li><a class="nav-link scrollto" href="../index.html">Home</a></li>
+            <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
             <li><a class="nav-link scrollto active" href="">Login</a></li>
 
           </ul>
@@ -148,7 +148,7 @@
 
           <div class="text-center"><button type="submit" class="btn btn-primary btn-block">Login</button></div>
 
-          <!-- <a href="admin.html"> Admin login</a> -->
+          <!-- <a href="admin.php"> Admin login</a> -->
 
           <script>
             // function login() {
@@ -166,10 +166,10 @@
             //   else {
 
             //     if (name == 'admin' && pass == 'admin' && option == 'Admin') {
-            //       location.href = 'admin.html';
+            //       location.href = 'admin.php';
             //     }
             //     else if (name == 'dealer' && pass == 'dealer' && option == 'Dealer') {
-            //       location.href = 'dealer2.html';
+            //       location.href = 'dealer2.php';
             //     }
             //     else {
             //       alert('Username or Password is wrong')

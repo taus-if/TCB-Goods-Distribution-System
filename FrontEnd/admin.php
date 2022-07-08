@@ -44,16 +44,16 @@
       <div class="container d-flex justify-content-between">
 
         <div class="logo">
-          <!-- <h1><a href="index.html"><span>e</span>Business</a></h1> -->
+          <!-- <h1><a href="index.php"><span>e</span>Business</a></h1> -->
           <!-- Uncomment below if you prefer to use an image logo -->
           <div class="fullnavname">
-            <a href="../index.html"><img src="assets/img/tcblogo-removebg-preview (1).png" alt=""
+            <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt=""
                 class="img-fluid"><span class="navname">Trading Corporation of Bangladesh</span></a>
           </div>
   
           <div class="shortnavname">
   
-            <a href="../index.html"><img src="assets/img/tcblogo-removebg-preview (1).png" alt=""
+            <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt=""
                 class="img-fluid"><span class="navname shortnavname">TCB</span></a>
           </div>
   
@@ -61,7 +61,7 @@
 
         <nav id="navbar" class="navbar">
           <ul>
-            <li><a class="nav-link scrollto" href="../index.html">Home</a></li>
+            <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
             <li><a class="nav-link scrollto active" href="">Admin</a></li>
 
           </ul>
@@ -92,7 +92,7 @@
 
           <div class="col-md-3 col-lg-3 ">
             <div class="card d-flex align-items-stretch outterround">
-              <a href="admin.html" class="stretched-link"></a>
+              <a href="admin.php" class="stretched-link"></a>
               <i class="bi bi-file-earmark-person custom-icon d-flex justify-content-center"></i>
               <div class="card_title d-flex justify-content-center">
                 <p>Dealer Info</p>
@@ -102,7 +102,7 @@
 
           <div class="col-md-3 col-lg-3 ">
             <div class="card d-flex align-items-stretch outterround">
-              <a href="admin.html" class="stretched-link"></a>
+              <a href="admin.php" class="stretched-link"></a>
               <i class="bi bi-file-earmark-person custom-icon d-flex justify-content-center"></i>
               <div class="card_title d-flex justify-content-center">
                 <p>Customer Info</p>
@@ -146,7 +146,7 @@
 
           <div class="col-md-4 col-lg-4 ">
             <div class="card d-flex align-items-stretch outterround">
-              <a href="admin.html" class="stretched-link"></a>
+              <a href="admin.php" class="stretched-link"></a>
               <i class="bi bi-box-arrow-up-right custom-icon d-flex justify-content-center"></i>
               <div class="card_title d-flex justify-content-center">
                 <p>Allocate Goods</p>

@@ -39,16 +39,16 @@
     <div class="container d-flex justify-content-between">
 
       <div class="logo">
-        <!-- <h1><a href="index.html"><span>e</span>Business</a></h1> -->
+        <!-- <h1><a href="index.php"><span>e</span>Business</a></h1> -->
         <!-- Uncomment below if you prefer to use an image logo -->
         <div class="fullnavname">
-          <a href="index.html"><img src="FrontEnd/assets/img/tcblogo-removebg-preview (1).png" alt=""
+          <a href="index.php"><img src="FrontEnd/assets/img/tcblogo-removebg-preview (1).png" alt=""
               class="img-fluid"><span class="navname">Trading Corporation of Bangladesh</span></a>
         </div>
 
         <div class="shortnavname">
 
-          <a href="index.html"><img src="FrontEnd/assets/img/tcblogo-removebg-preview (1).png" alt=""
+          <a href="index.php"><img src="FrontEnd/assets/img/tcblogo-removebg-preview (1).png" alt=""
               class="img-fluid"><span class="navname shortnavname">TCB</span></a>
         </div>
 

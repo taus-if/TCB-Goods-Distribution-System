@@ -57,7 +57,7 @@
       <div class="container d-flex justify-content-between">
 
         <div class="logo">
-          <!-- <h1><a href="index.html"><span>e</span>Business</a></h1> -->
+          <!-- <h1><a href="index.php"><span>e</span>Business</a></h1> -->
           <!-- Uncomment below if you prefer to use an image logo -->
           <div class="fullnavname">
             <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt=""
@@ -155,7 +155,7 @@
                       <div class="page-breadcrumb">
                         <nav aria-label="breadcrumb">
                           <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="dealer2.html" class="breadcrumb-link"><?php echo $uname ?></a></li>
+                            <li class="breadcrumb-item"><a href="dealer2.php" class="breadcrumb-link"><?php echo $uname ?></a></li>
                             <li class="breadcrumb-item active" aria-current="page">Dealer's Customer</li>
                           </ol>
                         </nav>

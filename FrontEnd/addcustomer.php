@@ -125,7 +125,7 @@
 
                 <div class="form-group w-70 mt-3">
                     <label for="exampleInputEmail1">Husband/Wife's Name</label>
-                    <input type="email" class="form-control" id="spousename" aria-describedby="emailHelp"
+                    <input type="email" class="form-control" id="spousename" name="spousename" aria-describedby="emailHelp"
                         placeholder="Enter Husband/Wife's Name" required>
 
                 </div>
@@ -138,13 +138,13 @@
                             <label for="exampleInputEmail1">Holding No</label>
 
                             <input type="text" class="form-control" id="holding" aria-describedby="emailHelp"
-                                placeholder="Enter Holding No" required>
+                                placeholder="Enter Holding No" name="holdingno" required>
                         </div>
                         <div class="col mt-3">
                             <label for="exampleInputEmail1">Road No</label>
 
                             <input type="text" class="form-control" id="road" aria-describedby="emailHelp"
-                                placeholder="Enter Road No" required>
+                                placeholder="Enter Road No" name="roadno" required>
                         </div>
 
                     </div>
@@ -154,13 +154,13 @@
                             <label for="exampleInputEmail1">Ward No</label>
 
                             <input type="text" class="form-control" id="ward" aria-describedby="emailHelp"
-                                placeholder="Enter Ward No" required>
+                                placeholder="Enter Ward No" name="wardno" required>
                         </div>
                         <div class="col mt-3">
                             <label for="exampleInputEmail1">Union</label>
 
                             <input type="text" class="form-control" id="union" aria-describedby="emailHelp"
-                                placeholder="Enter Ward No" required>
+                                placeholder="Enter Ward No" name="unionno" required>
                         </div>
 
                     </div>
@@ -169,13 +169,13 @@
                             <label for="exampleInputEmail1">Upazilla</label>
 
                             <input type="text" class="form-control" id="upazilla" aria-describedby="emailHelp"
-                                placeholder="Enter Ward No" required>
+                                placeholder="Enter Ward No" name="upazillano" required>
                         </div>
                         <div class="col mt-3">
                             <label for="exampleInputEmail1">District</label>
 
                             <input type="text" class="form-control" id="district" aria-describedby="emailHelp"
-                                placeholder="Enter Ward No" required>
+                                placeholder="Enter Ward No" name="districtno" required>
                         </div>
 
                     </div>
@@ -187,13 +187,13 @@
                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                     placeholder="Enter Date of Birth"> -->
                     <label for="datepicker">Date of Birth</label>
-                    <input type="text" id="datepicker" class="form-control" placeholder="Enter Date of Birth" required>
+                    <input type="text" id="datepicker" class="form-control" placeholder="Enter Date of Birth" name="dob" required>
                 </div>
 
                 <div class="form-group w-70 mt-3">
                     <label for="exampleInputEmail1">Income</label>
                     <input type="text" class="form-control" id="income" aria-describedby="emailHelp"
-                        placeholder="Enter Monthly Income" required>
+                        placeholder="Enter Monthly Income" name="cus_income" required>
 
                 </div>
 
@@ -267,7 +267,7 @@
                 </script>
 
 
-                <div class="text-center" style="margin-top:20px;"><button class="buttonn" name="sbmt" type="button">Submit</button>
+                <div class="text-center" style="margin-top:20px;"><button class="buttonn" name="submitbtn" type="submit">Submit</button>
                 </div>
                 
             </div>

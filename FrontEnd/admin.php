@@ -92,7 +92,7 @@
 
           <div class="col-md-3 col-lg-3 ">
             <div class="card d-flex align-items-stretch outterround">
-              <a href="admin.html" class="stretched-link"></a>
+              <a href="admin.php" class="stretched-link"></a>
               <i class="bi bi-file-earmark-person custom-icon d-flex justify-content-center"></i>
               <div class="card_title d-flex justify-content-center">
                 <p>Dealer Info</p>
@@ -102,7 +102,7 @@
 
           <div class="col-md-3 col-lg-3 ">
             <div class="card d-flex align-items-stretch outterround">
-              <a href="admin.html" class="stretched-link"></a>
+              <a href="admin.php" class="stretched-link"></a>
               <i class="bi bi-file-earmark-person custom-icon d-flex justify-content-center"></i>
               <div class="card_title d-flex justify-content-center">
                 <p>Customer Info</p>
@@ -146,7 +146,7 @@
 
           <div class="col-md-4 col-lg-4 ">
             <div class="card d-flex align-items-stretch outterround">
-              <a href="admin.html" class="stretched-link"></a>
+              <a href="admin.php" class="stretched-link"></a>
               <i class="bi bi-box-arrow-up-right custom-icon d-flex justify-content-center"></i>
               <div class="card_title d-flex justify-content-center">
                 <p>Allocate Goods</p>

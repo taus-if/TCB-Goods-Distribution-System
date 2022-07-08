@@ -76,7 +76,7 @@
         <nav id="navbar" class="navbar">
           <ul>
             <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
-            <li><a class="nav-link scrollto active" href="dealer2.html"><?php echo $uname ?></a></li>
+            <li><a class="nav-link scrollto active" href="dealer2.php"><?php echo $uname ?></a></li>
             <li><a class="nav-link scrollto" href="">Notification</a></li>
 
           </ul>
@@ -156,7 +156,7 @@
                       <div class="page-breadcrumb">
                         <nav aria-label="breadcrumb">
                           <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="dealer2.html" class="breadcrumb-link">Dealer</a></li>
+                            <li class="breadcrumb-item"><a href="dealer2.php" class="breadcrumb-link">Dealer</a></li>
                             <li class="breadcrumb-item active" aria-current="page">Dealer Inventory</li>
                           </ol>
                         </nav>

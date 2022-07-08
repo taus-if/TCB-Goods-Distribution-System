@@ -155,7 +155,7 @@
                       <div class="page-breadcrumb">
                         <nav aria-label="breadcrumb">
                           <ol class="breadcrumb">
-                            <li class="breadcrumb-item"><a href="dealer2.html" class="breadcrumb-link"><?php echo $uname ?></a></li>
+                            <li class="breadcrumb-item"><a href="dealer2.php" class="breadcrumb-link"><?php echo $uname ?></a></li>
                             <li class="breadcrumb-item active" aria-current="page">Dealer's Customer</li>
                           </ol>
                         </nav>

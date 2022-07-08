@@ -148,7 +148,7 @@
 
           <div class="text-center"><button type="submit" class="btn btn-primary btn-block">Login</button></div>
 
-          <!-- <a href="admin.html"> Admin login</a> -->
+          <!-- <a href="admin.php"> Admin login</a> -->
 
           <script>
             // function login() {
@@ -166,10 +166,10 @@
             //   else {
 
             //     if (name == 'admin' && pass == 'admin' && option == 'Admin') {
-            //       location.href = 'admin.html';
+            //       location.href = 'admin.php';
             //     }
             //     else if (name == 'dealer' && pass == 'dealer' && option == 'Dealer') {
-            //       location.href = 'dealer2.html';
+            //       location.href = 'dealer2.php';
             //     }
             //     else {
             //       alert('Username or Password is wrong')

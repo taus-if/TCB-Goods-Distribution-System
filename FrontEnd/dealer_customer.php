@@ -57,7 +57,7 @@
       <div class="container d-flex justify-content-between">
 
         <div class="logo">
-          <!-- <h1><a href="index.html"><span>e</span>Business</a></h1> -->
+          <!-- <h1><a href="index.php"><span>e</span>Business</a></h1> -->
           <!-- Uncomment below if you prefer to use an image logo -->
           <div class="fullnavname">
             <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt=""

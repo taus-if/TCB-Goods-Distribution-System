@@ -76,9 +76,15 @@
                 <nav id="navbar" class="navbar">
                     <ul>
                         <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
-                        <li><a class="nav-link scrollto active" href="dealer2.php">Dealer</a></li>
-                        <li><a class="nav-link scrollto" href="">Notification</a></li>
-
+                        <!-- <li><a class="nav-link scrollto active" href="dealer2.php">Dealer</a></li> -->
+                        <!-- <li><a class="nav-link scrollto" href="">Notification</a></li> -->
+                        <li class="dropdown"><a href="#"><span><?php echo $uname ?></span> <i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                              <li><a href="profile.html">Profile</a></li>
+                              <!-- <li><a href="notification.html">Notification</a></li> -->
+                              <li><a href="/logout">Log out</a></li>
+                            </ul>
+                          </li>
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav><!-- .navbar -->

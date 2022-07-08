@@ -14,9 +14,7 @@
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
@@ -40,7 +38,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
     <script>
-        $(function () {
+        $(function() {
             $("#datepicker").datepicker();
         });
     </script>
@@ -62,14 +60,12 @@
                     <!-- <h1><a href="index.php"><span>e</span>Business</a></h1> -->
                     <!-- Uncomment below if you prefer to use an image logo -->
                     <div class="fullnavname">
-                        <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt=""
-                                class="img-fluid"><span class="navname">Trading Corporation of Bangladesh</span></a>
+                        <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt="" class="img-fluid"><span class="navname">Trading Corporation of Bangladesh</span></a>
                     </div>
 
                     <div class="shortnavname">
 
-                        <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt=""
-                                class="img-fluid"><span class="navname shortnavname">TCB</span></a>
+                        <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt="" class="img-fluid"><span class="navname shortnavname">TCB</span></a>
                     </div>
 
                 </div>
@@ -77,8 +73,14 @@
                 <nav id="navbar" class="navbar">
                     <ul>
                         <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
-                        <li><a class="nav-link scrollto active" href="">Admin</a></li>
-
+                        <!-- <li><a class="nav-link scrollto active" href="">Admin</a></li> -->
+                        <li class="dropdown"><a href="#"><span>UserName</span> <i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="profile.html">Profile</a></li>
+                                <li><a href="notification.html">Notification</a></li>
+                                <li><a href="/logout">Log out</a></li>
+                            </ul>
+                        </li>
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav><!-- .navbar -->
@@ -96,16 +98,14 @@
 
                 <div class="form-group w-70">
                     <label for="exampleInputEmail1">Customer Name</label>
-                    <input type="text" class="form-control" id="cust_name" name="cus_name" aria-describedby="emailHelp"
-                        placeholder="Enter Name" required>
+                    <input type="text" class="form-control" id="cust_name" name="cus_name" aria-describedby="emailHelp" placeholder="Enter Name" required>
 
                 </div>
-                
+
 
                 <div class="form-group w-70 mt-3">
                     <label for="exampleInputEmail1">Occupation</label>
-                    <input type="text" class="form-control" id="occupation" name="cus_occupation" aria-describedby="emailHelp"
-                        placeholder="Enter Occupation" required>
+                    <input type="text" class="form-control" id="occupation" name="cus_occupation" aria-describedby="emailHelp" placeholder="Enter Occupation" required>
 
                 </div>
 
@@ -125,8 +125,7 @@
 
                 <div class="form-group w-70 mt-3">
                     <label for="exampleInputEmail1">Husband/Wife's Name</label>
-                    <input type="email" class="form-control" id="spousename" name="spousename" aria-describedby="emailHelp"
-                        placeholder="Enter Husband/Wife's Name" required>
+                    <input type="email" class="form-control" id="spousename" name="spousename" aria-describedby="emailHelp" placeholder="Enter Husband/Wife's Name" required>
 
                 </div>
 
@@ -137,14 +136,12 @@
                         <div class="col mt-3">
                             <label for="exampleInputEmail1">Holding No</label>
 
-                            <input type="text" class="form-control" id="holding" aria-describedby="emailHelp"
-                                placeholder="Enter Holding No" name="holdingno" required>
+                            <input type="text" class="form-control" id="holding" aria-describedby="emailHelp" placeholder="Enter Holding No" name="holdingno" required>
                         </div>
                         <div class="col mt-3">
                             <label for="exampleInputEmail1">Road No</label>
 
-                            <input type="text" class="form-control" id="road" aria-describedby="emailHelp"
-                                placeholder="Enter Road No" name="roadno" required>
+                            <input type="text" class="form-control" id="road" aria-describedby="emailHelp" placeholder="Enter Road No" name="roadno" required>
                         </div>
 
                     </div>
@@ -153,14 +150,12 @@
                         <div class="col mt-3">
                             <label for="exampleInputEmail1">Ward No</label>
 
-                            <input type="text" class="form-control" id="ward" aria-describedby="emailHelp"
-                                placeholder="Enter Ward No" name="wardno" required>
+                            <input type="text" class="form-control" id="ward" aria-describedby="emailHelp" placeholder="Enter Ward No" name="wardno" required>
                         </div>
                         <div class="col mt-3">
                             <label for="exampleInputEmail1">Union</label>
 
-                            <input type="text" class="form-control" id="union" aria-describedby="emailHelp"
-                                placeholder="Enter Ward No" name="unionno" required>
+                            <input type="text" class="form-control" id="union" aria-describedby="emailHelp" placeholder="Enter Ward No" name="unionno" required>
                         </div>
 
                     </div>
@@ -168,14 +163,12 @@
                         <div class="col mt-3">
                             <label for="exampleInputEmail1">Upazilla</label>
 
-                            <input type="text" class="form-control" id="upazilla" aria-describedby="emailHelp"
-                                placeholder="Enter Ward No" name="upazillano" required>
+                            <input type="text" class="form-control" id="upazilla" aria-describedby="emailHelp" placeholder="Enter Ward No" name="upazillano" required>
                         </div>
                         <div class="col mt-3">
                             <label for="exampleInputEmail1">District</label>
 
-                            <input type="text" class="form-control" id="district" aria-describedby="emailHelp"
-                                placeholder="Enter Ward No" name="districtno" required>
+                            <input type="text" class="form-control" id="district" aria-describedby="emailHelp" placeholder="Enter Ward No" name="districtno" required>
                         </div>
 
                     </div>
@@ -192,8 +185,7 @@
 
                 <div class="form-group w-70 mt-3">
                     <label for="exampleInputEmail1">Income</label>
-                    <input type="text" class="form-control" id="income" aria-describedby="emailHelp"
-                        placeholder="Enter Monthly Income" name="cus_income" required>
+                    <input type="text" class="form-control" id="income" aria-describedby="emailHelp" placeholder="Enter Monthly Income" name="cus_income" required>
 
                 </div>
 
@@ -205,11 +197,8 @@
                         placeholder="Enter Number of Family Members" onkeyup="showbox()" required> -->
 
                         <div class="input-group mb-3">
-                            <input type="text" id="familymemberNo" class="form-control"
-                                placeholder="Enter Number of Family Members" aria-label="Recipient's username"
-                                aria-describedby="button-addon2">
-                            <button class="btn btn-outline-secondary" type="submit" id="button-addon2"
-                                onclick="showbox()">Add</button>
+                            <input type="text" id="familymemberNo" class="form-control" placeholder="Enter Number of Family Members" aria-label="Recipient's username" aria-describedby="button-addon2">
+                            <button class="btn btn-outline-secondary" type="submit" id="button-addon2" onclick="showbox()">Add</button>
                         </div>
 
                     </div>
@@ -237,18 +226,17 @@
                 </div>
 
                 <script>
-
                     function showbox() {
-                        
+
                         var koyta = document.getElementById('familymemberNo').value;
                         var lp = parseInt(koyta);
                         if (lp == 0) return;
 
 
-                
+
 
                         document.getElementById('member-1').style.display = "block";
-                        
+
                         let i;
                         for (i = 0; i < lp - 1; i++) {
                             var clone = document.getElementById('member-1').cloneNode(true);
@@ -257,21 +245,20 @@
                             document.getElementById('member-input').appendChild(clone);
                             // document.getElementById('member-info').style.display="block";
                             clone.style.display = "block";
-                            clone.id = 'member-'+(i+2).toString();
+                            clone.id = 'member-' + (i + 2).toString();
                         }
 
 
 
                     }
-
                 </script>
 
 
                 <div class="text-center" style="margin-top:20px;"><button class="buttonn" name="submitbtn" type="submit">Submit</button>
                 </div>
-                
+
             </div>
-                </form>
+        </form>
 
 
 

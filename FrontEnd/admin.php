@@ -14,9 +14,7 @@
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
@@ -47,22 +45,27 @@
           <!-- <h1><a href="index.php"><span>e</span>Business</a></h1> -->
           <!-- Uncomment below if you prefer to use an image logo -->
           <div class="fullnavname">
-            <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt=""
-                class="img-fluid"><span class="navname">Trading Corporation of Bangladesh</span></a>
+            <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt="" class="img-fluid"><span class="navname">Trading Corporation of Bangladesh</span></a>
           </div>
-  
+
           <div class="shortnavname">
-  
-            <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt=""
-                class="img-fluid"><span class="navname shortnavname">TCB</span></a>
+
+            <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt="" class="img-fluid"><span class="navname shortnavname">TCB</span></a>
           </div>
-  
+
         </div>
 
         <nav id="navbar" class="navbar">
           <ul>
             <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
-            <li><a class="nav-link scrollto active" href="">Admin</a></li>
+            <!-- <li><a class="nav-link scrollto active" href="">Admin</a></li> -->
+            <li class="dropdown"><a href="#"><span>username</span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="notification.html">Notification</a></li>
+                <li><a href="/logout">Log out</a></li>
+              </ul>
+            </li>
 
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
@@ -184,8 +187,7 @@
     </footer><!-- End  Footer -->
 
     <div id="preloader"></div>
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-        class="bi bi-arrow-up-short"></i></a>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

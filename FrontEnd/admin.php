@@ -178,7 +178,7 @@
               </div>
               <div class="credits">
 
-                Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+                Designed by <a href="https://Group-5.com/">Group-5</a>
               </div>
             </div>
           </div>

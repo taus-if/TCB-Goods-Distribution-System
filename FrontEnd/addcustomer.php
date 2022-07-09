@@ -1,3 +1,71 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+$conn = oci_connect('XE', 'XE', 'localhost/xe')
+or die(oci_error());
+
+if(!$conn){
+  echo "not connected";
+}else{
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+
+        if($_POST['submitbtn']=='submitval'){
+
+            
+            $cusname = $_POST['cus_name'];
+            $cusocc = $_POST['cus_occupation'];
+            $gender = $_POST['gender'];
+            $spname = $_POST['spousename'];
+
+            $mobile = $_POST['mobilenum'];
+
+            $holdingno = $_POST['holdingno'];
+            $roadno = $_POST['roadno'];
+            $wardno = $_POST['wardno'];
+            $union = $_POST['union'];
+            $district = $_POST['district'];
+            $upazilla = $_POST['upazilla'];
+            
+            $cusincome = (double) ($_POST['cus_income']);
+            $dob = $_POST['dob'];
+            //$_SESSION['uname']= $username;
+            //$_SESSION['profile'] = $username;  
+            $familynum = (int) ($_POST['familynum']);
+
+            /*if(isset($cusname) && isset($cusocc) && isset($gender) && isset($spname) && isset($holdingno) && isset($roadno) && isset($wardno) && isset($union) && isset($upazilla) && isset($district) && isset($dob) && isset($cusincome) ){ */
+            $sql = "insert into customer_info(nid, name, occupation, spouse, mobile_no, tcb_card_no, gender, income, date_of_birth,no_of_family_members,age, holding_no, road, area_code,package_no)
+            values('33', '$cusname', '$cusocc', '$spname','$mobile','2', '$gender', $cusincome, to_date('$dob', 'mm/dd/yyyy'), $familynum, 34, '$holdingno', '$roadno', '002', '1')";
+
+                $stid=oci_parse($conn, $sql);
+                oci_execute($stid); 
+
+                unset($cusname);
+                unset($gender);
+                unset($cusocc);
+                unset($holdingno);
+                unset($spname);
+                unset($wardno);
+                unset($roadno);
+                unset($upazilla);
+                unset($union);
+                unset($dob);
+                unset($district);
+                unset($cusincome);
+                unset($familynum);
+                unset($mobile);
+                header("Location: ".$_SERVER['PHP_SELF']);
+                exit;
+        
+        }
+    
+    
+    }
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -87,7 +155,7 @@
         </header><!-- End Header -->
 
 
-        <form class="Rafatdealer row d-flex justify-content-center">
+        <form action="addcustomer.php" method="post" class="Rafatdealer row d-flex justify-content-center">
 
 
             <div class="col-sm-10 col-md-8 col-lg-6 outterround">
@@ -97,7 +165,7 @@
                 <div class="form-group w-70">
                     <label for="exampleInputEmail1">Customer Name</label>
                     <input type="text" class="form-control" id="cust_name" name="cus_name" aria-describedby="emailHelp"
-                        placeholder="Enter Name" required>
+                        placeholder="Enter Name" >
 
                 </div>
                 
@@ -105,7 +173,7 @@
                 <div class="form-group w-70 mt-3">
                     <label for="exampleInputEmail1">Occupation</label>
                     <input type="text" class="form-control" id="occupation" name="cus_occupation" aria-describedby="emailHelp"
-                        placeholder="Enter Occupation" required>
+                        placeholder="Enter Occupation" >
 
                 </div>
 
@@ -113,11 +181,11 @@
                     <label for="exampleInputEmail1" class="form-label">Gender</label> <br>
                     <div class="d-flex justify-content-around">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="Admin">
+                            <input class="form-check-input" type="radio" name="gender" id="inlineRadio1" value="male">
                             <label class="form-check-label" for="inlineRadio1">Male</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="Dealer">
+                            <input class="form-check-input" type="radio" name="gender" id="inlineRadio2" value="female">
                             <label class="form-check-label" for="inlineRadio2">Female</label>
                         </div>
                     </div>
@@ -125,8 +193,15 @@
 
                 <div class="form-group w-70 mt-3">
                     <label for="exampleInputEmail1">Husband/Wife's Name</label>
-                    <input type="email" class="form-control" id="spousename" name="spousename" aria-describedby="emailHelp"
-                        placeholder="Enter Husband/Wife's Name" required>
+                    <input type="text" class="form-control" id="spousename" name="spousename" aria-describedby="emailHelp"
+                        placeholder="Enter Husband/Wife's Name" >
+
+                </div>
+
+                <div class="form-group w-70 mt-3">
+                    <label for="exampleInputEmail1">Mobile No</label>
+                    <input type="text" class="form-control" id="mobilenum" name="mobilenum" aria-describedby="emailHelp"
+                        placeholder="Enter Mobile No" >
 
                 </div>
 
@@ -138,13 +213,13 @@
                             <label for="exampleInputEmail1">Holding No</label>
 
                             <input type="text" class="form-control" id="holding" aria-describedby="emailHelp"
-                                placeholder="Enter Holding No" name="holdingno" required>
+                                placeholder="Enter Holding No" name="holdingno" >
                         </div>
                         <div class="col mt-3">
                             <label for="exampleInputEmail1">Road No</label>
 
                             <input type="text" class="form-control" id="road" aria-describedby="emailHelp"
-                                placeholder="Enter Road No" name="roadno" required>
+                                placeholder="Enter Road No" name="roadno" >
                         </div>
 
                     </div>
@@ -154,13 +229,13 @@
                             <label for="exampleInputEmail1">Ward No</label>
 
                             <input type="text" class="form-control" id="ward" aria-describedby="emailHelp"
-                                placeholder="Enter Ward No" name="wardno" required>
+                                placeholder="Enter Ward No" name="wardno" >
                         </div>
                         <div class="col mt-3">
                             <label for="exampleInputEmail1">Union</label>
 
                             <input type="text" class="form-control" id="union" aria-describedby="emailHelp"
-                                placeholder="Enter Ward No" name="unionno" required>
+                                placeholder="Enter Union Name" name="union" >
                         </div>
 
                     </div>
@@ -169,13 +244,13 @@
                             <label for="exampleInputEmail1">Upazilla</label>
 
                             <input type="text" class="form-control" id="upazilla" aria-describedby="emailHelp"
-                                placeholder="Enter Ward No" name="upazillano" required>
+                                placeholder="Enter Upazilla Name" name="upazilla" >
                         </div>
                         <div class="col mt-3">
                             <label for="exampleInputEmail1">District</label>
 
                             <input type="text" class="form-control" id="district" aria-describedby="emailHelp"
-                                placeholder="Enter Ward No" name="districtno" required>
+                                placeholder="Enter District Name" name="district" >
                         </div>
 
                     </div>
@@ -187,13 +262,13 @@
                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
                     placeholder="Enter Date of Birth"> -->
                     <label for="datepicker">Date of Birth</label>
-                    <input type="text" id="datepicker" class="form-control" placeholder="Enter Date of Birth" name="dob" required>
+                    <input type="text" id="datepicker" class="form-control" placeholder="Enter Date of Birth" name="dob" >
                 </div>
 
                 <div class="form-group w-70 mt-3">
                     <label for="exampleInputEmail1">Income</label>
                     <input type="text" class="form-control" id="income" aria-describedby="emailHelp"
-                        placeholder="Enter Monthly Income" name="cus_income" required>
+                        placeholder="Enter Monthly Income" name="cus_income" >
 
                 </div>
 
@@ -205,11 +280,11 @@
                         placeholder="Enter Number of Family Members" onkeyup="showbox()" required> -->
 
                         <div class="input-group mb-3">
-                            <input type="text" id="familymemberNo" class="form-control"
+                            <input type="text" id="familymemberNo" name="familynum" class="form-control"
                                 placeholder="Enter Number of Family Members" aria-label="Recipient's username"
                                 aria-describedby="button-addon2">
-                            <button class="btn btn-outline-secondary" type="submit" id="button-addon2"
-                                onclick="showbox()">Add</button>
+                            <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+                                onclick="showbox()" name="showboxbtn" value="add">Add</button>
                         </div>
 
                     </div>
@@ -267,11 +342,11 @@
                 </script>
 
 
-                <div class="text-center" style="margin-top:20px;"><button class="buttonn" name="submitbtn" type="submit">Submit</button>
+                <div class="text-center" style="margin-top:20px;"><button class="buttonn" name="submitbtn" type="submit" value="submitval">Submit</button>
                 </div>
                 
             </div>
-                </form>
+        </form>
 
 
 
@@ -311,3 +386,5 @@
     </div>
 
 </body>
+
+</html>

@@ -30,7 +30,6 @@
         header("Location: dealer2.php");
       }
     }
-    echo 'nai';
   }
 
 ?>

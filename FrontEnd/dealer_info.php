@@ -1,3 +1,15 @@
+<?php
+session_start();
+$uname = $_SESSION['uname'];
+$conn = oci_connect('XE', 'XE', 'localhost/xe')
+    or die(oci_error());
+
+if (!$conn) {
+    echo "not connected";
+} else {
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,9 +26,7 @@
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
@@ -47,14 +57,12 @@
                     <!-- <h1><a href="index.php"><span>e</span>Business</a></h1> -->
                     <!-- Uncomment below if you prefer to use an image logo -->
                     <div class="fullnavname">
-                        <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt=""
-                                class="img-fluid"><span class="navname">Trading Corporation of Bangladesh</span></a>
+                        <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt="" class="img-fluid"><span class="navname">Trading Corporation of Bangladesh</span></a>
                     </div>
 
                     <div class="shortnavname">
 
-                        <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt=""
-                                class="img-fluid"><span class="navname shortnavname">TCB</span></a>
+                        <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt="" class="img-fluid"><span class="navname shortnavname">TCB</span></a>
                     </div>
 
                 </div>
@@ -62,14 +70,16 @@
                 <nav id="navbar" class="navbar">
                     <ul>
                         <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
-                        <!-- <li><a class="nav-link scrollto active" href="admin.php">Admin</a></li> -->
-                        <li class="dropdown"><a href="#"><span>username</span> <i class="bi bi-chevron-down"></i></a>
-                          <ul>
-                            <li><a href="profile.html">Profile</a></li>
-                            <li><a href="notification.html">Notification</a></li>
-                            <li><a href="/logout">Log out</a></li>
-                          </ul>
+                        <!-- <li><a class="nav-link scrollto active" href="dealer2.php">Dealer</a></li> -->
+                        <!-- <li><a class="nav-link scrollto" href="">Notification</a></li> -->
+                        <li class="dropdown"><a href="#"><span><?php echo $uname ?></span> <i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="profile.html">Profile</a></li>
+                                <!-- <li><a href="notification.html">Notification</a></li> -->
+                                <li><a href="/logout">Log out</a></li>
+                            </ul>
                         </li>
+
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav><!-- .navbar -->
@@ -142,27 +152,24 @@
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="page-header">
-                                    <h2 class="pageheader-title" style="text-align: center;">STORAGE</h2>
+                                    <h2 class="pageheader-title" style="text-align: center;">CUSTOMERS UNDER ME</h2>
                                     <div>
                                         <div class="page-breadcrumb">
                                             <nav aria-label="breadcrumb">
                                                 <ol class="breadcrumb">
-                                                    <li class="breadcrumb-item"><a href="admin.php"
-                                                            class="breadcrumb-link">Admin</a></li>
-                                                    <li class="breadcrumb-item active" aria-current="page">Storage</li>
+                                                    <li class="breadcrumb-item"><a href="dealer2.php" class="breadcrumb-link"><?php echo $uname ?></a></li>
+                                                    <li class="breadcrumb-item active" aria-current="page">Dealer's Customer</li>
                                                 </ol>
                                             </nav>
                                         </div>
-                                        <!-- <div class="main-content container-fluid p-0" class="col-lg-12">
-                        <div class="email-search">
-                          <div class="input-group input-search">
-                            <input class="form-control" type="text" placeholder="Search in Result Register..."><span
-                              class="input-group-btn">
-                              <button class="btn btn-secondary" type="button"><i
-                                  class="bi bi-search"></i></button></span>
-                          </div>
-                        </div>
-                      </div> -->
+                                        <div class="main-content container-fluid p-0" class="col-lg-12">
+                                            <div class="email-search">
+                                                <div class="input-group input-search">
+                                                    <input class="form-control" type="text" placeholder="Search in Result Register..."><span class="input-group-btn">
+                                                        <button class="btn btn-secondary" type="button"><i class="bi bi-search"></i></button></span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -199,67 +206,32 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Items No</th>
-                                    <th>Item Name</th>
-                                    <th>Unit</th>
-                                    <th>Capacity</th>
-                                    <th>Available</th>
+                                    <th>Customer ID</th>
+                                    <th>CUstomer Name</th>
+                                    <th>Package no </th>
+                                    <th>Mobile no </th>
+                                    <th>Last Received</th>
                                     <th></th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td data-label="Pers No">01</td>
-                                    <td data-label="Name">Rice</td>
-                                    <td data-label="Unit">Kg</td>
-                                    <td data-label="Prac">50</td>
-                                    <td data-label="Hit">46</td>
-                                    <!-- <td data-label="Missed">4</td> -->
-                                </tr>
+                                <?php
+                                $sql = "select * from customer_info where area_code = (select area_code from dealer_area where dealer_id = '$uname')";
+                                $stid = oci_parse($conn, $sql);
+                                $r = oci_execute($stid);
 
-                                <tr>
-                                    <td data-label="Pers No">02</td>
-                                    <td data-label="Name">Onion</td>
-                                    <td data-label="Unit">Kg</td>
-                                    <td data-label="Prac">50</td>
-                                    <td data-label="Hit">40</td>
-                                    <!-- <td data-label="Missed">10</td> -->
-                                </tr>
-
-                                <tr>
-                                    <td data-label="Pers No">03</td>
-                                    <td data-label="Name">Soabean Oil </td>
-                                    <td data-label="Unit">Litre</td>
-                                    <td data-label="Prac">15</td>
-                                    <td data-label="Hit">5</td>
-                                    <!-- <td data-label="Missed">15</td> -->
-                                </tr>
-                                <tr>
-                                    <td data-label="Pers No">04</td>
-                                    <td data-label="Name">Pulses</td>
-                                    <td data-label="Unit">Kg </td>
-                                    <td data-label="Prac">30</td>
-                                    <td data-label="Hit">25</td>
-                                    <!-- <td data-label="Missed">4</td> -->
-                                </tr>
-
-                                <tr>
-                                    <td data-label="Pers No">05</td>
-                                    <td data-label="Name">Potato</td>
-                                    <td data-label="Unit">kg </td>
-                                    <td data-label="Prac">50</td>
-                                    <td data-label="Hit">40</td>
-                                    <!-- <td data-label="Missed">10</td> -->
-                                </tr>
-
-                                <!-- <tr>
-                    <td data-label="Pers No">BA-10985</td>                    
-                    <td data-label="Name">Lt Sabit</td>
-                    <td data-label="Unit">9 Sigs</td>
-                    <td data-label="Prac">50</td>
-                    <td data-label="Hit">35</td>
-                    <td data-label="Missed">15</td>
-                  </tr> -->
+                                while ($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
+                                    echo "
+                  <tr>
+                    <td>" . $row["TCB_CARD_NO"] . "</td>
+                    <td>" . $row["NAME"] . "</td>
+                    <td>" . $row["PACKAGE_NO"] . "</td>
+                    <td>" . $row["MOBILE_NO"] . "</td>
+                    <td>12/05/22</td>
+                  </tr>
+                  ";
+                                }
+                                ?>
 
                             </tbody>
 
@@ -395,7 +367,7 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="copyright text-center">
                                 <p>
-                                    &copy; Copyright <strong>TCB BD </strong>. All Rights Reserved
+                                    &copy; Copyright <strong>TCB BD</strong>. All Rights Reserved
                                 </p>
                             </div>
                             <div class="credits">
@@ -409,8 +381,7 @@
         </footer><!-- End  Footer -->
 
         <div id="preloader"></div>
-        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-                class="bi bi-arrow-up-short"></i></a>
+        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
         <!-- Vendor JS Files -->
         <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

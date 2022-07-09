@@ -355,7 +355,7 @@ div#preloader {
   padding: 10px 0 10px 30px;
   font-size: 18px;
   font-weight: 500;
-  color: #fff;
+  color: rgb(0, 0, 0);
   white-space: nowrap;
   transition: 0.3s;
 }
@@ -396,7 +396,11 @@ div#preloader {
 }
 .navbar .dropdown ul a:hover, .navbar .dropdown ul .active:hover, .navbar .dropdown ul li:hover > a {
   color: #38ce24;
+  /* background-color: #000; */
 }
+/* .navbar .dropdown ul li:hover > a{
+  background-color: #000;
+} */
 .navbar .dropdown:hover > ul {
   opacity: 1;
   top: 100%;
@@ -413,6 +417,9 @@ div#preloader {
   left: 100%;
   visibility: visible;
 }
+/* .drpdwn:hover{
+  background-color: #000;
+} */
 @media (max-width: 1366px) {
   .navbar .dropdown .dropdown ul {
     left: -90%;

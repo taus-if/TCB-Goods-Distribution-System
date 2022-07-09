@@ -36,7 +36,7 @@ if(!$conn){
 
             /*if(isset($cusname) && isset($cusocc) && isset($gender) && isset($spname) && isset($holdingno) && isset($roadno) && isset($wardno) && isset($union) && isset($upazilla) && isset($district) && isset($dob) && isset($cusincome) ){ */
             $sql = "insert into customer_info(nid, name, occupation, spouse, mobile_no, tcb_card_no, gender, income, date_of_birth,no_of_family_members,age, holding_no, road, area_code,package_no)
-            values('33', '$cusname', '$cusocc', '$spname','$mobile','2', '$gender', $cusincome, to_date('$dob', 'mm/dd/yyyy'), $familynum, 34, '$holdingno', '$roadno', '002', '1')";
+            values('3', '$cusname', '$cusocc', '$spname','$mobile','5', '$gender', $cusincome, to_date('$dob', 'mm/dd/yyyy'), $familynum, 34, '$holdingno', '$roadno', '002', '1')";
 
                 $stid=oci_parse($conn, $sql);
                 oci_execute($stid); 
@@ -82,9 +82,7 @@ if(!$conn){
     <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
     <!-- Google Fonts -->
-    <link
-        href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900" rel="stylesheet">
 
     <!-- Vendor CSS Files -->
     <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
@@ -108,7 +106,7 @@ if(!$conn){
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
     <script>
-        $(function () {
+        $(function() {
             $("#datepicker").datepicker();
         });
     </script>
@@ -130,14 +128,12 @@ if(!$conn){
                     <!-- <h1><a href="index.php"><span>e</span>Business</a></h1> -->
                     <!-- Uncomment below if you prefer to use an image logo -->
                     <div class="fullnavname">
-                        <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt=""
-                                class="img-fluid"><span class="navname">Trading Corporation of Bangladesh</span></a>
+                        <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt="" class="img-fluid"><span class="navname">Trading Corporation of Bangladesh</span></a>
                     </div>
 
                     <div class="shortnavname">
 
-                        <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt=""
-                                class="img-fluid"><span class="navname shortnavname">TCB</span></a>
+                        <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt="" class="img-fluid"><span class="navname shortnavname">TCB</span></a>
                     </div>
 
                 </div>
@@ -145,8 +141,14 @@ if(!$conn){
                 <nav id="navbar" class="navbar">
                     <ul>
                         <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
-                        <li><a class="nav-link scrollto active" href="">Admin</a></li>
-
+                        <!-- <li><a class="nav-link scrollto active" href="">Admin</a></li> -->
+                        <li class="dropdown"><a href="#"><span>UserName</span> <i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                                <li><a href="profile.html">Profile</a></li>
+                                <li><a href="notification.html">Notification</a></li>
+                                <li><a href="/logout">Log out</a></li>
+                            </ul>
+                        </li>
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav><!-- .navbar -->
@@ -168,7 +170,7 @@ if(!$conn){
                         placeholder="Enter Name" >
 
                 </div>
-                
+
 
                 <div class="form-group w-70 mt-3">
                     <label for="exampleInputEmail1">Occupation</label>
@@ -258,9 +260,7 @@ if(!$conn){
                 </div>
 
                 <div class="form-group w-70 mt-3">
-                    <!-- <label for="exampleInputEmail1">Date of Birth</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Enter Date of Birth"> -->
+                    
                     <label for="datepicker">Date of Birth</label>
                     <input type="text" id="datepicker" class="form-control" placeholder="Enter Date of Birth" name="dob" >
                 </div>
@@ -276,8 +276,6 @@ if(!$conn){
 
                     <div class="form-group w-70 mt-3">
                         <label for="exampleInputEmail1">Number of Family Members</label>
-                        <!-- <input type="text" class="form-control" id="familymemberNo" aria-describedby="emailHelp"
-                        placeholder="Enter Number of Family Members" onkeyup="showbox()" required> -->
 
                         <div class="input-group mb-3">
                             <input type="text" id="familymemberNo" name="familynum" class="form-control"
@@ -312,18 +310,17 @@ if(!$conn){
                 </div>
 
                 <script>
-
                     function showbox() {
-                        
+
                         var koyta = document.getElementById('familymemberNo').value;
                         var lp = parseInt(koyta);
                         if (lp == 0) return;
 
 
-                
+
 
                         document.getElementById('member-1').style.display = "block";
-                        
+
                         let i;
                         for (i = 0; i < lp - 1; i++) {
                             var clone = document.getElementById('member-1').cloneNode(true);
@@ -332,19 +329,18 @@ if(!$conn){
                             document.getElementById('member-input').appendChild(clone);
                             // document.getElementById('member-info').style.display="block";
                             clone.style.display = "block";
-                            clone.id = 'member-'+(i+2).toString();
+                            clone.id = 'member-' + (i + 2).toString();
                         }
 
 
 
                     }
-
                 </script>
 
 
                 <div class="text-center" style="margin-top:20px;"><button class="buttonn" name="submitbtn" type="submit" value="submitval">Submit</button>
                 </div>
-                
+
             </div>
         </form>
 

@@ -1,3 +1,15 @@
+<?php
+session_start();
+$uname = $_SESSION['uname'];
+$conn = oci_connect('XE', 'XE', 'localhost/xe')
+  or die(oci_error());
+
+if (!$conn) {
+  echo "not connected";
+} else {
+}
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -59,9 +71,9 @@
           <ul>
             <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
             <!-- <li><a class="nav-link scrollto active" href="">Admin</a></li> -->
-            <li class="dropdown"><a href="#"><span>username</span> <i class="bi bi-chevron-down"></i></a>
+            <li class="dropdown"><a href="#"><span><?php echo $uname ?></span> <i class="bi bi-chevron-down"></i></a>
               <ul>
-                <li><a href="profile.html">Profile</a></li>
+                <li><a href="admin_profile.php">Profile</a></li>
                 <li><a href="notification.html">Notification</a></li>
                 <li><a href="/logout">Log out</a></li>
               </ul>
@@ -77,7 +89,11 @@
 
 
     <main id="main" style="margin-top: 80px;" class="d-flex align-items-center">
-
+    //<?php
+        // $sql = "select * from admin where username = '$uname' ";
+        // $stid = oci_parse($conn, $sql);
+        // $r = oci_execute($stid);
+    //?>
 
       <div class="container features">
 
@@ -95,7 +111,7 @@
 
           <div class="col-md-3 col-lg-3 ">
             <div class="card d-flex align-items-stretch outterround">
-              <a href="admin.php" class="stretched-link"></a>
+              <a href="dealer_info.php" class="stretched-link"></a>
               <i class="bi bi-file-earmark-person custom-icon d-flex justify-content-center"></i>
               <div class="card_title d-flex justify-content-center">
                 <p>Dealer Info</p>

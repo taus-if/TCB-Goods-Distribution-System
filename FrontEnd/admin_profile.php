@@ -70,7 +70,7 @@ if (!$conn) {
                         <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
                         <li class="dropdown"><a href="#"><span><?php echo $uname ?></span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
-                                <li><a href="admin_profile.php">Profile</a></li>
+                                <li><a href="profile.html">Profile</a></li>
                                 <li><a href="/logout">Log out</a></li>
                             </ul>
                         </li>
@@ -99,23 +99,16 @@ if (!$conn) {
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="page-header">
-                                    <h2 class="pageheader-title" style="text-align: center;">DEALER INFORMATION</h2>
+                                    <h2 class="pageheader-title" style="text-align: center;"><?php echo $uname . "'s PROFILE" ?></h2>
                                     <div>
                                         <div class="page-breadcrumb">
                                             <nav aria-label="breadcrumb">
                                                 <ol class="breadcrumb">
                                                     <li class="breadcrumb-item"><a href="admin.php" class="breadcrumb-link">Admin</a></li>
-                                                    <li class="breadcrumb-item active" aria-current="page">Dealer's Information</li>
+                                                    <!-- <li class="breadcrumb-item"><a href="dealer_info.php" class="breadcrumb-link">Dealer's Information</a></li> -->
+                                                    <li class="breadcrumb-item active" aria-current="page"><?php echo $uname . "'s profile" ?></li>
                                                 </ol>
                                             </nav>
-                                        </div>
-                                        <div class="main-content container-fluid p-0" class="col-lg-12">
-                                            <div class="email-search">
-                                                <div class="input-group input-search">
-                                                    <input class="form-control" type="text" placeholder="Search in Result Register..."><span class="input-group-btn">
-                                                        <button class="btn btn-secondary" type="button"><i class="bi bi-search"></i></button></span>
-                                                </div>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -128,45 +121,93 @@ if (!$conn) {
 
 
                         <!-- ============================================================== -->
-                        <!-- Result Table -->
+                        <!-- Admin profile -->
                         <!-- ============================================================== -->
 
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Dealer Name</th>
-                                    <th>Permanent Address</th>
-                                    <th>Date of Birth</th>
-                                    <th>Email</th> <!-- Mobile no <br> -->
-                                    <th>Dealer ID </th><!-- <br>Password -->
-                                    <th>Profile</th>
-                                    <!-- <th>Organization name <br>Organization address <br>TIN number</th> -->
-                                    <!-- <th></th> -->
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $sql = "select * from  dealer_info, info where dealer_info.dealer_id=info.dealer_id  ";  //username = '$uname';
-                                $stid = oci_parse($conn, $sql);
-                                $r = oci_execute($stid);
-                                
-                                // <td>" . $row["organization_name"] . $row["organization_address"] . $row["tin_number"] . "</td>
-                                // <td>12/05/22</td>
-
-                                while ($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
-                                    echo
-                                    "<tr>
-                                            <td>" . $row["APPLICANT_NAME"] . "</td>
-                                            <td>" . $row["PERMANENT_ADDRESS"] . "</td>
-                                            <td>" . $row["DATE_OF_BIRTH"] . "</td>
-                                            <td>" . $row["EMAIL"] . "</td>
-                                            <td>" . $row["DEALER_ID"] . "</td>  
-                                            
-                                        </tr>";
-                                }
-                                ?>
-                            </tbody>
-                        </table>
+                        <section class="admin_p about-section gray-bg" id="about">
+                            <div class="container">
+                                <div class="row align-items-center flex-row-reverse">
+                                    <div class="col-lg-6">
+                                        <div class="about-text go-to">
+                                            <h3 class="dark-color">About Me</h3>
+                                            <h6 class="theme-color lead">A Lead UX &amp; UI designer based in Canada</h6>
+                                            <p>I <mark>design and develop</mark> services for customers of all sizes, specializing in creating stylish, modern websites, web services and online stores. My passion is to design digital user experiences through the bold interface and meaningful interactions.</p>
+                                            <div class="row about-list">
+                                                <div class="col-md-6">
+                                                    <div class="media">
+                                                        <label>Birthday</label>
+                                                        <p>4th april 1998</p>
+                                                    </div>
+                                                    <div class="media">
+                                                        <label>Age</label>
+                                                        <p>22 Yr</p>
+                                                    </div>
+                                                    <div class="media">
+                                                        <label>Chember</label>
+                                                        <p>Canada</p>
+                                                    </div>
+                                                    <div class="media">
+                                                        <label>Address</label>
+                                                        <p>California, USA</p>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <div class="media">
+                                                        <label>E-mail</label>
+                                                        <p>info@domain.com</p>
+                                                    </div>
+                                                    <div class="media">
+                                                        <label>Phone</label>
+                                                        <p>820-885-3321</p>
+                                                    </div>
+                                                    <div class="media">
+                                                        <label>Skype</label>
+                                                        <p>skype.0404</p>
+                                                    </div>
+                                                    <div class="media">
+                                                        <label>Freelance</label>
+                                                        <p>Available</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div class="about-avatar">
+                                            <img src="https://bootdey.com/img/Content/avatar/avatar7.png" title="" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="counter">
+                                    <div class="row">
+                                        <div class="col-6 col-lg-3">
+                                            <div class="count-data text-center">
+                                                <h6 class="count h2" data-to="500" data-speed="500">500</h6>
+                                                <p class="m-0px font-w-600">Total Dealers</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-lg-3">
+                                            <div class="count-data text-center">
+                                                <h6 class="count h2" data-to="150" data-speed="150">150</h6>
+                                                <p class="m-0px font-w-600">Total Customres</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-lg-3">
+                                            <div class="count-data text-center">
+                                                <h6 class="count h2" data-to="850" data-speed="850">850</h6>
+                                                <p class="m-0px font-w-600">No of Packages</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-lg-3">
+                                            <div class="count-data text-center">
+                                                <h6 class="count h2" data-to="190" data-speed="190">190</h6>
+                                                <p class="m-0px font-w-600">Total feedback</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
 
                         <div class="page-breadcrumb">
                             <nav aria-label="breadcrumb">

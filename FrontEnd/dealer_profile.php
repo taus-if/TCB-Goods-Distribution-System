@@ -104,7 +104,7 @@ if (!$conn) {
                                         <div class="page-breadcrumb">
                                             <nav aria-label="breadcrumb">
                                                 <ol class="breadcrumb">
-                                                    <li class="breadcrumb-item"><a href="admin.php" class="breadcrumb-link">Admin</a></li>
+                                                    <li class="breadcrumb-item"><a href="dealer2.php" class="breadcrumb-link">Dealer</a></li>
                                                     <!-- <li class="breadcrumb-item"><a href="dealer_info.php" class="breadcrumb-link">Dealer's Information</a></li> -->
                                                     <li class="breadcrumb-item active" aria-current="page"><?php echo $uname . "'s profile" ?></li>
                                                 </ol>
@@ -130,7 +130,7 @@ if (!$conn) {
                                     <div class="col-lg-6">
                                         <div class="about-text go-to">
                                             <h3 class="dark-color">About Me</h3>
-                                            <h6 class="theme-color lead">A Lead UX &amp; UI designer based in Canada</h6>
+                                            <h6 class="theme-color lead">A Dealer of TCB food distribution system</h6>
                                             <p>I <mark>design and develop</mark> services for customers of all sizes, specializing in creating stylish, modern websites, web services and online stores. My passion is to design digital user experiences through the bold interface and meaningful interactions.</p>
                                             <div class="row about-list">
                                                 <div class="col-md-6">

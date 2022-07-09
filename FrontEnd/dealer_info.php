@@ -48,7 +48,6 @@ if (!$conn) {
 
 
     <div class="everything">
-
         <!-- ======= Header ======= -->
         <header id="header" class="fixed-top d-flex align-items-center">
             <div class="container d-flex justify-content-between">
@@ -57,12 +56,9 @@ if (!$conn) {
                     <div class="fullnavname">
                         <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt="" class="img-fluid"><span class="navname">Trading Corporation of Bangladesh</span></a>
                     </div>
-
                     <div class="shortnavname">
-
                         <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt="" class="img-fluid"><span class="navname shortnavname">TCB</span></a>
                     </div>
-
                 </div>
 
                 <nav id="navbar" class="navbar">
@@ -77,10 +73,11 @@ if (!$conn) {
 
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
-                </nav><!-- .navbar -->
-
+                </nav>
+                <!-- .navbar -->
             </div>
-        </header><!-- End Header -->
+        </header>
+        <!-- End Header -->
 
 
 

@@ -39,6 +39,7 @@ if (!$conn) {
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
   <!-- <link rel="stylesheet" href="newcss.css"> -->
+  <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 
 
 </head>
@@ -207,7 +208,7 @@ if (!$conn) {
               </div> -->
 
 
-            <table class="table">
+            <table class="table" id="myTable">
               <thead>
                 <tr>
                   <th>Customer ID</th>

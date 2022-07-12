@@ -1,3 +1,4 @@
+drop sequence tcb_card_no_seq;
 drop table dealer_area;
 drop table items_distributed;
 drop table cust_exp;
@@ -159,8 +160,7 @@ create table dealer_inventory(
 create sequence tcb_card_no_seq
 start with 1
 increment by 1
-nocycle
-nomaxval;
+nocycle;
 
 
 

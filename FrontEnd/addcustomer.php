@@ -36,7 +36,7 @@ if(!$conn){
 
             /*if(isset($cusname) && isset($cusocc) && isset($gender) && isset($spname) && isset($holdingno) && isset($roadno) && isset($wardno) && isset($union) && isset($upazilla) && isset($district) && isset($dob) && isset($cusincome) ){ */
             $sql = "insert into customer_info(nid, name, occupation, spouse, mobile_no, tcb_card_no, gender, income, date_of_birth,no_of_family_members,age, holding_no, road, area_code,package_no)
-            values('3', '$cusname', '$cusocc', '$spname','$mobile','5', '$gender', $cusincome, to_date('$dob', 'mm/dd/yyyy'), $familynum, 34, '$holdingno', '$roadno', '002', '1')";
+            values('6', '$cusname', '$cusocc', '$spname','$mobile',concat('C',lpad(tcb_card_no_seq.nextval,6,'0')), '$gender', $cusincome, to_date('$dob', 'mm/dd/yyyy'), $familynum, TRUNC(months_between(sysdate, to_date('$dob','mm/dd/yyyy')) / 12), '$holdingno', '$roadno', '002', '1')";
 
                 $stid=oci_parse($conn, $sql);
                 oci_execute($stid); 

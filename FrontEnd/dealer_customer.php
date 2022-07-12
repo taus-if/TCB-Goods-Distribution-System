@@ -163,11 +163,15 @@ if (!$conn) {
                       </nav>
                     </div>
                     <div class="main-content container-fluid p-0" class="col-lg-12">
-                      <div class="email-search">
-                        <div class="input-group input-search">
+                      <div class="search">
+                        <!-- <div class="input-group input-search">
                           <input class="form-control" type="text" placeholder="Search in Result Register..."><span class="input-group-btn">
                             <button class="btn btn-secondary" type="button"><i class="bi bi-search"></i></button></span>
-                        </div>
+                        </div> -->
+                        <form method="post">
+                          <input class="col-lg-11" type="text" name="search" placeholder="Search by any">
+                          <input type="submit" name="submit">
+                        </form>
                       </div>
                     </div>
                   </div>

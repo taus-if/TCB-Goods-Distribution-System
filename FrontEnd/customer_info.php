@@ -97,13 +97,13 @@ if (!$conn) {
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="page-header">
-                                    <h2 class="pageheader-title" style="text-align: center;">DEALER's INFORMATION</h2>
+                                    <h2 class="pageheader-title" style="text-align: center;">CUSTOMER's INFORMATION</h2>
                                     <div>
                                         <div class="page-breadcrumb">
                                             <nav aria-label="breadcrumb">
                                                 <ol class="breadcrumb">
                                                     <li class="breadcrumb-item"><a href="admin.php" class="breadcrumb-link">Admin</a></li>
-                                                    <li class="breadcrumb-item active" aria-current="page">Dealer's Information</li>
+                                                    <li class="breadcrumb-item active" aria-current="page">Customer's Information</li>
                                                 </ol>
                                             </nav>
                                         </div>

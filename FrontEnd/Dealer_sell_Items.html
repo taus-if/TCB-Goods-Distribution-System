@@ -62,30 +62,16 @@
                 <nav id="navbar" class="navbar">
                     <ul>
                         <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
-                        <!-- <li><a class="nav-link scrollto active" href="dealer2.php">Dealer</a></li> -->
-                        <!-- <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                                data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">UserName</a>
-                            <div class="dropdown-menu " style="background-color:rgb(56,206,36);">
-                                <a class="dropdown" href="">Profile</a>
-                                <a class="dropdown" href="/logout">Log out</a>
-                            </div>
-                        </li> -->
                         <li class="dropdown"><a href="#"><span>username</span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                               <li><a href="dealer_profile.php">Profile</a></li>
-                              <!-- <li><a href="notification.html">Notification</a></li> -->
                               <li><a href="/logout">Log out</a></li>
                             </ul>
                           </li>
-
-                        
-
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
                 </nav>
-                <!-- .navbar -->
-
+                <!-- navbar -->
             </div>
         </header>
         <!-- End Header -->
@@ -111,27 +97,17 @@
                                         <div class="page-breadcrumb">
                                             <nav aria-label="breadcrumb">
                                                 <ol class="breadcrumb">
-                                                    <li class="breadcrumb-item"><a href="dealer2.php"
-                                                            class="breadcrumb-link">Dealer</a></li>
+                                                    <li class="breadcrumb-item"><a href="dealer2.php" class="breadcrumb-link">Dealer</a></li>
                                                     <li class="breadcrumb-item active" aria-current="page">Selling Items
                                                     </li>
                                                 </ol>
                                             </nav>
                                         </div>
                                         <div class="main-content container-fluid p-0" class="col-lg-12">
-                                            <div class="search">
-                                                <!-- <div class="input-group input-search">
-                                                    <input class="form-control" type="text"
-                                                        placeholder="Search in Result Register..."><span
-                                                        class="input-group-btn">
-                                                        <button class="btn btn-secondary" type="button"><i
-                                                                class="bi bi-search"></i></button></span>
-                                                </div> -->
                                                 <form method="post" >
                                                     <input class="col-lg-11" type="text" name="search" placeholder="Search by any">
                                                     <input type="submit" name="submit">
                                                 </form>
-                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -154,11 +130,11 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td data-label="Pers No">tcb0001</td>
-                                    <td data-label="Name">M N ALom Siddique</td>
-                                    <td data-label="Unit">2</td>
-                                    <td data-label="Prac">01755112233</td>
-                                    <td data-label="Hit">12/05/22</td>
+                                    <td>tcb0001</td>
+                                    <td>M N ALom Siddique</td>
+                                    <td>2</td>
+                                    <td>01755112233</td>
+                                    <td>12/05/22</td>
                                     <!-- <td data-label="Missed">4</td> -->
                                 </tr>
                             </tbody>
@@ -178,84 +154,79 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td data-label="Pers No">01</td>
-                                    <td data-label="Name">Rice</td>
+                                    <td>01</td>
+                                    <td>Rice</td>
                                     <!-- <td data-label="Unit">2</td> -->
-                                    <td data-label="Prac">3</td>
+                                    <td>3</td>
                                     <!-- <td data-label="Hit">4</td> -->
-                                    <td data-label="Missed">50 </td>
+                                    <td>50 </td>
                                     <td>
-                                        <form action="/action_page.php">
-                                            <!-- <label for="quantity">(between 1 and 3):</label> -->
+                                        <form method="post" >
                                             <input type="number" id="quantity" name="quantity" min="1" max="3">
-                                            <!-- <input type="submit" value="Submit"> -->
+                                            <input type="submit" name="submit">
                                         </form>
                                     </td>
                                     <td>150</td>
                                 </tr>
 
                                 <tr>
-                                    <td data-label="Pers No">02</td>
-                                    <td data-label="Name">Onion</td>
+                                    <td>02</td>
+                                    <td>Onion</td>
                                     <!-- <td data-label="Unit">1/2</td> -->
-                                    <td data-label="Prac">1</td>
+                                    <td>1</td>
                                     <!-- <td data-label="Hit">1.5</td> -->
-                                    <td data-label="Missed">30</td>
+                                    <td>30</td>
                                     <td>
-                                        <form action="/action_page.php">
-                                            <!-- <label for="quantity">(between 1 and 3):</label> -->
+                                        <form method="post" >
                                             <input type="number" id="quantity" name="quantity" min="1" max="1">
-                                            <!-- <input type="submit" value="Submit"> -->
+                                            <input type="submit" name="submit">
                                         </form>
                                     </td>
                                     <td>30</td>
                                 </tr>
 
                                 <tr>
-                                    <td data-label="Pers No">03</td>
-                                    <td data-label="Name">Soabean Oil </td>
+                                    <td>03</td>
+                                    <td>Soabean Oil </td>
                                     <!-- <td data-label="Unit">1/2</td> -->
-                                    <td data-label="Prac">1</td>
+                                    <td>1</td>
                                     <!-- <td data-label="Hit">1.5</td> -->
-                                    <td data-label="Missed">80</td>
+                                    <td>80</td>
                                     <td>
-                                        <form action="/action_page.php">
-                                            <!-- <label for="quantity">(between 1 and 3):</label> -->
+                                        <form method="post" >
                                             <input type="number" id="quantity" name="quantity" min="1" max="1">
-                                            <!-- <input type="submit" value="Submit"> -->
+                                            <input type="submit" name="submit">
                                         </form>
                                     </td>
                                     <td>80</td>
                                 </tr>
                                 <tr>
-                                    <td data-label="Pers No">04</td>
-                                    <td data-label="Name">Pulses</td>
+                                    <td>04</td>
+                                    <td>Pulses</td>
                                     <!-- <td data-label="Unit">1</td> -->
-                                    <td data-label="Prac">2</td>
+                                    <td>2</td>
                                     <!-- <td data-label="Hit">2.5</td> -->
-                                    <td data-label="Missed">60</td>
+                                    <td>60</td>
                                     <td>
-                                        <form action="/action_page.php">
-                                            <!-- <label for="quantity">(between 1 and 3):</label> -->
+                                        <form method="post" >
                                             <input type="number" id="quantity" name="quantity" min="1" max="2">
-                                            <!-- <input type="submit" value="Submit"> -->
+                                            <input type="submit" name="submit">
                                         </form>
                                     </td>
                                     <td>120</td>
                                 </tr>
 
                                 <tr>
-                                    <td data-label="Pers No">05</td>
-                                    <td data-label="Name">Potato</td>
+                                    <td>05</td>
+                                    <td>Potato</td>
                                     <!-- <td data-label="Unit">2</td> -->
-                                    <td data-label="Prac">3</td>
+                                    <td>3</td>
                                     <!-- <td data-label="Hit">4</td> -->
-                                    <td data-label="Missed">25</td>
+                                    <td>25</td>
                                     <td>
-                                        <form action="/action_page.php">
-                                            <!-- <label for="quantity">(between 1 and 3):</label> -->
+                                        <form method="post" >
                                             <input type="number" id="quantity" name="quantity" min="1" max="3">
-                                            <!-- <input type="submit" value="Submit"> -->
+                                            <input type="submit" name="submit">
                                         </form>
                                     </td>
                                     <td>75</td>
@@ -327,7 +298,7 @@
 
         <!-- Template Main JS File -->
         <script src="assets/js/main.js"></script>
-        <script src="newjs.js"></script>
+        <!-- <script src="newjs.js"></script> -->
 
     </div>
 

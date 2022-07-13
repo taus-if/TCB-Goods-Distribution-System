@@ -126,6 +126,16 @@ if (!$conn) {
               <a href="dealer_inventory.php" class="stretched-link"></a>
               <i class="bi bi-bag custom-icon d-flex justify-content-center"></i>
               <div class="card_title d-flex justify-content-center">
+                <p>Inventory Records</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-lg-3 ">
+            <div class="card d-flex align-items-stretch outterround">
+              <a href="dealer_inventory2.php" class="stretched-link"></a>
+              <i class="bi bi-bag custom-icon d-flex justify-content-center"></i>
+              <div class="card_title d-flex justify-content-center">
                 <p>My Inventory</p>
               </div>
             </div>

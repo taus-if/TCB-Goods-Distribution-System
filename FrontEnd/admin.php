@@ -131,7 +131,7 @@ if (!$conn) {
 
           <div class="col-md-3 col-lg-3 ">
             <div class="card d-flex align-items-stretch outterround">
-              <a href="package_info.php" class="stretched-link"></a>
+              <a href="admin_package.php" class="stretched-link"></a>
               <i class="bi bi-box-seam custom-icon d-flex justify-content-center"></i>
               <div class="card_title d-flex justify-content-center">
                 <p>Package</p>

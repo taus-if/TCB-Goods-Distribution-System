@@ -10,6 +10,7 @@ if (!$conn) {
 }
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -48,41 +49,96 @@ if (!$conn) {
 
 
     <div class="everything">
+
         <!-- ======= Header ======= -->
         <header id="header" class="fixed-top d-flex align-items-center">
             <div class="container d-flex justify-content-between">
 
                 <div class="logo">
+                    <!-- <h1><a href="index.php"><span>e</span>Business</a></h1> -->
+                    <!-- Uncomment below if you prefer to use an image logo -->
                     <div class="fullnavname">
                         <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt="" class="img-fluid"><span class="navname">Trading Corporation of Bangladesh</span></a>
                     </div>
+
                     <div class="shortnavname">
+
                         <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt="" class="img-fluid"><span class="navname shortnavname">TCB</span></a>
                     </div>
+
                 </div>
 
                 <nav id="navbar" class="navbar">
                     <ul>
                         <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
+                        <!-- <li><a class="nav-link scrollto active" href="dealer2.php">Dealer</a></li> -->
+                        <!-- <li><a class="nav-link scrollto" href="">Notification</a></li> -->
                         <li class="dropdown"><a href="#"><span><?php echo $uname ?></span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
-                                <li><a href="admin_profile.php">Profile</a></li>
+                                <li><a href="dealer_profile.php">Profile</a></li>
+                                <!-- <li><a href="notification.html">Notification</a></li> -->
                                 <li><a href="/logout">Log out</a></li>
                             </ul>
                         </li>
-
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
-                </nav>
-                <!-- .navbar -->
+                </nav><!-- .navbar -->
+
             </div>
-        </header>
-        <!-- End Header -->
+        </header><!-- End Header -->
 
 
 
         <main id="main" style="margin-top: 80px;">
 
+            <!-- <h3 class="i-name">My Inventory</h3>
+      <div class="values">
+        <div class="val-box">
+          <i class="bi bi-people"></i>
+          <div>
+            <h3>1111</h3>
+            <span>Users</span>
+          </div>
+        </div>
+        <div class="val-box">
+          <i class="bi bi-people"></i>
+          <div>
+            <h3>1111</h3>
+            <span>Users</span>
+          </div>
+        </div>
+        <div class="val-box">
+          <i class="bi bi-people"></i>
+          <div>
+            <h3>1111</h3>
+            <span>Users</span>
+          </div>
+        </div>
+        <div class="val-box">
+          <i class="bi bi-people"></i>
+          <div>
+            <h3>1111</h3>
+            <span>Users</span>
+          </div>
+        </div> 
+        <div class="board">
+          <table>
+            <thead>
+              <tr>
+                <td>Name</td>
+                <td>Title</td>
+                <td>Status</td>
+                <td>Role</td>
+                <td></td>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                
+              </tr>
+            </tbody>
+          </table>
+        </div> -->
             <!-- ============================================================== -->
             <!-- wrapper  -->
             <!-- ============================================================== -->
@@ -96,45 +152,27 @@ if (!$conn) {
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="page-header">
-                                    <h2 class="pageheader-title" style="text-align: center;">DEALER's INFORMATION</h2>
+                                    <h2 class="pageheader-title" style="text-align: center;">About The Packages</h2>
                                     <div>
                                         <div class="page-breadcrumb">
                                             <nav aria-label="breadcrumb">
                                                 <ol class="breadcrumb">
-                                                    <li class="breadcrumb-item"><a href="admin.php" class="breadcrumb-link">Admin</a></li>
-                                                    <li class="breadcrumb-item active" aria-current="page">Dealer's Information</li>
+                                                    <li class="breadcrumb-item"><a href="dealer2.php" class="breadcrumb-link">Dealer</a></li>
+                                                    <li class="breadcrumb-item active" aria-current="page">Package
+                                                        Information</li>
                                                 </ol>
                                             </nav>
                                         </div>
-                                        <div class="main-content container-fluid p-0" class="col-lg-12">
-                                            <div class="search">
-                                                <!-- <form method="post"> -->
-                                                    <!-- <div class="input-group input-search">
-                                                        <input class="form-control" type="search" id="res" name="res" placeholder="Search by any...">
-                                                        <span class="input-group-btn">
-                                                            <button class="btn btn-secondary" type="button"><i class="bi bi-search" style="color:#38CE24 ;"></i></button>
-                                                        </span>
-                                                    </div> -->
-                                                <!-- </form> -->
-                                                <form method="post" >
-                                                    <input class="col-lg-11" type="text" name="search" placeholder="Search by any">
-                                                    <input type="submit" name="submit">
-                                                </form>
-
-                                                <?php
-
-                                                ?>
-                                            </div>
-                                        </div>
-                                        <!-- <div class="input-group container-fluid p-0 col-lg-12">
-                                            <div class="form-outline">
-                                                <input id="search-input" type="search" id="form1" class="form-control" />
-                                                <label class="form-label" for="form1">Search</label>
-                                            </div>
-                                            <button id="search-button" type="button" class="btn btn-primary">
-                                                <i class="bi bi-search"></i>
-                                            </button>
-                                        </div> -->
+                                        <!-- <div class="main-content container-fluid p-0" class="col-lg-12">
+                        <div class="email-search">
+                          <div class="input-group input-search">
+                            <input class="form-control" type="text" placeholder="Search in Result Register..."><span
+                              class="input-group-btn">
+                              <button class="btn btn-secondary" type="button"><i
+                                  class="bi bi-search"></i></button></span>
+                          </div>
+                        </div>
+                      </div> -->
                                     </div>
                                 </div>
                             </div>
@@ -149,82 +187,72 @@ if (!$conn) {
                         <!-- Result Table -->
                         <!-- ============================================================== -->
 
+                        <!-- <div class="page-breadcrumb">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Date</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">04 MAY 2022</li>
+                  </ol>
+                </nav>
+              </div>
+
+              <div class="page-breadcrumb">
+                <nav aria-label="breadcrumb">
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Firing Officer</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Maj Asif, 14 EB</li>
+                  </ol>
+                </nav>
+              </div> -->
+
+
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Dealer Name</th>
-                                    <th>Permanent Address</th>
-                                    <th>Date of Birth</th>
-                                    <th>Email</th> <!-- Mobile no <br> -->
-                                    <th>Dealer ID </th><!-- <br>Password -->
-                                    <th>Profile</th>
-                                    <!-- <th>Organization name <br>Organization address <br>TIN number</th> -->
-                                    <!-- <th></th> -->
+                                    <th>Items No</th>
+                                    <th>Item Name</th>
+                                    <th>Package 1</th>
+                                    <th>Package 2</th>
+                                    <th>Package 3</th>
+                                    <th>Unit</th>
+                                    <th></th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                if (isset($_POST["submit"])) {
+                                $sql = "select * from package";
+                                $stid = oci_parse($conn, $sql);
+                                $r = oci_execute($stid);
 
-                                    $name = $_POST["search"];
-                                    $result = "SELECT * FROM dealer_info WHERE applicant_name LIKE '%{$name}%' OR email LIKE '%{$name}%' 
-                                                            OR dealer_id LIKE '%{$name}%' OR organization_name LIKE '%{$name}%' OR 
-                                                            permanent_address LIKE '%{$name}%' ";
-
-                                    $stidd = oci_parse($conn, $result);
-                                    $rr = oci_execute($stidd);
-                                    while ($row = oci_fetch_array($stidd, OCI_ASSOC + OCI_RETURN_NULLS)) {
-                                        echo "<tr>
-                                        <td>" . $row["APPLICANT_NAME"] . "</td>
-                                        <td>" . $row["PERMANENT_ADDRESS"] . "</td>
-                                        <td>" . $row["DATE_OF_BIRTH"] . "</td>
-                                        <td>" . $row["EMAIL"] . "</td>
-                                        <td>" . $row["DEALER_ID"] . "</td> 
-                                        <td> <a href='dealer_profile.php'> Profile </a> </td> 
-                                        
-                                    </tr>";
-                                    }
-
-                                    // while ($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
-                                    //     echo
-                                    //     "<tr>
-                                    //         <td>" . $row["APPLICANT_NAME"] . "</td>
-                                    //         <td>" . $row["PERMANENT_ADDRESS"] . "</td>
-                                    //         <td>" . $row["DATE_OF_BIRTH"] . "</td>
-                                    //         <td>" . $row["EMAIL"] . "</td>
-                                    //         <td>" . $row["DEALER_ID"] . "</td>  
-
-                                    //     </tr>";
-                                    // }
-                                } else {
-                                    $sql = "select * from  dealer_info, info where dealer_info.dealer_id=info.dealer_id  ";  //username = '$uname';
-                                    $stid = oci_parse($conn, $sql);
-                                    $r = oci_execute($stid);
-
-                                    // <td>" . $row["organization_name"] . $row["organization_address"] . $row["tin_number"] . "</td>
-                                    // <td>12/05/22</td>
-
-                                    while ($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
-                                        echo
-                                        "<tr>
-                                            <td>" . $row["APPLICANT_NAME"] . "</td>
-                                            <td>" . $row["PERMANENT_ADDRESS"] . "</td>
-                                            <td>" . $row["DATE_OF_BIRTH"] . "</td>
-                                            <td>" . $row["EMAIL"] . "</td>
-                                            <td>" . $row["DEALER_ID"] . "</td>  
-                                            
-                                        </tr>";
-                                    }
+                                while ($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
+                                    echo "
+                                <tr>
+                                    <td>" . $row['SL_NO'] . "</td>
+                                    <td>" . $row['ITEM_NAME'] . "</td>
+                                    <td>" . $row['PK1'] . "</td>
+                                    <td>" . $row['PK2'] . "</td>
+                                    <td>" . $row['PK3'] . "</td>
+                                    <td>" . $row['UNIT'] . "</td>
+                                </tr>
+                                ";
                                 }
                                 ?>
                             </tbody>
+
                         </table>
+                        <div class="col-md-12 text-center">
+                            <button type="button" class="btn btn-success" id="demo" onclick="myFunction()">Update package</button>
+                        </div>
 
                         <div class="page-breadcrumb">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb"></ol>
                             </nav>
                         </div>
+                        <!-- ============================================================== -->
+                        <!-- end Result Table -->
+                        <!-- ============================================================== -->
+
                     </div>
                     <!-- ============================================================== -->
                 </div>
@@ -241,7 +269,7 @@ if (!$conn) {
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="copyright text-center">
                                 <p>
-                                    &copy; Copyright <strong>TCB BD</strong>. All Rights Reserved
+                                    &copy; Copyright <strong>TCB BD </strong>. All Rights Reserved
                                 </p>
                             </div>
                             <div class="credits">
@@ -267,6 +295,11 @@ if (!$conn) {
         <!-- Template Main JS File -->
         <script src="assets/js/main.js"></script>
         <script src="newjs.js"></script>
+        <script>
+            function myFunction() {
+                document.getElementById("demo").style.color = "red";
+            }
+        </script>
 
     </div>
 

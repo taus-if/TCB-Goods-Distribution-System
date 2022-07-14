@@ -14,6 +14,7 @@ drop table main_inventory;
 drop table dealer_info;
 drop table admin;
 drop table info;
+drop table feedback;
 
 create table admin
 (
@@ -70,7 +71,6 @@ create table customer_info(
     area_code varchar2(20),
     package_no varchar2(8),
     username varchar2(40),
-    last_buy_date date default null,
     constraint customer_info_nid_pk primary key(nid),
     constraint customer_info_area_code_fk foreign key(area_code) references distribution_area(area_code) on delete cascade,
     constraint customer_info_username_fk foreign key(username) references admin(username) on delete cascade
@@ -99,7 +99,7 @@ create table cust_exp(
     nid varchar2(20),
     item_name varchar2(20),
     totalspent number(10,3),
-    buy_date date,
+    last_buy_date date,
     amount number(3,0),
 
     constraint cust_exp_nid_fk foreign key(nid) references customer_info(nid) on delete cascade,
@@ -167,6 +167,12 @@ create table dealer_inventory2(
     constraint dealer_inventory2_dealer_id_fk foreign key(dealer_id) references dealer_info(dealer_id) on delete cascade
 );
 
+create table feedback(
+    fname varchar2(100),
+    femail varchar2(100),
+    fsubject varchar2(100),
+    fmessage varchar2(500)
+);
 
 create sequence tcb_card_no_seq
 start with 1
@@ -267,19 +273,19 @@ insert into goods(item_name, unit_price)
 values('Potato', 15);
 
 
-insert into cust_exp(nid, item_name, totalspent, buy_date, amount)
+insert into cust_exp(nid, item_name, totalspent, last_buy_date, amount)
 values('1903189467218', 'Rice', 200, to_date('31-12-2021', 'dd-mm-yyyy'), 3);
 
-insert into cust_exp(nid, item_name, totalspent, buy_date, amount)
+insert into cust_exp(nid, item_name, totalspent, last_buy_date, amount)
 values('1903189467218', 'Soyabin Oil', 240, to_date('31-12-2021', 'dd-mm-yyyy'), 3);
 
-insert into cust_exp(nid, item_name, totalspent, buy_date, amount)
+insert into cust_exp(nid, item_name, totalspent, last_buy_date, amount)
 values('1903189467451', 'Rice', 100, to_date('01-01-2022', 'dd-mm-yyyy'), 2);
 
-insert into cust_exp(nid, item_name, totalspent, buy_date, amount)
+insert into cust_exp(nid, item_name, totalspent, last_buy_date, amount)
 values('1903189467451', 'Sugar', 60, to_date('01-01-2022', 'dd-mm-yyyy'), 1);
 
-insert into cust_exp(nid, item_name, totalspent, buy_date, amount)
+insert into cust_exp(nid, item_name, totalspent, last_buy_date, amount)
 values('1903189467258', 'Soyabin Oil', 360, to_date('03-01-2022', 'dd-mm-yyyy'), 3);
 
 
@@ -329,6 +335,24 @@ insert into main_inventory(item_name, quantity, date_added, username)
 values('Lentil', 1000, to_date('28-06-2021', 'dd-mm-yyyy'), 'admin');
 
 
+insert into dealer_inventory2(item_name, quantity, dealer_id)
+values('Rice', 100, 123);
+
+insert into dealer_inventory2(item_name, quantity, dealer_id)
+values('Suger', 100, 123);
+
+insert into dealer_inventory2(item_name, quantity, dealer_id)
+values('Soyabin Oil', 100, 123);
+
+insert into dealer_inventory2(item_name, quantity, dealer_id)
+values('lentil', 100, 123);
+
+insert into dealer_inventory2(item_name, quantity, dealer_id)
+values('Onion', 100, 123);
+
+insert into dealer_inventory2(item_name, quantity, dealer_id)
+values('Potato', 100, 123);
+
 insert into dealer_inventory(item_name, date_added, quantity, dealer_id)
 values('Rice', to_date('14-06-2021', 'dd-mm-yyyy'), 100, 122);
 
@@ -356,23 +380,11 @@ values('Soyabin Oil', to_date('14-06-2021', 'dd-mm-yyyy'), 120, 121);
 insert into dealer_inventory(item_name, date_added, quantity, dealer_id)
 values('Soyabin Oil', to_date('14-06-2021', 'dd-mm-yyyy'), 60, 120);
 
-insert into dealer_inventory2(item_name, quantity, dealer_id)
-values('Rice', 100, 123);
+insert into feedback(fname, femail, fsubject, fmessage)
+values('Rafat', 'adreto.khan@gmail.com', 'Emni', 'Best website in town RN');
 
-insert into dealer_inventory2(item_name, quantity, dealer_id)
-values('Suger', 100, 123);
-
-insert into dealer_inventory2(item_name, quantity, dealer_id)
-values('Soyabin Oil', 100, 123);
-
-insert into dealer_inventory2(item_name, quantity, dealer_id)
-values('lentil', 100, 123);
-
-insert into dealer_inventory2(item_name, quantity, dealer_id)
-values('Onion', 100, 123);
-
-insert into dealer_inventory2(item_name, quantity, dealer_id)
-values('Potato', 100, 123);
+insert into feedback(fname, femail, fsubject, fmessage)
+values('Nijami', 'Nijami.khan@gmail.com', 'kisuna', 'Glad to see this site published');
 
 
 create or replace trigger dealer_record_trigger

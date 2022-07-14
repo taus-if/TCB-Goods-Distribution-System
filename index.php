@@ -1017,7 +1017,9 @@
                 </div>
               </div>
             </div> -->
+            <h2>Give us your feedback</h2>
             <div class="form contact-form">
+              
               <form action="forms/contact.php" method="post" role="form" class="php-email-form">
                 <div class="form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required="">

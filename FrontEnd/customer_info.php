@@ -66,7 +66,7 @@ if (!$conn) {
                         <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
                         <li class="dropdown"><a href="#"><span><?php echo $uname ?></span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
-                                <li><a href="admin_profile.php">Profile</a></li>
+                                <!-- <li><a href="admin_profile.php">Profile</a></li> -->
                                 <!-- <li><a href="admin.php">Admin Home</a></li> -->
                                 <li><a href="/logout">Log out</a></li>
                             </ul>

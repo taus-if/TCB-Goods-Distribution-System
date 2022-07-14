@@ -1,6 +1,6 @@
 <?php
 session_start();
-$uname = $_SESSION['uname'];
+$uname = $_SESSION['uname'] ;//or 
 $conn = oci_connect('XE', 'XE', 'localhost/xe')
     or die(oci_error());
 
@@ -55,8 +55,6 @@ if (!$conn) {
             <div class="container d-flex justify-content-between">
 
                 <div class="logo">
-                    <!-- <h1><a href="index.php"><span>e</span>Business</a></h1> -->
-                    <!-- Uncomment below if you prefer to use an image logo -->
                     <div class="fullnavname">
                         <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt="" class="img-fluid"><span class="navname">Trading Corporation of Bangladesh</span></a>
                     </div>
@@ -71,12 +69,9 @@ if (!$conn) {
                 <nav id="navbar" class="navbar">
                     <ul>
                         <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
-                        <!-- <li><a class="nav-link scrollto active" href="dealer2.php">Dealer</a></li> -->
-                        <!-- <li><a class="nav-link scrollto" href="">Notification</a></li> -->
                         <li class="dropdown"><a href="#"><span><?php echo $uname ?></span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
-                                <li><a href="dealer_profile.php">Profile</a></li>
-                                <!-- <li><a href="notification.html">Notification</a></li> -->
+                                <!-- <li><a href="dealer_profile.php">Profile</a></li> -->
                                 <li><a href="/logout">Log out</a></li>
                             </ul>
                         </li>
@@ -91,54 +86,7 @@ if (!$conn) {
 
         <main id="main" style="margin-top: 80px;">
 
-            <!-- <h3 class="i-name">My Inventory</h3>
-      <div class="values">
-        <div class="val-box">
-          <i class="bi bi-people"></i>
-          <div>
-            <h3>1111</h3>
-            <span>Users</span>
-          </div>
-        </div>
-        <div class="val-box">
-          <i class="bi bi-people"></i>
-          <div>
-            <h3>1111</h3>
-            <span>Users</span>
-          </div>
-        </div>
-        <div class="val-box">
-          <i class="bi bi-people"></i>
-          <div>
-            <h3>1111</h3>
-            <span>Users</span>
-          </div>
-        </div>
-        <div class="val-box">
-          <i class="bi bi-people"></i>
-          <div>
-            <h3>1111</h3>
-            <span>Users</span>
-          </div>
-        </div> 
-        <div class="board">
-          <table>
-            <thead>
-              <tr>
-                <td>Name</td>
-                <td>Title</td>
-                <td>Status</td>
-                <td>Role</td>
-                <td></td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                
-              </tr>
-            </tbody>
-          </table>
-        </div> -->
+
             <!-- ============================================================== -->
             <!-- wrapper  -->
             <!-- ============================================================== -->
@@ -163,69 +111,41 @@ if (!$conn) {
                                                 </ol>
                                             </nav>
                                         </div>
-                                        <!-- <div class="main-content container-fluid p-0" class="col-lg-12">
-                        <div class="email-search">
-                          <div class="input-group input-search">
-                            <input class="form-control" type="text" placeholder="Search in Result Register..."><span
-                              class="input-group-btn">
-                              <button class="btn btn-secondary" type="button"><i
-                                  class="bi bi-search"></i></button></span>
-                          </div>
-                        </div>
-                      </div> -->
-                                    </div>
+
+                                    </div> 
                                 </div>
                             </div>
                         </div>
-                        <!-- ============================================================== -->
-                        <!-- end pageheader  -->
-                        <!-- ============================================================== -->
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- end pageheader  -->
+                    <!-- ============================================================== -->
 
 
 
-                        <!-- ============================================================== -->
-                        <!-- Result Table -->
-                        <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Result Table -->
+                    <!-- ============================================================== -->
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Items No</th>
+                                <th>Item Name</th>
+                                <th>Package 1</th>
+                                <th>Package 2</th>
+                                <th>Package 3</th>
+                                <th>Unit</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <?php
+                            $sql = "select * from package";
+                            $stid = oci_parse($conn, $sql);
+                            $r = oci_execute($stid);
 
-                        <!-- <div class="page-breadcrumb">
-                <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Date</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">04 MAY 2022</li>
-                  </ol>
-                </nav>
-              </div>
-
-              <div class="page-breadcrumb">
-                <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Firing Officer</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Maj Asif, 14 EB</li>
-                  </ol>
-                </nav>
-              </div> -->
-
-
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Items No</th>
-                                    <th>Item Name</th>
-                                    <th>Package 1</th>
-                                    <th>Package 2</th>
-                                    <th>Package 3</th>
-                                    <th>Unit</th>
-                                    <th></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $sql = "select * from package";
-                                $stid = oci_parse($conn, $sql);
-                                $r = oci_execute($stid);
-
-                                while ($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
-                                    echo "
+                            while ($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
+                                echo "
                                 <tr>
                                     <td>" . $row['SL_NO'] . "</td>
                                     <td>" . $row['ITEM_NAME'] . "</td>
@@ -235,27 +155,27 @@ if (!$conn) {
                                     <td>" . $row['UNIT'] . "</td>
                                 </tr>
                                 ";
-                                }
-                                ?>
-                            </tbody>
+                            }
+                            ?>
+                        </tbody>
 
-                        </table>
-                        <div class="col-md-12 text-center">
-                            <button type="button" class="btn btn-success" id="demo" onclick="myFunction()">Update package</button>
-                        </div>
+                    </table>
+                    <div class="col-md-12 text-center">
+                        <button type="button" class="btn btn-success" id="demo" onclick="myFunction()">Update package</button>
+                    </div>
 
-                        <div class="page-breadcrumb">
-                            <nav aria-label="breadcrumb">
-                                <ol class="breadcrumb"></ol>
-                            </nav>
-                        </div>
-                        <!-- ============================================================== -->
-                        <!-- end Result Table -->
-                        <!-- ============================================================== -->
-
+                    <div class="page-breadcrumb">
+                        <nav aria-label="breadcrumb">
+                            <ol class="breadcrumb"></ol>
+                        </nav>
                     </div>
                     <!-- ============================================================== -->
+                    <!-- end Result Table -->
+                    <!-- ============================================================== -->
+
                 </div>
+                <!-- ============================================================== -->
+            </div>
 
         </main><!-- End #main -->
 

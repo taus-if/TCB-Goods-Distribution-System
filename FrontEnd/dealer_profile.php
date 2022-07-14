@@ -1,7 +1,14 @@
 <?php
 session_start();
-$uname = $_SESSION['uname'];
-$conn = oci_connect('XE', 'XE', 'localhost/xe')
+// if($_GET['$row["APPLICANT_NAME"]'])
+// {
+//     $uname = $_GET['$row["APPLICANT_NAME"]'];
+// }
+// else
+{
+    $uname = $_SESSION['uname'];
+}
+    $conn = oci_connect('XE', 'XE', 'localhost/xe')
     or die(oci_error());
 
 if (!$conn) {
@@ -11,7 +18,7 @@ if (!$conn) {
     $stid = oci_parse($conn, $sql);
     $r = oci_execute($stid);
 
-    $row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS);
+    $raw = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS);
 }
 
 ?>
@@ -137,16 +144,16 @@ if (!$conn) {
                                             <h3 class="dark-color">About Me</h3>
                                             <h6 class="theme-color lead">A Dealer of TCB food distribution system</h6>
                                             <p>
-                                                I, <mark><?php echo $row["APPLICANT_NAME"] ?></mark> , deals products in <mark><?php echo "Area code " . $row["AREA_CODE"] ?></mark>
+                                                I, <mark><?php echo $raw["APPLICANT_NAME"] ?></mark> , deals products in <mark><?php echo "Area code " . $raw["AREA_CODE"] ?></mark>
                                                  <!-- which covers  <?php // while ($row) {echo  $row["UPAZILLA"] . "</td>" ;} ?> -->
-                                                 of <?php echo $row["ORGANIZATION_NAME"] ?>. My area is <?php echo $row["UPAZILLA"] . " under " .
-                                                 $row["DISTRICT"] . " district. "?>
+                                                 of <?php echo $raw["ORGANIZATION_NAME"] ?>. My area is <?php echo $raw["UPAZILLA"] . " under " .
+                                                 $raw["DISTRICT"] . " district. "?>
                                             </p>
                                             <div class="row about-list">
                                                 <div class="col-md-6">
                                                     <div class="media">
                                                         <label>Birthday</label>
-                                                        <p> <?php echo $row[ 'DATE_OF_BIRTH' ] ?></p>
+                                                        <p> <?php echo $raw[ 'DATE_OF_BIRTH' ] ?></p>
                                                     </div>
                                                     <div class="media">
                                                         <label>Age</label>
@@ -158,21 +165,21 @@ if (!$conn) {
                                                     </div> -->
                                                     <div class="media">
                                                         <label>Address</label>
-                                                        <p><?php echo $row[ 'PERMANENT_ADDRESS' ] ?></p>
+                                                        <p><?php echo $raw[ 'PERMANENT_ADDRESS' ] ?></p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="media">
                                                         <label>Username</label>
-                                                        <p><?php echo $row[ 'DEALER_ID' ] ?></p>
+                                                        <p><?php echo $raw[ 'DEALER_ID' ] ?></p>
                                                     </div>
                                                     <div class="media">
                                                         <label>E-mail</label>
-                                                        <p><?php echo $row[ 'EMAIL' ] ?></p>
+                                                        <p><?php echo $raw[ 'EMAIL' ] ?></p>
                                                     </div>
                                                     <div class="media">
                                                         <label>TIN number</label>
-                                                        <p><?php echo $row[ 'TIN_NUMBER' ] ?></p>
+                                                        <p><?php echo $aw[ 'TIN_NUMBER' ] ?></p>
                                                     </div>
                                                     
                                                     <!-- <div class="media">
@@ -200,7 +207,7 @@ if (!$conn) {
                                         <div class="col-6 col-lg-6">
                                             <div class="count-data text-center">
                                                 <h6 class="count h2" data-to="150" data-speed="150">150</h6>
-                                                <p class="m-0px font-w-600">Customres uundere me</p>
+                                                <p class="m-0px font-w-600">Customres under me</p>
                                             </div>
                                         </div>
                                         <div class="col-6 col-lg-6">

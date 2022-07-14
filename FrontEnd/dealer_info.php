@@ -66,7 +66,7 @@ if (!$conn) {
                         <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
                         <li class="dropdown"><a href="#"><span><?php echo $uname ?></span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
-                                <li><a href="admin_profile.php">Profile</a></li>
+                                <!-- <li><a href="admin_profile.php">Profile</a></li> -->
                                 <li><a href="/logout">Log out</a></li>
                             </ul>
                         </li>
@@ -169,7 +169,7 @@ if (!$conn) {
                                     $name = $_POST["search"];
                                     $result = "SELECT * FROM dealer_info WHERE applicant_name LIKE '%{$name}%' OR email LIKE '%{$name}%' 
                                                             OR dealer_id LIKE '%{$name}%' OR organization_name LIKE '%{$name}%' OR 
-                                                            permanent_address LIKE '%{$name}%' ";
+                                                            permanent_address LIKE '%{$name}%'  ";//and $uname=applicant_name
 
                                     $stidd = oci_parse($conn, $result);
                                     $rr = oci_execute($stidd);
@@ -180,10 +180,11 @@ if (!$conn) {
                                         <td>" . $row["DATE_OF_BIRTH"] . "</td>
                                         <td>" . $row["EMAIL"] . "</td>
                                         <td>" . $row["DEALER_ID"] . "</td> 
-                                        <td> <a href='dealer_profile.php'> Profile </a> </td> 
+                                        <td> <a href='admin_dealer_profile.php'> Profile </a> </td> 
                                         
                                     </tr>";
                                     }
+                                    //$_GET['$row["APPLICANT_NAME"]']
 
                                     // while ($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
                                     //     echo
@@ -212,6 +213,7 @@ if (!$conn) {
                                             <td>" . $row["DATE_OF_BIRTH"] . "</td>
                                             <td>" . $row["EMAIL"] . "</td>
                                             <td>" . $row["DEALER_ID"] . "</td>  
+                                            <td> <a href='admin_dealer_profile.php'> Profile </a> </td>
                                             
                                         </tr>";
                                     }

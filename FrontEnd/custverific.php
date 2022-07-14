@@ -1,3 +1,54 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+$exist = false;
+
+$conn = oci_connect('XE', 'XE', 'localhost/xe')
+or die(oci_error());
+
+if(!$conn){
+  echo "not connected";
+}else{
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+
+        if($_POST['verificbtn']=='verifyval'){
+
+            // $cust_nid = $_SESSION['cust_nid'];
+            $nid = $_POST['cust_nid'];
+            if(isset($nid) && $nid!=""){
+            
+                $sql = "select * from family_info where member_nid='$nid'";
+                $stid=oci_parse($conn, $sql);
+                oci_execute($stid); 
+                $row= oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS);
+                if($row == NULL)
+                {
+                    $_SESSION['cust_nid'] = $nid;
+                    unset($nid);
+                    header("Location: addcustomer.php");
+                }
+                else 
+                {
+                    $exist=true;
+                }
+                //exit;
+            }
+            else 
+            {
+                echo "<script> alert('Please Enter The NID Number');</script>";
+            }
+        
+        }
+    
+    
+    }
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -66,23 +117,29 @@
     </header><!-- End Header -->
 
 
-    <form class="Rafatdealer row d-flex justify-content-center">
+    <form action="custverific.php" method="post" class="Rafatdealer row d-flex justify-content-center">
 
 
         <div class="col-sm-10 col-md-8 col-lg-6 outterround">
+
+        <?php
+        if($exist==true){
+          echo "<p style='color:red'>This NID is already registered to a family...</p>";
+        }
+      ?>
 
             <div class="h1 d-flex justify-content-center" style="margin-bottom: 30px;">Verification</div>
 
             <div class="form-group w-70">
                 <label for="exampleInputEmail1">NID Number</label>
                 <input type="text" class="form-control" id="NIDZ" aria-describedby="emailHelp"
-                    placeholder="Enter NID Number" required>
+                    placeholder="Enter NID Number" name="cust_nid">
 
             </div>
-            <div class="text-center"><button class="buttonn" type="button" onclick="verify()">Submit</button></div>
+            <div class="text-center"><button class="buttonn" type="submit" name="verificbtn" value="verifyval">Submit</button></div>
 
         </div>
-        <script>
+        <!-- <script>
             function verify() {
 
                 var nid = document.getElementById('NIDZ').value;
@@ -91,11 +148,24 @@
                     alert('Already Inserted');
                 }
                 else {
+
+                    // <?php
+                    // if (!isset($_SESSION)) {
+                    //     session_start();
+                    // }
+
+                    // $_SESSION['cust_nid'] = "<script>document.write(nid)</script>";
+                    // echo "<script> alert(nid); </script>"
+                    // ?>
+
                     location.href = 'addcustomer.php';
                 }
             }
-        </script>
+        </script> -->
     </form>
+
+
+    
 
 
 

@@ -13,7 +13,7 @@ if(!$conn){
 
         if($_POST['submitbtn']=='submitval'){
 
-            
+            $cust_nid = $_SESSION['cust_nid'];
             $cusname = $_POST['cus_name'];
             $cusocc = $_POST['cus_occupation'];
             $gender = $_POST['gender'];
@@ -36,11 +36,20 @@ if(!$conn){
 
             /*if(isset($cusname) && isset($cusocc) && isset($gender) && isset($spname) && isset($holdingno) && isset($roadno) && isset($wardno) && isset($union) && isset($upazilla) && isset($district) && isset($dob) && isset($cusincome) ){ */
             $sql = "insert into customer_info(nid, name, occupation, spouse, mobile_no, tcb_card_no, gender, income, date_of_birth,no_of_family_members,age, holding_no, road, area_code,package_no)
-            values('6', '$cusname', '$cusocc', '$spname','$mobile',concat('C',lpad(tcb_card_no_seq.nextval,6,'0')), '$gender', $cusincome, to_date('$dob', 'mm/dd/yyyy'), $familynum, TRUNC(months_between(sysdate, to_date('$dob','mm/dd/yyyy')) / 12), '$holdingno', '$roadno', '002', '1')";
+            values('$cust_nid', '$cusname', '$cusocc', '$spname','$mobile',concat('C',lpad(tcb_card_no_seq.nextval,6,'0')), '$gender', $cusincome, to_date('$dob', 'mm/dd/yyyy'), $familynum, TRUNC(months_between(sysdate, to_date('$dob','mm/dd/yyyy')) / 12), '$holdingno', '$roadno', '002', '1')";
+
+            $sql2 = "insert into family_info(member_nid, member_name, member_occupation, member_income, nid)
+            values('$cust_nid', '$cusname', '$cusocc', $cusincome, '$cust_nid')";
+
+
 
                 $stid=oci_parse($conn, $sql);
                 oci_execute($stid); 
 
+                $stid=oci_parse($conn, $sql2);
+                oci_execute($stid); 
+
+                unset($cust_nid);
                 unset($cusname);
                 unset($gender);
                 unset($cusocc);

@@ -47,8 +47,10 @@
     <!-- Date picker end -->
 
     <style>
-      @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
-      
+      p{
+        margin: 0;
+      }
+
       .page{
         background: rgb(245, 240, 240);
         display: block;
@@ -112,6 +114,10 @@
         margin-bottom: 15px;
       }
 
+      .billing-invoice .title{
+        display: inline-block;
+      }
+
       .billing-invoice .des{
         font-weight: 400;
         float: right;
@@ -120,18 +126,101 @@
       .billing-invoice .code{
         font-weight: 700;
         text-align: right;
+        margin-bottom: 0;
       }
 
       .billing-invoice .issue{
         font-size: 15px;
         text-align: right;
+        margin-bottom: 0; 
       }
 
+      /* Billed to  */
 
+      .billing-to{
+        padding: 20px;
+        margin-top: 40px;
+      }
+
+      .billing-to .title{
+        font-weight: 400;
+        font-size: 20px;
+        margin-bottom: 7px;
+      }
+
+      .billing-to .billed-sec{
+        width: 50%;
+        /* float: left; */
+        font-size: 18px;
+        margin-bottom: 25px;
+      }
+
+      .billing-to .name,
+      .billing-to .sub-title{
+        font-weight: 400;
+        font-size: 18px;
+        margin-bottom: 5px;
+      }
       
+      /* Invoice Table */
+
+      .table{
+        padding: 0px 20px;
+      }
+
+      .table table{
+        width: 100%;
+      }
+
+      .table table th,td{
+        padding: 5px;
+        text-align: left;
+        border-width: 2px;
+        width: 300px;
+      }
+
+      /* Bottom Section */
+
+      .bottom-section{
+        margin-top: 15px;
+        padding: 20px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+      }
+
+      .bottom-section .status-content h4{
+        font-size: 22px;
+        font-weight: 700;
+        margin-bottom: 10px;
+      }
+
+      .bottom-section .status.free::before,
+      .bottom-section .status.paid::before{
+        padding: 5px 10px;
+        border-radius: 5px;
+        margin-bottom: 8px;
+        display: inline-block;
+        text-transform: uppercase;
+      }
+
+      .bottom-section .status.free::before{
+        content: "Unpaid";
+        background-color: #ef7c94;
+      }
+
+      .bottom-section .status.paid::before{
+        content: "Paid";
+        background-color: #b142e7;
+      }
+
+      .bottom-section .tnx{
+        text-align: center;
+        margin-top: 10px;
+      }
+
     </style>
-
-
 
 </head>
 
@@ -180,22 +269,23 @@
 
         <div class="page" size="a4">
 
+          <!-- Top Section -->
            <div class="top-section">
             <div class="address">
               <div class="address-content">
                 <h2>TCB</h2>
-                <p></p>
               </div>
             </div>
 
             <div class="contact">
               <div class="contact-content">
                 <div class="email">Email : company@gmail.com</div>
-                <div class="number">Number : 561-786-345</div>
+                <!-- <div class="number">Number : 561-786-345</div> -->
               </div>
              </div>
            </div>
 
+           <!-- Invoice Ingo -->
            <div class="billing-invoice">
 
             <div class="title">
@@ -204,10 +294,6 @@
 
             <div class="des">
 
-              <p class="code">
-               #1234567-CDEJ763
-              </p>
-
               <p class="issue">Issued : <span>Apr,12,2022</span></p>
 
             </div>
@@ -215,7 +301,79 @@
            </div>
 
            <!-- Billed to -->
+           <div class="billing-to">
+
+            <div class="title">
+             Billed To
+            </div>
+            
+            <div class="billed-sec">
+              <div class="name">
+                Md.Navidul Hoque
+              </div>
+              <p>hnavidul@gmail.com</p>
+              <p>+08801700763325</p>
+              
+            </div>
+
+            <div class="billing-sec">
+              <div class="sub-title">
+                
+              </div>
+              <div class="ship-add">
+                
+              </div>
+
+           </div>
+
            
+          </div>
+
+          <!-- Invoice Table -->
+
+          <div class="table">
+          <table>
+            <tr>
+              <th>#</th>
+              <th>Product Name</th>
+              <th>Qty</th>
+              <th>Unit Price </th>
+              <th>Sub Total</th>
+              <th>Shipping</th>
+              <th>Total</th>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam, consectetur!</td>
+              <td>2 piece</td>
+              <td>250 BDT</td>
+              <td>250 BDT</td>
+              <td>0 BDT</td>
+              <td>500 BDT</td>
+            </tr>
+            <tr>
+              <td>1</td>
+              <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam, consectetur!</td>
+              <td>2 piece</td>
+              <td>250 BDT</td>
+              <td>250 BDT</td>
+              <td>0 BDT</td>
+              <td>500 BDT</td>
+            </tr>
+            
+          </table>
+          </div>
+
+          <!-- Bottom Section -->
+
+          <div class="bottom-section">
+            <div class="status-content">
+              <h4>Payment Status</h4>
+              <p class="status free"></p>
+              <p>Payment Method : <span>SSL Commerz</span></p>
+              <p class="tnx">Thanks for Shopping</p>
+            </div>
+          </div>
 
         </div>
 

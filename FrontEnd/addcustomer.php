@@ -2,7 +2,7 @@
 if (!isset($_SESSION)) {
     session_start();
 }
-
+$uname = $_SESSION['uname'];
 $conn = oci_connect('XE', 'XE', 'localhost/xe')
 or die(oci_error());
 
@@ -48,6 +48,25 @@ if(!$conn){
 
                 $stid=oci_parse($conn, $sql2);
                 oci_execute($stid); 
+
+                for($i = 1; $i<=$familynum; $i++)
+                {
+                    $nidstr = 'fam-nid-'.$i;
+                    $occstr = 'fam-occ-'.$i;
+                    $incstr = 'fam-inc-'.$i;
+
+                    $fam_nid = $_POST(['fam-nid-2']);
+                    $fam_occ = $_POST(['fam-occ-2']);
+                    $fam_inc = $_POST(['fam-inc-2']);
+
+                    $sqlex = "insert into family_info(member_nid, member_name, member_occupation, member_income, nid)
+                    values('$fam_nid', '$cusname', '$fam_occ', $fam_inc, '$cust_nid')";
+                    $stid=oci_parse($conn, $sqlex);
+                    oci_execute($stid); 
+                    unset($fam_nid);
+                    unset($fam_occ);
+                    unset($fam_inc);
+                }
 
                 unset($cust_nid);
                 unset($cusname);
@@ -151,7 +170,7 @@ if(!$conn){
                     <ul>
                         <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
                         <!-- <li><a class="nav-link scrollto active" href="">Admin</a></li> -->
-                        <li class="dropdown"><a href="#"><span>UserName</span> <i class="bi bi-chevron-down"></i></a>
+                        <li class="dropdown"><a href="#" class="active"><span><span><?php echo $uname ?></span></span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <!-- <li><a href="admin_profile.php">Profile</a></li> -->
                                 <li><a href="notification.html">Notification</a></li>
@@ -301,15 +320,15 @@ if(!$conn){
                         <!-- <input type="text" class="form-control" id="members" aria-describedby="emailHelp"
                         placeholder="Enter Number of Family Members" required> -->
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="nid-fam" placeholder="name@example.com">
+                            <input type="text" class="form-control" id="nid-fam" placeholder="name@example.com" name="fam-nid-1">
                             <label for="floatingInput">NID No</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="occupation-fam" placeholder="name@example.com">
+                            <input type="text" class="form-control" id="occupation-fam" placeholder="name@example.com" name="fam-occ-1">
                             <label for="floatingInput">Occupation</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="income-fam" placeholder="name@example.com">
+                            <input type="text" class="form-control" id="income-fam" placeholder="name@example.com" name="fam-inc-1">
                             <label for="floatingInput">Income</label>
                         </div>
 
@@ -339,6 +358,9 @@ if(!$conn){
                             // document.getElementById('member-info').style.display="block";
                             clone.style.display = "block";
                             clone.id = 'member-' + (i + 2).toString();
+                            clone.children[1].children[0].name = 'fam-nid-'+(i+2).toString();
+                            clone.children[2].children[0].name = 'fam-occ-'+(i+2).toString();
+                            clone.children[3].children[0].name = 'fam-inc-'+(i+2).toString();
                         }
 
 

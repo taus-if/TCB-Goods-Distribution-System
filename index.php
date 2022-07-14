@@ -166,7 +166,7 @@ if(!$conn){
           <div class="carousel-item" style="background-image: url(FrontEnd/assets/img/hero-carousel/TCBTrucksell.jpg)">
             <div class="carousel-container">
               <div class="container">
-                <h2 class="animate__animated animate__fadeInDown">CB foods from trucks  </h2>
+                <h2 class="animate__animated animate__fadeInDown">TCB foods from trucks  </h2>
                 <p class="animate__animated animate__fadeInUp">Foods are sold at cheap rate to the customers</p>
                 <a href="http://www.tcb.gov.bd/" class="btn-get-started scrollto animate__animated animate__fadeInUp">Main Website</a>
               </div>

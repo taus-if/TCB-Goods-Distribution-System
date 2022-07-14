@@ -10,6 +10,7 @@ if (!$conn) {
 }
 
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,7 +40,6 @@ if (!$conn) {
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
   <!-- <link rel="stylesheet" href="newcss.css"> -->
-  <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
 
 
 </head>
@@ -71,7 +71,7 @@ if (!$conn) {
         <nav id="navbar" class="navbar">
           <ul>
             <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
-            <!-- <li><a class="nav-link scrollto active" href="dealer2.php">Dealer</a></li> -->
+            <!-- <li><a class="nav-link scrollto active" href="dealer2.php"><?php echo $uname ?></a></li> -->
             <!-- <li><a class="nav-link scrollto" href="">Notification</a></li> -->
             <li class="dropdown"><a href="#"><span><?php echo $uname ?></span> <i class="bi bi-chevron-down"></i></a>
               <ul>
@@ -153,28 +153,26 @@ if (!$conn) {
             <div class="row">
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="page-header">
-                  <h2 class="pageheader-title" style="text-align: center;">CUSTOMERS UNDER ME</h2>
+                  <h2 class="pageheader-title" style="text-align: center;">MY INVENTORY</h2>
                   <div>
                     <div class="page-breadcrumb">
                       <nav aria-label="breadcrumb">
                         <ol class="breadcrumb">
-                          <li class="breadcrumb-item"><a href="dealer2.php" class="breadcrumb-link"><?php echo $uname ?></a></li>
-                          <li class="breadcrumb-item active" aria-current="page">Dealer's Customer</li>
+                          <li class="breadcrumb-item"><a href="dealer2.php" class="breadcrumb-link">Dealer</a></li>
+                          <li class="breadcrumb-item active" aria-current="page">Dealer Inventory</li>
                         </ol>
                       </nav>
                     </div>
-                    <div class="main-content container-fluid p-0" class="col-lg-12">
-                      <div class="search">
-                        <!-- <div class="input-group input-search">
-                          <input class="form-control" type="text" placeholder="Search in Result Register..."><span class="input-group-btn">
-                            <button class="btn btn-secondary" type="button"><i class="bi bi-search"></i></button></span>
-                        </div> -->
-                        <form method="post">
-                          <input class="col-lg-11" type="text" name="search" placeholder="Search by any">
-                          <input type="submit" name="submit">
-                        </form>
-                      </div>
-                    </div>
+                    <!-- <div class="main-content container-fluid p-0" class="col-lg-12">
+                        <div class="email-search">
+                          <div class="input-group input-search">
+                            <input class="form-control" type="text" placeholder="Search in Result Register..."><span
+                              class="input-group-btn">
+                              <button class="btn btn-secondary" type="button"><i
+                                  class="bi bi-search"></i></button></span>
+                          </div>
+                        </div>
+                      </div> -->
                   </div>
                 </div>
               </div>
@@ -208,35 +206,29 @@ if (!$conn) {
               </div> -->
 
 
-            <table class="table" id="myTable">
+            <table class="table">
               <thead>
                 <tr>
-                  <th>Customer ID</th>
-                  <th>CUstomer Name</th>
-                  <th>Package no </th>
-                  <th>Mobile no </th>
-                  <th>Last Received</th>
+                  <th>Item Name</th>
+                  <th>Quantity</th>
+                  <th>Unit</th>
                   <th></th>
                 </tr>
               </thead>
-              <tbody>
-                <?php
-                $sql = "select * from customer_info where area_code = (select area_code from dealer_area where dealer_id = '$uname')";
-                $stid = oci_parse($conn, $sql);
-                $r = oci_execute($stid);
-
-                while ($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
-                  echo "
-                  <tr>
-                    <td>" . $row["TCB_CARD_NO"] . "</td>
-                    <td>" . $row["NAME"] . "</td>
-                    <td>" . $row["PACKAGE_NO"] . "</td>
-                    <td>" . $row["MOBILE_NO"] . "</td>
-                    <td>12/05/22</td>
+              <?php
+              $sql = "select * from dealer_inventory2 where dealer_id = '$uname'";
+              $stid = oci_parse($conn, $sql);
+              $r = oci_execute($stid);
+              while ($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
+                echo "
+                    <tr>
+                    <td>" . $row['ITEM_NAME'] . "</td>
+                    <td>" . $row['QUANTITY'] . "</td>
+                    <td>Kg</td>
                   </tr>
-                  ";
-                }
-                ?>
+                    ";
+              }
+              ?>
 
               </tbody>
 
@@ -372,7 +364,7 @@ if (!$conn) {
             <div class="col-md-12 col-sm-12 col-xs-12">
               <div class="copyright text-center">
                 <p>
-                  &copy; Copyright <strong>TCB BD</strong>. All Rights Reserved
+                  &copy; Copyright <strong>TCB BD </strong>. All Rights Reserved
                 </p>
               </div>
               <div class="credits">

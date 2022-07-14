@@ -1017,6 +1017,7 @@
                 </div>
               </div>
             </div> -->
+            <h3>Give us your feedback</h3>
             <div class="form contact-form">
               <form action="forms/contact.php" method="post" role="form" class="php-email-form">
                 <div class="form-group">

@@ -126,6 +126,16 @@ if (!$conn) {
               <a href="dealer_inventory.php" class="stretched-link"></a>
               <i class="bi bi-bag custom-icon d-flex justify-content-center"></i>
               <div class="card_title d-flex justify-content-center">
+                <p>Inventory Records</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-lg-3 ">
+            <div class="card d-flex align-items-stretch outterround">
+              <a href="dealer_inventory2.php" class="stretched-link"></a>
+              <i class="bi bi-bag custom-icon d-flex justify-content-center"></i>
+              <div class="card_title d-flex justify-content-center">
                 <p>My Inventory</p>
               </div>
             </div>
@@ -133,7 +143,7 @@ if (!$conn) {
 
           <div class="col-md-3 col-lg-3 ">
             <div class="card d-flex align-items-stretch outterround">
-              <a href="dealer_customer.php" class="stretched-link"></a>
+              <a href="dealer_customer2.php" class="stretched-link"></a>
               <i class="bi bi-file-earmark-person custom-icon d-flex justify-content-center"></i>
               <div class="card_title d-flex justify-content-center">
                 <p>My Customers</p>
@@ -151,6 +161,22 @@ if (!$conn) {
             </div>
           </div>
 
+          
+
+        </div>
+
+        <div class="row justify-content-center">
+
+          <div class="col-md-9 col-lg-9 ">
+            <div class="card d-flex align-items-stretch outterround">
+              <a href="Dealer_sell_Items.html" class="stretched-link"></a>
+              <i class="bi bi-basket custom-icon d-flex justify-content-center"></i>
+              <div class="card_title d-flex justify-content-center">
+                <p>Sell Items</p>
+              </div>
+            </div>
+          </div>
+
           <div class="col-md-3 col-lg-3 ">
             <div class="card d-flex align-items-stretch outterround">
               <a href="dealer_treasury.html" class="stretched-link"></a>
@@ -163,11 +189,12 @@ if (!$conn) {
 
         </div>
 
+<<<<<<< HEAD
         <div class="row justify-content-center">
 
           <div class="col-md-12  ">
             <div class="card d-flex align-items-stretch outterround">
-              <a href="Dealer_sell_Items.html" class="stretched-link"></a>
+              <a href="Dealer_sell_Items.php" class="stretched-link"></a>
               <i class="bi bi-basket custom-icon d-flex justify-content-center"></i>
               <div class="card_title d-flex justify-content-center">
                 <p>Sell Items</p>
@@ -177,6 +204,8 @@ if (!$conn) {
 
         </div>
 
+=======
+>>>>>>> 2fa4856c3f28ffbec31a8d026c4fd485c66e3ad0
       </div>
 
     </main><!-- End #main -->

@@ -67,6 +67,7 @@ if (!$conn) {
                         <li class="dropdown"><a href="#"><span><?php echo $uname ?></span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <!-- <li><a href="admin_profile.php">Profile</a></li> -->
+                                <!-- <li><a href="admin.php">Admin Home</a></li> -->
                                 <li><a href="/logout">Log out</a></li>
                             </ul>
                         </li>
@@ -96,30 +97,30 @@ if (!$conn) {
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="page-header">
-                                    <h2 class="pageheader-title" style="text-align: center;">DEALER's INFORMATION</h2>
+                                    <h2 class="pageheader-title" style="text-align: center;">CUSTOMER's INFORMATION</h2>
                                     <div>
                                         <div class="page-breadcrumb">
                                             <nav aria-label="breadcrumb">
                                                 <ol class="breadcrumb">
                                                     <li class="breadcrumb-item"><a href="admin.php" class="breadcrumb-link">Admin</a></li>
-                                                    <li class="breadcrumb-item active" aria-current="page">Dealer's Information</li>
+                                                    <li class="breadcrumb-item active" aria-current="page">Customer's Information</li>
                                                 </ol>
                                             </nav>
                                         </div>
                                         <div class="main-content container-fluid p-0" class="col-lg-12">
                                             <div class="search">
                                                 <!-- <form method="post"> -->
-                                                    <!-- <div class="input-group input-search">
+                                                <!-- <div class="input-group input-search">
                                                         <input class="form-control" type="search" id="res" name="res" placeholder="Search by any...">
                                                         <span class="input-group-btn">
                                                             <button class="btn btn-secondary" type="button"><i class="bi bi-search" style="color:#38CE24 ;"></i></button>
                                                         </span>
                                                     </div> -->
                                                 <!-- </form> -->
-                                                <form method="post" >
+                                                <!-- <form method="post">
                                                     <input class="col-lg-11" type="text" name="search" placeholder="Search by any">
                                                     <input type="submit" name="submit">
-                                                </form>
+                                                </form> -->
 
                                                 <?php
 
@@ -152,12 +153,52 @@ if (!$conn) {
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Dealer Name</th>
-                                    <th>Permanent Address</th>
+                                    <th>NAME</th>
+                                    <th>Mobile no</th>
                                     <th>Date of Birth</th>
-                                    <th>Email</th> <!-- Mobile no <br> -->
-                                    <th>Dealer ID </th><!-- <br>Password -->
-                                    <th>Profile</th>
+                                    <th>Income</th> <!-- Mobile no <br> -->
+                                    <!-- <th>Dealer ID </th><br>Password -->
+                                    <th>TCB card no</th>
+                                    <!-- <th>Organization name <br>Organization address <br>TIN number</th> -->
+                                    <!-- <th></th> -->
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <form method="post">
+                                            <input class="col-lg-4" type="text" name="search1" placeholder="">
+                                            <input type="submit" name="submit">
+                                        </form>
+                                    </th>
+                                    <th>
+                                        <form method="post">
+                                            <input class="col-lg-4" type="text" name="search2" placeholder="">
+                                            <input type="submit" name="submit">
+                                        </form>
+                                    </th>
+                                    <th>
+                                        <form method="post">
+                                            <input class="col-lg-4" type="text" name="search3" placeholder="">
+                                            <input type="submit" name="submit">
+                                        </form>
+                                    </th>
+                                    <th>
+                                        <form method="post">
+                                            <input class="col-lg-4" type="text" name="search4" placeholder="">
+                                            <input type="submit" name="submit">
+                                        </form>
+                                    </th> <!-- Mobile no <br> -->
+                                    <th>
+                                        <form method="post">
+                                            <input class="col-lg-4" type="text" name="search5" placeholder="">
+                                            <input type="submit" name="submit">
+                                        </form>
+                                    </th><!-- <br>Password -->
+                                    <th>
+                                        <form method="post">
+                                            <input class="col-lg-4" type="text" name="search6" placeholder="">
+                                            <input type="submit" name="submit">
+                                        </form>
+                                    </th>
                                     <!-- <th>Organization name <br>Organization address <br>TIN number</th> -->
                                     <!-- <th></th> -->
                                 </tr>
@@ -166,25 +207,25 @@ if (!$conn) {
                                 <?php
                                 if (isset($_POST["submit"])) {
 
-                                    $name = $_POST["search"];
-                                    $result = "SELECT * FROM dealer_info WHERE applicant_name LIKE '%{$name}%' OR email LIKE '%{$name}%' 
-                                                            OR dealer_id LIKE '%{$name}%' OR organization_name LIKE '%{$name}%' OR 
-                                                            permanent_address LIKE '%{$name}%'  ";//and $uname=applicant_name
+                                    $name = $_POST["search1"];
+                                    $result = "SELECT * FROM customer_info WHERE name LIKE '%{$name}%' OR nid LIKE '%{$name}%' 
+                                                            OR occupation LIKE '%{$name}%' OR spouse LIKE '%{$name}%' OR 
+                                                            mobile_no LIKE '%{$name}%' OR tcb_card_no LIKE '%{$name}%' OR income LIKE '%{$name}%' OR 
+                                                            no_of_family_members LIKE '%{$name}%' OR area_code LIKE '%{$name}%' OR package_no LIKE '%{$name}%' OR
+                                                            date_of_birth LIKE '%{$name}%' OR age LIKE '%{$name}%' OR holding_no LIKE '%{$name}%' ";
 
                                     $stidd = oci_parse($conn, $result);
                                     $rr = oci_execute($stidd);
                                     while ($row = oci_fetch_array($stidd, OCI_ASSOC + OCI_RETURN_NULLS)) {
                                         echo "<tr>
-                                        <td>" . $row["APPLICANT_NAME"] . "</td>
-                                        <td>" . $row["PERMANENT_ADDRESS"] . "</td>
+                                        <td>" . $row["NAME"] . "</td>
+                                        <td>" . $row["MOBILE_NO"] . "</td>
                                         <td>" . $row["DATE_OF_BIRTH"] . "</td>
-                                        <td>" . $row["EMAIL"] . "</td>
-                                        <td>" . $row["DEALER_ID"] . "</td> 
-                                        <td> <a href='admin_dealer_profile.php'> Profile </a> </td> 
+                                        <td>" . $row["INCOME"] . "</td>
+                                        <td>" . $row["TCB_CARD_NO"] . "</td>  
                                         
                                     </tr>";
                                     }
-                                    //$_GET['$row["APPLICANT_NAME"]']
 
                                     // while ($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
                                     //     echo
@@ -198,23 +239,20 @@ if (!$conn) {
                                     //     </tr>";
                                     // }
                                 } else {
-                                    $sql = "select * from  dealer_info, info where dealer_info.dealer_id=info.dealer_id  ";  //username = '$uname';
+                                    $sql = "select * from customer_info  ";  //username = '$uname';
                                     $stid = oci_parse($conn, $sql);
                                     $r = oci_execute($stid);
 
-                                    // <td>" . $row["organization_name"] . $row["organization_address"] . $row["tin_number"] . "</td>
-                                    // <td>12/05/22</td>
-
-                                    while ($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
+                                    $row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS);
+                                    while ($row<10) {
                                         echo
                                         "<tr>
-                                            <td>" . $row["APPLICANT_NAME"] . "</td>
-                                            <td>" . $row["PERMANENT_ADDRESS"] . "</td>
+                                            <td>" . $row["NAME"] . "</td>
+                                            <td>" . $row["MOBILE_NO"] . "</td>
                                             <td>" . $row["DATE_OF_BIRTH"] . "</td>
-                                            <td>" . $row["EMAIL"] . "</td>
-                                            <td>" . $row["DEALER_ID"] . "</td>  
-                                            <td> <a href='admin_dealer_profile.php'> Profile </a> </td>
-                                            
+                                            <td>" . $row["INCOME"] . "</td>
+                                            <td>" . $row["TCB_CARD_NO"] . "</td>  
+                                        
                                         </tr>";
                                     }
                                 }

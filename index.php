@@ -1,3 +1,50 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+
+$conn = oci_connect('XE', 'XE', 'localhost/xe')
+or die(oci_error());
+
+if(!$conn){
+  echo "not connected";
+}else{
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+
+        if($_POST['submitbtn']=='submitval'){
+
+            
+            $feedname = $_POST['name'];
+            $feedemail = $_POST['email'];
+            $feedsubject = $_POST['subject'];
+            $feedmsg = $_POST['message'];
+
+            
+            $sql = "insert into feedback(fname,femail,fsubject,fmessage)
+            values('$feedname','$feedemail','$feedsubject','$feedmsg')";
+
+                $stid=oci_parse($conn, $sql);
+                oci_execute($stid); 
+
+                unset($feedname);
+                unset($feedemail);
+                unset($feedsubject);
+                unset($feedmsg);
+                header("Location: ".$_SERVER['PHP_SELF']);
+                exit;
+        
+        }
+    
+    
+    }
+}
+
+?>
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -1019,7 +1066,7 @@
             </div> -->
             <h3>Give us your feedback</h3>
             <div class="form contact-form">
-              <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+              <form action="index.php" method="post" class="php-email-form">
                 <div class="form-group">
                   <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required="">
                 </div>
@@ -1037,7 +1084,7 @@
                   <div class="error-message"></div>
                   <div class="sent-message">Your message has been sent. Thank you!</div>
                 </div>
-                <div class="text-center"><button type="submit">Send Message</button></div>
+                <div class="text-center"><button type="submit" name="submitbtn" type="submit" value="submitval">Send Message</button></div>
               </form>
             </div>
           </div>

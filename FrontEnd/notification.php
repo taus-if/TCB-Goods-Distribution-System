@@ -130,9 +130,9 @@ if (!$conn) {
 
                                 while ($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
                                     if ($row['QUANTITY'] < 50) {
-                                        echo $row['NAME']. " named dealer of " . $row['DEALER_ID'] . "dealer_id has " . $row['ITEM_NAME'] . 
-                                        " of quantity " . $row['QUANTITY'] . " " .$row['UNIT'] . "which is less than 50  <br> <sub>" 
-                                        . date("h:i:sa") . "</sub>";
+                                        echo "<h6 class='text-center'> Dealer named " . $row['APPLICANT_NAME']. " of dealer_id " . $row['DEALER_ID'] . " has " . $row['ITEM_NAME'] . 
+                                        " of quantity " . $row['QUANTITY'] . "  which is less than 50   <sub>" 
+                                        . date("h:i:sa") . "</sub><br><br></h6>";
                                     }
                                 }
                                 ?>

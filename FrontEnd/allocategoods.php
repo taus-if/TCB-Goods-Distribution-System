@@ -1,3 +1,16 @@
+<?php
+session_start();
+$uname = $_SESSION['uname']; //or 
+$conn = oci_connect('XE', 'XE', 'localhost/xe')
+  or die(oci_error());
+
+if (!$conn) {
+  echo "not connected";
+} else {
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -14,9 +27,7 @@
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link
-    href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900"
-    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
@@ -47,14 +58,12 @@
           <!-- <h1><a href="index.php"><span>e</span>Business</a></h1> -->
           <!-- Uncomment below if you prefer to use an image logo -->
           <div class="fullnavname">
-            <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt=""
-                class="img-fluid"><span class="navname">Trading Corporation of Bangladesh</span></a>
+            <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt="" class="img-fluid"><span class="navname">Trading Corporation of Bangladesh</span></a>
           </div>
 
           <div class="shortnavname">
 
-            <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt=""
-                class="img-fluid"><span class="navname shortnavname">TCB</span></a>
+            <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt="" class="img-fluid"><span class="navname shortnavname">TCB</span></a>
           </div>
 
         </div>
@@ -63,10 +72,10 @@
           <ul>
             <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
             <!-- <li><a class="nav-link scrollto active" href="admin.php">Admin</a></li> -->
-            <li class="dropdown"><a href="#"><span>username</span> <i class="bi bi-chevron-down"></i></a>
+            <li class="dropdown"><a href="#"><span><?php echo $uname ?></span> <i class="bi bi-chevron-down"></i></a>
               <ul>
                 <!-- <li><a href="admin_profile.php">Profile</a></li> -->
-                <li><a href="notification.html">Notification</a></li>
+                <li><a href="notification.php">Notification</a></li>
                 <li><a href="/logout">Log out</a></li>
               </ul>
             </li>
@@ -81,55 +90,6 @@
 
 
     <main id="main" style="margin-top: 80px;">
-
-      <!-- <h3 class="i-name">My Inventory</h3>
-      <div class="values">
-        <div class="val-box">
-          <i class="bi bi-people"></i>
-          <div>
-            <h3>1111</h3>
-            <span>Users</span>
-          </div>
-        </div>
-        <div class="val-box">
-          <i class="bi bi-people"></i>
-          <div>
-            <h3>1111</h3>
-            <span>Users</span>
-          </div>
-        </div>
-        <div class="val-box">
-          <i class="bi bi-people"></i>
-          <div>
-            <h3>1111</h3>
-            <span>Users</span>
-          </div>
-        </div>
-        <div class="val-box">
-          <i class="bi bi-people"></i>
-          <div>
-            <h3>1111</h3>
-            <span>Users</span>
-          </div>
-        </div> 
-        <div class="board">
-          <table>
-            <thead>
-              <tr>
-                <td>Name</td>
-                <td>Title</td>
-                <td>Status</td>
-                <td>Role</td>
-                <td></td>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                
-              </tr>
-            </tbody>
-          </table>
-        </div> -->
       <!-- ============================================================== -->
       <!-- wrapper  -->
       <!-- ============================================================== -->
@@ -153,16 +113,7 @@
                         </ol>
                       </nav>
                     </div>
-                    <!-- <div class="main-content container-fluid p-0" class="col-lg-12">
-                        <div class="email-search">
-                          <div class="input-group input-search">
-                            <input class="form-control" type="text" placeholder="Search in Result Register..."><span
-                              class="input-group-btn">
-                              <button class="btn btn-secondary" type="button"><i
-                                  class="bi bi-search"></i></button></span>
-                          </div>
-                        </div>
-                      </div> -->
+
                   </div>
                 </div>
               </div>
@@ -177,24 +128,44 @@
             <!-- Result Table -->
             <!-- ============================================================== -->
 
-            <!-- <div class="page-breadcrumb">
-                <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Date</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">04 MAY 2022</li>
-                  </ol>
-                </nav>
-              </div>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>dealer Id</th>
+                  <th>Item Name</th>
+                  <th>Quantity</th>
+                  <!-- <th>Package 2</th>
+                                <th>Package 3</th>
+                                <th>Unit</th>
+                                <th></th> -->
+                </tr>
+              </thead>
+              <tbody>
+                <?php
+                $sql = "select * from dealer_inventory2 natural join dealer_info";
+                $stid = oci_parse($conn, $sql);
+                $r = oci_execute($stid);
 
-              <div class="page-breadcrumb">
-                <nav aria-label="breadcrumb">
-                  <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#" class="breadcrumb-link">Firing Officer</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Maj Asif, 14 EB</li>
-                  </ol>
-                </nav>
-              </div> -->
+                while ($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
+                  if($row['QUANTITY']<50){
+                  echo "
+                                <tr>
+                                    <td>" . $row['DEALER_ID'] . "</td>
+                                    <td>" . $row['ITEM_NAME'] . "</td>
+                                    <td>" . $row['QUANTITY'] . "</td>
+                                </tr> ";
+                }}
+                // $row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS);
+                // while($row['SL_NO']!=NULL)
+                // {
+                // <td>" . $row['PK2'] . "</td>
+                // <td>" . $row['PK3'] . "</td>                                    
+                // <td>" . $row['UNIT'] . "</td>                                    
+                // }
+                ?>
+              </tbody>
 
+            </table>
 
             <table class="table">
               <thead>
@@ -259,14 +230,13 @@
                 </tr>
                 <script>
                   function adreto() {
-                    var x=prompt("Enter ammount");
-                    var y=document.getElementById("av1");
-                    var num1=parseFloat(x);
-                    var num2=parseFloat(y);
-                    if(num1>='1'&&num1<=num2){
+                    var x = prompt("Enter ammount");
+                    var y = document.getElementById("av1");
+                    var num1 = parseFloat(x);
+                    var num2 = parseFloat(y);
+                    if (num1 >= '1' && num1 <= num2) {
                       alert("success");
-                    }
-                    else{
+                    } else {
                       alert("failure");
                     }
                   }
@@ -422,8 +392,7 @@
     </footer><!-- End  Footer -->
 
     <div id="preloader"></div>
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-        class="bi bi-arrow-up-short"></i></a>
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
     <!-- Vendor JS Files -->
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

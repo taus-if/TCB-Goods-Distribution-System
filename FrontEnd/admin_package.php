@@ -7,7 +7,11 @@ $conn = oci_connect('XE', 'XE', 'localhost/xe')
 if (!$conn) {
     echo "not connected";
 } else {
+    // if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+
 }
+// }
 
 ?>
 
@@ -71,7 +75,7 @@ if (!$conn) {
                         <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
                         <li class="dropdown"><a href="#"><span><?php echo $uname ?></span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
-                                <!-- <li><a href="dealer_profile.php">Profile</a></li> -->
+                                <li><a href="notification.php">Notification</a></li>
                                 <li><a href="/logout">Log out</a></li>
                             </ul>
                         </li>
@@ -180,29 +184,59 @@ if (!$conn) {
                     <div class="container">
                         <div class="row">
                             <div class=" text-center">
-                                <input type='text'>
-                                <input type='text'>
-                                <input type='text'>
-                                <?php
-                                // $sqql = "select * from package";
-                                // $stiid = oci_parse($conn, $sqql);
-                                // $ri = oci_execute($stiid);
-                                //     while ($raw = oci_fetch_array($stiid, OCI_ASSOC + OCI_RETURN_NULLS)) {
-                                //         echo "
-                                //         <tr>
-                                //             <td>" . $raw['ITEM_NAME'] . "</td>
-                                //             <input type='text'>
-                                //             <td>" . $raw['UNIT'] . "</td>
-                                //             <br>
-                                //             </tr>";
-                                //         }
-                                ?>
+                                <input class="" type='text' name="Pack_no" placeholder="Package no">
+                                <input type='text' name="item_name" placeholder="Item Name">
+                                <input type='text' name="amount" placeholder="Amount">
 
                             </div>
-                            <div class="col-md-12  text-center">
+                            <div class="text-center" style="margin-top: 5px;">
                                 <!-- <button type="button" class="btn btn-primary">Cancel</button> -->
-                                <button type="button" class="btn btn-warning ml-2" id="demo">Update</button> <!-- // onclick="myFunction()" -->
+                                <input type="submit" class="btn btn-warning" name="submit">
+                                <!--Update</button> // onclick="myFunction()" -->
                             </div>
+                            <?php
+                            // $sqql = "select * from package";
+                            // $stiid = oci_parse($conn, $sqql);
+                            // $ri = oci_execute($stiid);
+                            //     while ($raw = oci_fetch_array($stiid, OCI_ASSOC + OCI_RETURN_NULLS)) {
+                            //         echo "
+                            //         <tr>
+                            //             <td>" . $raw['ITEM_NAME'] . "</td>
+                            //             <input type='text'>
+                            //             <td>" . $raw['UNIT'] . "</td>
+                            //             <br>
+                            //             </tr>";
+                            //         }
+
+                            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                                if (isset($_POST["submit"])) {
+
+                                    $pack_no = $_POST["Pack_no"];
+                                    $item_name = $_POST['item_name'];
+                                    $amount = $_POST['amount'];
+
+                                    $col = "pk" . $pack_no;
+                                    // echo $col;
+                                    $ssql = "UPDATE package
+                                    SET pk$pack_no = $amount
+                                        WHERE item_name='$item_name' ";
+
+                                    $sstid = oci_parse($conn, $ssql);
+                                    oci_execute($sstid);
+
+                                    // unset($pack_no);
+                                    // unset($item_name);
+                                    // unset($amount);
+
+                                    // $done = true;
+                                    // header("Location: " . $_SERVER['PHP_SELF']);
+                                    //  header("Location: admin_package.php");
+
+                                    // exit;
+                                }
+                            }
+                            ?>
+
                         </div>
                     </div>
 

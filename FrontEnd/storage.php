@@ -1,3 +1,19 @@
+<?php
+session_start();
+
+
+    $conn = oci_connect('XE', 'XE', 'localhost/xe')
+    or die(oci_error());
+
+if (!$conn) {
+    echo "not connected";
+} else {
+    $sql = "select * from main_inventory";
+    $stid = oci_parse($conn, $sql);
+    $r = oci_execute($stid);
+    
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -199,68 +215,32 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Items No</th>
+                                    <th>Item no</th>
                                     <th>Item Name</th>
-                                    <th>Unit</th>
-                                    <th>Capacity</th>
-                                    <th>Available</th>
-                                    <th></th>
+                                    <th>Quantity</th>
+                                    <th>Date Added</th>
+                                    <th>username</th>
+                                    <th>Add amount</th>
                                 </tr>
                             </thead>
                             <tbody>
+                              <?php
+                              $i=0;
+                              while($raw = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)){
+                              ?>
                                 <tr>
-                                    <td data-label="Pers No">01</td>
-                                    <td data-label="Name">Rice</td>
-                                    <td data-label="Unit">Kg</td>
-                                    <td data-label="Prac">50</td>
-                                    <td data-label="Hit">46</td>
-                                    <!-- <td data-label="Missed">4</td> -->
+                                    <td data-label="Pers No"><?php echo $i+1 ?></td>
+                                    <td data-label="Pers No"><?php echo $raw[ 'ITEM_NAME' ] ?></td>
+                                    <td data-label="Name"><?php echo $raw[ 'QUANTITY' ] ?></td>
+                                    <td data-label="Unit"><?php echo $raw[ 'DATE_ADDED' ] ?></td>
+                                    <td data-label="Prac"><?php echo $raw[ 'USERNAME' ] ?></td>
+                                    <td data-label="Prac"><form action="storage.php" method="post"><input type="number" name="number"><button type="submit" name="addbtn" value="addval">Add</button></form></td>
                                 </tr>
-
-                                <tr>
-                                    <td data-label="Pers No">02</td>
-                                    <td data-label="Name">Onion</td>
-                                    <td data-label="Unit">Kg</td>
-                                    <td data-label="Prac">50</td>
-                                    <td data-label="Hit">40</td>
-                                    <!-- <td data-label="Missed">10</td> -->
-                                </tr>
-
-                                <tr>
-                                    <td data-label="Pers No">03</td>
-                                    <td data-label="Name">Soabean Oil </td>
-                                    <td data-label="Unit">Litre</td>
-                                    <td data-label="Prac">15</td>
-                                    <td data-label="Hit">5</td>
-                                    <!-- <td data-label="Missed">15</td> -->
-                                </tr>
-                                <tr>
-                                    <td data-label="Pers No">04</td>
-                                    <td data-label="Name">Pulses</td>
-                                    <td data-label="Unit">Kg </td>
-                                    <td data-label="Prac">30</td>
-                                    <td data-label="Hit">25</td>
-                                    <!-- <td data-label="Missed">4</td> -->
-                                </tr>
-
-                                <tr>
-                                    <td data-label="Pers No">05</td>
-                                    <td data-label="Name">Potato</td>
-                                    <td data-label="Unit">kg </td>
-                                    <td data-label="Prac">50</td>
-                                    <td data-label="Hit">40</td>
-                                    <!-- <td data-label="Missed">10</td> -->
-                                </tr>
-
-                                <!-- <tr>
-                    <td data-label="Pers No">BA-10985</td>                    
-                    <td data-label="Name">Lt Sabit</td>
-                    <td data-label="Unit">9 Sigs</td>
-                    <td data-label="Prac">50</td>
-                    <td data-label="Hit">35</td>
-                    <td data-label="Missed">15</td>
-                  </tr> -->
-
+                                
+                              <?php
+                              $i++;
+                              }
+                              ?>
                             </tbody>
 
                         </table>

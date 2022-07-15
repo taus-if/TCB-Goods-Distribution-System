@@ -3,6 +3,7 @@ if (!isset($_SESSION)) {
     session_start();
 }
 $uname = $_SESSION['uname'];
+$done = false;
 $conn = oci_connect('XE', 'XE', 'localhost/xe')
 or die(oci_error());
 
@@ -51,16 +52,17 @@ if(!$conn){
 
                 for($i = 1; $i<=$familynum; $i++)
                 {
-                    $nidstr = 'fam-nid-'.$i;
-                    $occstr = 'fam-occ-'.$i;
-                    $incstr = 'fam-inc-'.$i;
+                    //$nidstr = 'fam-nid-'.$i;
+                    //$occstr = 'fam-occ-'.$i;
+                    //$incstr = 'fam-inc-'.$i;
 
-                    $fam_nid = $_POST(['fam-nid-2']);
-                    $fam_occ = $_POST(['fam-occ-2']);
-                    $fam_inc = $_POST(['fam-inc-2']);
+                    $fam_nid = $_POST['fam-nid-'.$i];
+                    $fam_occ = $_POST['fam-occ-'.$i];
+                    $fam_inc = $_POST['fam-inc-'.$i];
+                    $fam_name = $_POST['fam-name-'.$i];
 
                     $sqlex = "insert into family_info(member_nid, member_name, member_occupation, member_income, nid)
-                    values('$fam_nid', '$cusname', '$fam_occ', $fam_inc, '$cust_nid')";
+                    values('$fam_nid', '$fam_name', '$fam_occ', $fam_inc, '$cust_nid')";
                     $stid=oci_parse($conn, $sqlex);
                     oci_execute($stid); 
                     unset($fam_nid);
@@ -83,7 +85,11 @@ if(!$conn){
                 unset($cusincome);
                 unset($familynum);
                 unset($mobile);
-                header("Location: ".$_SERVER['PHP_SELF']);
+
+                $done= true;
+                //header("Location: ".$_SERVER['PHP_SELF']);
+                header("Location: admin.php");
+
                 exit;
         
         }
@@ -174,7 +180,7 @@ if(!$conn){
                             <ul>
                                 <!-- <li><a href="admin_profile.php">Profile</a></li> -->
                                 <li><a href="notification.html">Notification</a></li>
-                                <li><a href="/logout">Log out</a></li>
+                                <li><a href="login.php">Log out</a></li>
                             </ul>
                         </li>
                     </ul>
@@ -195,7 +201,7 @@ if(!$conn){
                 <div class="form-group w-70">
                     <label for="exampleInputEmail1">Customer Name</label>
                     <input type="text" class="form-control" id="cust_name" name="cus_name" aria-describedby="emailHelp"
-                        placeholder="Enter Name" >
+                        placeholder="Enter Name" required>
 
                 </div>
 
@@ -203,7 +209,7 @@ if(!$conn){
                 <div class="form-group w-70 mt-3">
                     <label for="exampleInputEmail1">Occupation</label>
                     <input type="text" class="form-control" id="occupation" name="cus_occupation" aria-describedby="emailHelp"
-                        placeholder="Enter Occupation" >
+                        placeholder="Enter Occupation" required>
 
                 </div>
 
@@ -224,14 +230,14 @@ if(!$conn){
                 <div class="form-group w-70 mt-3">
                     <label for="exampleInputEmail1">Husband/Wife's Name</label>
                     <input type="text" class="form-control" id="spousename" name="spousename" aria-describedby="emailHelp"
-                        placeholder="Enter Husband/Wife's Name" >
+                        placeholder="Enter Husband/Wife's Name" required>
 
                 </div>
 
                 <div class="form-group w-70 mt-3">
                     <label for="exampleInputEmail1">Mobile No</label>
                     <input type="text" class="form-control" id="mobilenum" name="mobilenum" aria-describedby="emailHelp"
-                        placeholder="Enter Mobile No" >
+                        placeholder="Enter Mobile No" required>
 
                 </div>
 
@@ -243,13 +249,13 @@ if(!$conn){
                             <label for="exampleInputEmail1">Holding No</label>
 
                             <input type="text" class="form-control" id="holding" aria-describedby="emailHelp"
-                                placeholder="Enter Holding No" name="holdingno" >
+                                placeholder="Enter Holding No" name="holdingno" required>
                         </div>
                         <div class="col mt-3">
                             <label for="exampleInputEmail1">Road No</label>
 
                             <input type="text" class="form-control" id="road" aria-describedby="emailHelp"
-                                placeholder="Enter Road No" name="roadno" >
+                                placeholder="Enter Road No" name="roadno" required>
                         </div>
 
                     </div>
@@ -259,13 +265,13 @@ if(!$conn){
                             <label for="exampleInputEmail1">Ward No</label>
 
                             <input type="text" class="form-control" id="ward" aria-describedby="emailHelp"
-                                placeholder="Enter Ward No" name="wardno" >
+                                placeholder="Enter Ward No" name="wardno" required>
                         </div>
                         <div class="col mt-3">
                             <label for="exampleInputEmail1">Union</label>
 
                             <input type="text" class="form-control" id="union" aria-describedby="emailHelp"
-                                placeholder="Enter Union Name" name="union" >
+                                placeholder="Enter Union Name" name="union" required>
                         </div>
 
                     </div>
@@ -274,13 +280,13 @@ if(!$conn){
                             <label for="exampleInputEmail1">Upazilla</label>
 
                             <input type="text" class="form-control" id="upazilla" aria-describedby="emailHelp"
-                                placeholder="Enter Upazilla Name" name="upazilla" >
+                                placeholder="Enter Upazilla Name" name="upazilla" required>
                         </div>
                         <div class="col mt-3">
                             <label for="exampleInputEmail1">District</label>
 
                             <input type="text" class="form-control" id="district" aria-describedby="emailHelp"
-                                placeholder="Enter District Name" name="district" >
+                                placeholder="Enter District Name" name="district" required>
                         </div>
 
                     </div>
@@ -290,13 +296,13 @@ if(!$conn){
                 <div class="form-group w-70 mt-3">
                     
                     <label for="datepicker">Date of Birth</label>
-                    <input type="text" id="datepicker" class="form-control" placeholder="Enter Date of Birth" name="dob" >
+                    <input type="text" id="datepicker" class="form-control" placeholder="Enter Date of Birth" name="dob" required>
                 </div>
 
                 <div class="form-group w-70 mt-3">
                     <label for="exampleInputEmail1">Income</label>
                     <input type="text" class="form-control" id="income" aria-describedby="emailHelp"
-                        placeholder="Enter Monthly Income" name="cus_income" >
+                        placeholder="Enter Monthly Income" name="cus_income" required>
 
                 </div>
 
@@ -308,7 +314,7 @@ if(!$conn){
                         <div class="input-group mb-3">
                             <input type="text" id="familymemberNo" name="familynum" class="form-control"
                                 placeholder="Enter Number of Family Members" aria-label="Recipient's username"
-                                aria-describedby="button-addon2">
+                                aria-describedby="button-addon2" required>
                             <button class="btn btn-outline-secondary" type="button" id="button-addon2"
                                 onclick="showbox()" name="showboxbtn" value="add">Add</button>
                         </div>
@@ -320,15 +326,19 @@ if(!$conn){
                         <!-- <input type="text" class="form-control" id="members" aria-describedby="emailHelp"
                         placeholder="Enter Number of Family Members" required> -->
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="nid-fam" placeholder="name@example.com" name="fam-nid-1">
+                            <input type="text" class="form-control" id="nid-fam" placeholder="name@example.com" name="fam-nid-1" >
                             <label for="floatingInput">NID No</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="occupation-fam" placeholder="name@example.com" name="fam-occ-1">
+                            <input type="text" class="form-control" id="name-fam" placeholder="name@example.com" name="fam-name-1" >
+                            <label for="floatingInput">Name</label>
+                        </div>
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="occupation-fam" placeholder="name@example.com" name="fam-occ-1" >
                             <label for="floatingInput">Occupation</label>
                         </div>
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="income-fam" placeholder="name@example.com" name="fam-inc-1">
+                            <input type="text" class="form-control" id="income-fam" placeholder="name@example.com" name="fam-inc-1" >
                             <label for="floatingInput">Income</label>
                         </div>
 
@@ -359,8 +369,9 @@ if(!$conn){
                             clone.style.display = "block";
                             clone.id = 'member-' + (i + 2).toString();
                             clone.children[1].children[0].name = 'fam-nid-'+(i+2).toString();
-                            clone.children[2].children[0].name = 'fam-occ-'+(i+2).toString();
-                            clone.children[3].children[0].name = 'fam-inc-'+(i+2).toString();
+                            clone.children[2].children[0].name = 'fam-name-'+(i+2).toString();
+                            clone.children[3].children[0].name = 'fam-occ-'+(i+2).toString();
+                            clone.children[4].children[0].name = 'fam-inc-'+(i+2).toString();
                         }
 
 
@@ -379,7 +390,12 @@ if(!$conn){
 
 
 
-
+        <?php
+        if($done==true)
+        {
+            echo "<script> alert('Information Inserted successfully');</script>";
+        }
+        ?>
 
 
 

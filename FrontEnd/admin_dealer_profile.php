@@ -1,5 +1,7 @@
 <?php
 session_start();
+$unome = $_GET['$row["APPLICANT_NAME"]'];
+
 $uname = $_SESSION['uname'];
 $conn = oci_connect('XE', 'XE', 'localhost/xe')
     or die(oci_error());
@@ -7,6 +9,11 @@ $conn = oci_connect('XE', 'XE', 'localhost/xe')
 if (!$conn) {
     echo "not connected";
 } else {
+    $sql = "select * from dealer_info natural join dealer_area natural join dealer_inventory natural join distribution_area where dealer_id=$unome";
+    $stid = oci_parse($conn, $sql);
+    $r = oci_execute($stid);
+
+    $raw = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS);
 }
 
 ?>
@@ -99,14 +106,14 @@ if (!$conn) {
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="page-header">
-                                    <h2 class="pageheader-title" style="text-align: center;"><?php echo $uname . "'s PROFILE" ?></h2>
+                                    <h2 class="pageheader-title" style="text-align: center;"><?php echo $unome . "'s PROFILE" ?></h2>
                                     <div>
                                         <div class="page-breadcrumb">
                                             <nav aria-label="breadcrumb">
                                                 <ol class="breadcrumb">
-                                                    <li class="breadcrumb-item"><a href="admin.php" class="breadcrumb-link">Admin</a></li>
+                                                    <li class="breadcrumb-item"><a href="dealer2.php" class="breadcrumb-link">Dealer</a></li>
                                                     <!-- <li class="breadcrumb-item"><a href="dealer_info.php" class="breadcrumb-link">Dealer's Information</a></li> -->
-                                                    <li class="breadcrumb-item active" aria-current="page"><?php echo $uname . "'s profile" ?></li>
+                                                    <li class="breadcrumb-item active" aria-current="page"><?php echo $unome . "'s profile" ?></li>
                                                 </ol>
                                             </nav>
                                         </div>
@@ -130,44 +137,51 @@ if (!$conn) {
                                     <div class="col-lg-6">
                                         <div class="about-text go-to">
                                             <h3 class="dark-color">About Me</h3>
-                                            <h6 class="theme-color lead">A Lead UX &amp; UI designer based in Canada</h6>
-                                            <p>I <mark>design and develop</mark> services for customers of all sizes, specializing in creating stylish, modern websites, web services and online stores. My passion is to design digital user experiences through the bold interface and meaningful interactions.</p>
+                                            <h6 class="theme-color lead">A Dealer of TCB food distribution system</h6>
+                                            <p>
+                                                I, <mark><?php echo $raw["APPLICANT_NAME"] ?></mark> , deals products in <mark><?php echo "Area code " . $raw["AREA_CODE"] ?></mark>
+                                                <!-- which covers  <?php // while ($row) {echo  $row["UPAZILLA"] . "</td>" ;} 
+                                                                    ?> -->
+                                                of <?php echo $raw["ORGANIZATION_NAME"] ?>. My area is <?php echo $raw["UPAZILLA"] . " under " .
+                                                                                                            $raw["DISTRICT"] . " district. " ?>
+                                            </p>
                                             <div class="row about-list">
                                                 <div class="col-md-6">
                                                     <div class="media">
                                                         <label>Birthday</label>
-                                                        <p>4th april 1998</p>
+                                                        <p> <?php echo $raw['DATE_OF_BIRTH'] ?></p>
                                                     </div>
                                                     <div class="media">
                                                         <label>Age</label>
                                                         <p>22 Yr</p>
                                                     </div>
-                                                    <div class="media">
+                                                    <!-- <div class="media">
                                                         <label>Chember</label>
-                                                        <p>Canada</p>
-                                                    </div>
+                                                        <p></p>
+                                                    </div> -->
                                                     <div class="media">
                                                         <label>Address</label>
-                                                        <p>California, USA</p>
+                                                        <p><?php echo $raw['PERMANENT_ADDRESS'] ?></p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="media">
+                                                        <label>Username</label>
+                                                        <p><?php echo $raw['DEALER_ID'] ?></p>
+                                                    </div>
+                                                    <div class="media">
                                                         <label>E-mail</label>
-                                                        <p>info@domain.com</p>
+                                                        <p><?php echo $raw['EMAIL'] ?></p>
                                                     </div>
                                                     <div class="media">
-                                                        <label>Phone</label>
-                                                        <p>820-885-3321</p>
+                                                        <label>TIN number</label>
+                                                        <p><?php echo $aw['TIN_NUMBER'] ?></p>
                                                     </div>
-                                                    <div class="media">
-                                                        <label>Skype</label>
-                                                        <p>skype.0404</p>
-                                                    </div>
-                                                    <div class="media">
+
+                                                    <!-- <div class="media">
                                                         <label>Freelance</label>
                                                         <p>Available</p>
-                                                    </div>
+                                                    </div> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -180,28 +194,52 @@ if (!$conn) {
                                 </div>
                                 <div class="counter">
                                     <div class="row">
-                                        <div class="col-6 col-lg-3">
+                                        <!-- <div class="col-6 col-lg-3">
                                             <div class="count-data text-center">
                                                 <h6 class="count h2" data-to="500" data-speed="500">500</h6>
                                                 <p class="m-0px font-w-600">Total Dealers</p>
                                             </div>
-                                        </div>
-                                        <div class="col-6 col-lg-3">
+                                        </div> -->
+                                        <div class="col-6 col-lg-6">
                                             <div class="count-data text-center">
                                                 <h6 class="count h2" data-to="150" data-speed="150">150</h6>
-                                                <p class="m-0px font-w-600">Total Customres</p>
+                                                <p class="m-0px font-w-600">Customres under me</p>
                                             </div>
                                         </div>
-                                        <div class="col-6 col-lg-3">
+                                        <div class="col-6 col-lg-6">
                                             <div class="count-data text-center">
                                                 <h6 class="count h2" data-to="850" data-speed="850">850</h6>
-                                                <p class="m-0px font-w-600">No of Packages</p>
+                                                <p class="m-0px font-w-600">Availabe Packages</p>
                                             </div>
                                         </div>
-                                        <div class="col-6 col-lg-3">
+                                        <!-- <div class="col-6 col-lg-3">
                                             <div class="count-data text-center">
                                                 <h6 class="count h2" data-to="190" data-speed="190">190</h6>
                                                 <p class="m-0px font-w-600">Total feedback</p>
+                                            </div>
+                                        </div> -->
+                                    </div>
+                                </div>
+                                <div class="counter">
+                                    <div class="row">
+                                        <div class="col-6 col-lg-3">
+                                            <div class="count-data text-center">
+                                                <h6 class="count h2"><a href="dealer_inventory.php" style="color:#38CE24 ;">My Invetory</a></h6>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-lg-3">
+                                            <div class="count-data text-center">
+                                                <h6 class="count h2"><a href="dealer_customer2.php" style="color:#38CE24 ;">My Customers</a></h6>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-lg-3">
+                                            <div class="count-data text-center">
+                                                <h6 class="count h2"><a href="package_info.php" style="color:#38CE24 ;">Package Info</a></h6>
+                                            </div>
+                                        </div>
+                                        <div class="col-6 col-lg-3">
+                                            <div class="count-data text-center">
+                                                <h6 class="count h2"><a href="dealer_treasury.html" style="color:#38CE24 ;">My Treasury</a></h6>
                                             </div>
                                         </div>
                                     </div>

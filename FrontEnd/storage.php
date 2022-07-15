@@ -12,6 +12,20 @@ if (!$conn) {
     $stid = oci_parse($conn, $sql);
     $r = oci_execute($stid);
     
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+
+      if($_POST['addbtn']=='addvalue'){
+        $amount=(int) ($_POST['amount']);
+        $item=$_POST['product'];
+        $sql1 = "update main_inventory set Quantity=Quantity+$amount where ITEM_NAME='$item'";
+        $stid1=oci_parse($conn, $sql1);
+        oci_execute($stid1);
+        unset($amount);
+        unset($item);
+        header("Location: ".$_SERVER['PHP_SELF']);
+        exit;
+      }
+    }
 }
 ?>
 <!DOCTYPE html>
@@ -220,7 +234,7 @@ if (!$conn) {
                                     <th>Quantity</th>
                                     <th>Date Added</th>
                                     <th>username</th>
-                                    <th>Add amount</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
@@ -234,7 +248,7 @@ if (!$conn) {
                                     <td data-label="Name"><?php echo $raw[ 'QUANTITY' ] ?></td>
                                     <td data-label="Unit"><?php echo $raw[ 'DATE_ADDED' ] ?></td>
                                     <td data-label="Prac"><?php echo $raw[ 'USERNAME' ] ?></td>
-                                    <td data-label="Prac"><form action="storage.php" method="post"><input type="number" name="number"><button type="submit" name="addbtn" value="addval">Add</button></form></td>
+                                    
                                 </tr>
                                 
                               <?php
@@ -362,7 +376,25 @@ if (!$conn) {
 
                     <!-- ============================================================== -->
                 </div>
-
+                <div class="container">
+                  <div class="row">
+                        <form action="storage.php" method="post" class="php-email-form">
+                <div class="form-group">
+                  <input type="text" name="amount" class="form-control" id="amount" placeholder="Enter amount">
+                </div>
+                <div class="form-group mt-3">
+                  <input type="text" class="form-control" name="product" id="product" placeholder="Enter Product">
+                </div>
+                
+                <div class="my-3">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your message has been sent. Thank you!</div>
+                </div>
+                <div class="text-center"><button type="submit" name="addbtn" type="submit" value="addval">Add</button></div>
+              </form>
+                        </div>
+                    </div>
         </main><!-- End #main -->
 
 

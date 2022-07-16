@@ -145,7 +145,7 @@ if (!$conn) {
 
           <div class="col-md-4 col-lg-4 ">
             <div class="card d-flex align-items-stretch outterround">
-              <a href="adddealer.html" class="stretched-link"></a>
+              <a href="adddealer.php" class="stretched-link"></a>
               <i class="bi bi-person-plus custom-icon d-flex justify-content-center"></i>
               <div class="card_title d-flex justify-content-center">
                 <p>Add Dealer</p>

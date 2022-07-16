@@ -1,3 +1,94 @@
+<?php
+if (!isset($_SESSION)) {
+    session_start();
+}
+$uname = $_SESSION['uname'];
+$done = false;
+$conn = oci_connect('XE', 'XE', 'localhost/xe')
+or die(oci_error());
+
+if(!$conn){
+  echo "not connected";
+}else{
+    if($_SERVER['REQUEST_METHOD']=='POST'){
+
+        if($_POST['submitbtn']=='submitval'){
+
+            $deal_name = $_POST['deal-name'];
+            $deal_add = $_POST['deal-add'];
+            $deal_email = $_POST['deal-email'];
+            $deal_tin = $_POST['deal-tin'];
+            $deal_dob = $_POST['deal-dob'];
+
+            $deal_ogname = $_POST['deal-og-name'];
+
+            $deal_ogadd = $_POST['deal-og-add'];
+            $deal_pass = $_POST['deal-password'];
+            
+            $area_num = (int)($_POST['deal-area-num']);
+
+            $sqlgetseq = "select dealer_id_seq.nextval from dual";
+            $stid = oci_parse($conn, $sqlgetseq);
+            oci_execute($stid);
+            $row = oci_fetch_array($stid, OCI_ASSOC+OCI_RETURN_NULLS);
+
+            $dealerid = $row["NEXTVAL"];
+
+            $arrAreacode = array();
+
+            for($i = 1; $i<=$area_num; $i++)
+            {
+                $arc = $_POST['deal-area-'.$i];
+                array_push($arrAreacode,$arc);
+            }
+
+
+            $sql = "insert into dealer_info(dealer_id, organization_name, organization_address, applicant_name, permanent_address, email, tin_number, date_of_birth)
+            values(concat('D',lpad($dealerid,5,'0')), '$deal_ogname', '$deal_ogadd', '$deal_name', '$deal_add', '$deal_email', '$deal_tin', to_date('$deal_dob', 'mm/dd/yyyy'))";
+
+
+
+            $stid=oci_parse($conn, $sql);
+            oci_execute($stid); 
+
+            $sql3 = "insert into info(dealer_id, password) values(concat('D',lpad($dealerid,5,'0')), '$deal_pass')" ;
+            $stid=oci_parse($conn, $sql3);
+            oci_execute($stid); 
+
+            for($i=1;$i<=$area_num;$i++)
+            {
+                $ind = $i -1 ;
+                $sql2 = "insert into dealer_area(area_code, dealer_id) values('$arrAreacode[$ind]', concat('D',lpad($dealerid,5,'0')))";
+                $stid=oci_parse($conn, $sql2);
+                oci_execute($stid); 
+            }
+
+                unset($deal_name);
+                unset($deal_add);
+                unset($deal_ogname);
+                unset($deal_ogadd);
+                unset($deal_email);
+                unset($deal_tin);
+                unset($deal_dob);
+                unset($deal_pass);
+                unset($area_num);
+                unset($dealerid);
+
+                $done= true;
+                //header("Location: ".$_SERVER['PHP_SELF']);
+                header("Location: admin.php");
+
+                exit;
+        
+        }    
+    
+    }
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,8 +148,7 @@
             <div class="container d-flex justify-content-between">
 
                 <div class="logo">
-                    <!-- <h1><a href="index.php"><span>e</span>Business</a></h1> -->
-                    <!-- Uncomment below if you prefer to use an image logo -->
+                    
                     <div class="fullnavname">
                         <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt=""
                                 class="img-fluid"><span class="navname">Trading Corporation of Bangladesh</span></a>
@@ -76,11 +166,11 @@
                     <ul>
                         <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
                         <!-- <li><a class="nav-link scrollto active" href="">Admin</a></li> -->
-                        <li class="dropdown"><a href="#"><span>username</span> <i class="bi bi-chevron-down"></i></a>
+                        <li class="dropdown"><a href="#" class="active"><span><?php echo $uname ?></span> </span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                               <!-- <li><a href="admin_profile.php">Profile</a></li> -->
                               <li><a href="notification.html">Notification</a></li>
-                              <li><a href="/logout">Log out</a></li>
+                              <li><a href="login.php">Log out</a></li>
                             </ul>
                           </li>
 
@@ -92,76 +182,73 @@
         </header><!-- End Header -->
 
 
-        <form class="Rafatdealer row d-flex justify-content-center">
+        <form action= "adddealer.php" method="post" class="Rafatdealer row d-flex justify-content-center">
 
 
             <div class="col-sm-10 col-md-8 col-lg-6 outterround">
 
                 <div class="h1 d-flex justify-content-center" style="margin-bottom: 30px;">Dealer Information</div>
 
+
                 <div class="form-group w-70">
                     <label for="exampleInputEmail1">Applicant Name</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        placeholder="Enter Applicant Name" required>
+                        placeholder="Enter Applicant Name" name="deal-name" required>
 
                 </div>
 
                 <div class="form-group w-70 mt-3">
                     <label for="exampleInputEmail1">Applicant Address</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        placeholder="Enter Applicant Address" required>
+                        placeholder="Enter Applicant Address" name="deal-add" required>
 
                 </div>
 
                 <div class="form-group w-70 mt-3">
                     <label for="exampleInputEmail1">Email Address</label>
                     <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        placeholder="Enter Email Address" required>
+                        placeholder="Enter Email Address" name="deal-email" required>
 
                 </div>
 
                 <div class="form-group w-70 mt-3">
                     <label for="exampleInputEmail1">TIN Number</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        placeholder="Enter TIN Number" required>
+                        placeholder="Enter TIN Number" name="deal-tin" required>
 
                 </div>
 
                 <div class="form-group w-70 mt-3">
-                    <!-- <label for="exampleInputEmail1">Date of Birth</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    placeholder="Enter Date of Birth"> -->
                     <label for="datepicker">Date of Birth</label>
-                    <input type="text" id="datepicker" class="form-control" placeholder="Enter Date of Birth" required>
+                    <input type="text" id="datepicker" class="form-control" placeholder="Enter Date of Birth" name="deal-dob" required>
                 </div>
 
                 <div class="form-group w-70 mt-3">
                     <label for="exampleInputEmail1">Organization Name</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        placeholder="Enter Organization Name" required>
+                        placeholder="Enter Organization Name" name="deal-og-name" required>
 
                 </div>
 
                 <div class="form-group w-70 mt-3">
                     <label for="exampleInputEmail1">Organization Address</label>
                     <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        placeholder="Enter Organization Address" required>
+                        placeholder="Enter Organization Address" name="deal-og-add" required>
 
                 </div>
                 
 
-                <div id='member-input'>
+                <div id='area-input'>
 
                     <div class="form-group w-70 mt-3">
                         <label for="exampleInputEmail1">Number of Distribution Areas</label>
-                        <!-- <input type="text" class="form-control" id="familymemberNo" aria-describedby="emailHelp"
-                        placeholder="Enter Number of Family Members" onkeyup="showbox()" required> -->
+                        
 
                         <div class="input-group mb-3">
-                            <input type="text" id="familymemberNo" class="form-control"
+                            <input type="text" id="number-of-area" class="form-control"
                                 placeholder="Enter Number of Distribution Areas" aria-label="Recipient's username"
-                                aria-describedby="button-addon2">
-                            <button class="btn btn-outline-secondary" type="button" id="button-addon2"
+                                aria-describedby="button-addon2" name="deal-area-num">
+                            <button class="btn btn-outline-secondary" type="button" id="button-addon2" name="showbtn" value="add"
                                 onclick="showbox()">Add</button>
                         </div>
 
@@ -170,7 +257,7 @@
                     <div class="form-group w-70 mt-3" id="member-1" style="display: none;">
                         <label for="exampleInputEmail1">Area Code <span>1</span></label>
                         <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                        placeholder="Enter Area Code" required>
+                        placeholder="Enter Area Code" name="deal-area-1" required>
 
                     </div>
 
@@ -180,7 +267,7 @@
 
                     function showbox() {
                         
-                        var koyta = document.getElementById('familymemberNo').value;
+                        var koyta = document.getElementById('number-of-area').value;
                         var lp = parseInt(koyta);
                         if (lp == 0) return;
 
@@ -194,10 +281,12 @@
                             var clone = document.getElementById('member-1').cloneNode(true);
                             clone.children[0].children[0].innerHTML = (i + 2).toString();
                             console.log('hoise ' + (i + 2).toString());
-                            document.getElementById('member-input').appendChild(clone);
+                            document.getElementById('area-input').appendChild(clone);
                             // document.getElementById('member-info').style.display="block";
                             clone.style.display = "block";
                             clone.id = 'member-'+(i+2).toString();
+                            clone.children[1].name = 'deal-area-'+(i+2).toString();
+
                         }
 
 
@@ -211,10 +300,10 @@
                 <div class="form-group w-70 mt-3">
                     <label for="exampleInputPassword1">Password</label>
                     <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Enter Password"
-                        required>
+                      name="deal-password"  required>
                 </div>
 
-                <div class="text-center" style="margin-top:20px;"><button class="buttonn" type="button">Submit</button></div>
+                <div class="text-center" style="margin-top:20px;"><button class="buttonn" type="submit" name="submitbtn" value="submitval">Submit</button></div>
             </div>
         </form>
 

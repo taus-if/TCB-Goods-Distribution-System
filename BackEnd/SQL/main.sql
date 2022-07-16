@@ -180,6 +180,12 @@ increment by 1
 nocycle;
 
 
+create sequence dealer_id_seq
+start with 1
+increment by 1
+nocycle;
+
+
 
 insert into package(sl_no, item_name, pk1, pk2, pk3, unit)
 values('1', 'Soyabin oil', 3, 2, 1, 'ltr');

@@ -112,7 +112,7 @@
 
       <?php
         if($wrongInfo==true){
-          echo "<p style='color:red'> Wrong Info</p>";
+          echo "<p style='color:red'> Wrong Username or Password</p>";
         }
       ?>
 

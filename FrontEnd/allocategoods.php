@@ -7,6 +7,22 @@ $conn = oci_connect('XE', 'XE', 'localhost/xe')
 if (!$conn) {
   echo "not connected";
 } else {
+
+  if($_SERVER['REQUEST_METHOD']=='POST'){
+
+    if($_POST['submitbtn']=='submitval'){
+      $amount=(int) ($_POST['amount']);
+      $item=$_POST['item_name'];
+      $dealid = $_POST['deal_id'];
+
+      $sql2 = "update dealer_inventory2 set quantity = (quantity+ $amount) where lower(item_name) = lower('$item') and dealer_id = '$dealid'";
+
+      $stid1=oci_parse($conn, $sql2);
+      oci_execute($stid1);
+      header("Refresh:0");
+    }
+  }
+
 }
 
 ?>
@@ -76,7 +92,7 @@ if (!$conn) {
               <ul>
                 <!-- <li><a href="admin_profile.php">Profile</a></li> -->
                 <li><a href="notification.php">Notification</a></li>
-                <li><a href="/logout">Log out</a></li>
+                <li><a href="login.php">Log out</a></li>
               </ul>
             </li>
 
@@ -180,59 +196,21 @@ if (!$conn) {
                     </div> -->
                     <div class="container">
                         <div class="row">
+                          <form action="allocategoods.php" method="post">
                             <div class=" text-center">
                                 <input class="" type='text' name="deal_id" placeholder="Dealer ID">
                                 <input type='text' name="item_name" placeholder="Item Name">
                                 <input type='text' name="amount" placeholder="Amount to ADD">
 
                             </div>
+                          
                             <div class="text-center" style="margin-top: 5px;">
                                 <!-- <button type="button" class="btn btn-primary">Cancel</button> -->
-                                <input type="submit" class="btn btn-warning" name="submit">
+                                <!-- <input type="submit" class="btn btn-warning" name="submitbtn" value="submitval"> -->
                                 <!--Update</button> // onclick="myFunction()" -->
+                                <button type="submit" name="submitbtn" value="submitval" class="btn btn-primary btn-block">Add</button>
                             </div>
-                            <?php
-                            // $sqql = "select * from package";
-                            // $stiid = oci_parse($conn, $sqql);
-                            // $ri = oci_execute($stiid);
-                            //     while ($raw = oci_fetch_array($stiid, OCI_ASSOC + OCI_RETURN_NULLS)) {
-                            //         echo "
-                            //         <tr>
-                            //             <td>" . $raw['ITEM_NAME'] . "</td>
-                            //             <input type='text'>
-                            //             <td>" . $raw['UNIT'] . "</td>
-                            //             <br>
-                            //             </tr>";
-                            //         }
-
-                            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                                if (isset($_POST["submit"])) {
-
-                                    $pack_no = $_POST["deal_id"];
-                                    $item_name = $_POST['item_name'];
-                                    $amount = $_POST['amount'];
-
-                                    $col = "pk" . $pack_no;
-                                    // echo $col;
-                                    $ssql = "UPDATE dealer_inventory2
-                                    SET quantity = ($amount + quantity)
-                                        WHERE item_name='$item_name' ";
-
-                                    $sstid = oci_parse($conn, $ssql);
-                                    oci_execute($sstid);
-
-                                    // unset($pack_no);
-                                    // unset($item_name);
-                                    // unset($amount);
-
-                                    // $done = true;
-                                    // header("Location: " . $_SERVER['PHP_SELF']);
-                                    //  header("Location: admin_package.php");
-
-                                    // exit;
-                                }
-                            }
-                            ?>
+                          </form>
 
                         </div>
                     </div>
@@ -453,7 +431,7 @@ if (!$conn) {
               </div>
               <div class="credits">
 
-                Designed by <a href="">Rifat</a>
+                Designed by <a href="">Group-5</a>
               </div>
             </div>
           </div>

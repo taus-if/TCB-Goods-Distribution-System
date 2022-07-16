@@ -11,6 +11,18 @@ if (!$conn) {
     $sql = "select * from main_inventory";
     $stid = oci_parse($conn, $sql);
     $r = oci_execute($stid);
+
+                  if($_SERVER['REQUEST_METHOD']=='POST'){
+
+                    if($_POST['addbtn']=='addval'){
+                      $amount=(int) ($_POST['amount']);
+                      $item=$_POST['product'];
+                      $sql1 = "update main_inventory set QUANTITY=(QUANTITY+$amount) where lower(ITEM_NAME)=lower('$item')";
+                      $stid1=oci_parse($conn, $sql1);
+                      oci_execute($stid1);
+                      header("Refresh:0");
+                    }
+                  }
 }
 ?>
 <!DOCTYPE html>
@@ -377,19 +389,7 @@ if (!$conn) {
                   <div class="sent-message">Your message has been sent. Thank you!</div>
                 </div>
                 <div class="text-center"><button type="submit" name="addbtn" type="submit" value="addval">Add</button></div>
-                <?php
-                  if($_SERVER['REQUEST_METHOD']=='POST'){
-
-                    if($_POST['addbtn']=='addvalue'){
-                      $amount=(int) ($_POST['amount']);
-                      $item=$_POST['product'];
-                      $sql1 = "update main_inventory set QUANTITY=(QUANTITY+$amount) where ITEM_NAME='$item'";
-                      $stid1=oci_parse($conn, $sql1);
-                      oci_execute($stid1);
-                      
-                    }
-                  }
-                ?>
+                
               </form>
                         </div>
                     </div>

@@ -119,7 +119,8 @@
                                         <div class="main-content container-fluid p-0" class="col-lg-12">
                                                 <form method="post" >
                                                     <input class="col-lg-11" type="text" name="cust_id" placeholder="Search by any">
-                                                    <input type="submit" name="submit">
+                                                    <!-- <input type="submit" name="submit" value="submit"> -->
+                                                    <button class="btn btn-success" name="submit" type="submit" value="submitval">Submit</button>
                                                 </form>
                                         </div>
                                     </div>
@@ -144,23 +145,25 @@
                             <tbody>
                                 <?php
                                     if($_SERVER['REQUEST_METHOD']=='POST'){
-                                        $cust_id = $_POST['cust_id'];
-                                        $sql = "select tcb_card_no, name, package_no, mobile_no, last_buy_date from customer_info where tcb_card_no ='$cust_id'";
-                                        $stid = oci_parse($conn, $sql);
-                                        $r = oci_execute($stid);
-                                        $GLOBALS['pac']=0;
-                                        
-                                        while($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)){
-                                            echo "
-                                            <tr>
-                                                <td>".$row["TCB_CARD_NO"]."</td>
-                                                <td>".$row["NAME"]."</td>
-                                                <td>".$row["PACKAGE_NO"]."</td>
-                                                <td>".$row["MOBILE_NO"]."</td>
-                                                <td>".$row["LAST_BUY_DATE"]."</td>
-                                            </tr>
-                                            ";
-                                            $GLOBALS['pac']=$row["PACKAGE_NO"];
+                                        if($_POST['submit']=='submitval'){
+                                            $cust_id = $_POST['cust_id'];
+                                            $sql = "select tcb_card_no, name, package_no, mobile_no, last_buy_date from customer_info where tcb_card_no ='$cust_id'";
+                                            $stid = oci_parse($conn, $sql);
+                                            $r = oci_execute($stid);
+                                            $GLOBALS['pac']=0;
+                                            
+                                            while($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)){
+                                                echo "
+                                                <tr>
+                                                    <td>".$row["TCB_CARD_NO"]."</td>
+                                                    <td>".$row["NAME"]."</td>
+                                                    <td>".$row["PACKAGE_NO"]."</td>
+                                                    <td>".$row["MOBILE_NO"]."</td>
+                                                    <td>".$row["LAST_BUY_DATE"]."</td>
+                                                </tr>
+                                                ";
+                                                $GLOBALS['pac']=$row["PACKAGE_NO"];
+                                            }
                                         }
 
                                     }
@@ -233,22 +236,108 @@
                                         $r= oci_execute($stid);
                                         $sl_no=1;
 
-                                        while($row=oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)){
-                                            echo "
-                                            <tr>
-                                                <td>$sl_no</td>
-                                                <td>".$row["ITEM_NAME"]."</td>
-                                                <td>".$row["PK3"]."</td>
-                                                <td>".$row["UNIT_PRICE"]."</td>
-                                                <td>
-                                                    <form method='post' >
-                                                        <input type='number' id='quantity' name='quantity' min='1' max='3'>
-                                                    </form>
-                                                </td>
-                                            </tr>
-                                            ";
-                                            $sl_no=$sl_no+1;
-                                        }
+                                        // while($row=oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)){
+                                        //     echo "
+                                        //     <tr>
+                                        //         <td>$sl_no</td>
+                                        //         <td>".$row["ITEM_NAME"]."</td>
+                                        //         <td>".$row["PK3"]."</td>
+                                        //         <td>".$row["UNIT_PRICE"]."</td>
+                                        //         <td>
+                                        //             <form method='post' >
+                                        //                 <input type='number' id='quantity$sl_no' name='quantity' min='1' max='3'>
+                                        //             </form>
+                                        //         </td>
+                                        //     </tr>
+                                        //     ";
+                                        //     $sl_no=$sl_no+1;
+                                        // }
+                                        $row=oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS);
+                                        echo "
+                                        <tr>
+                                            <td>1</td>
+                                            <td>".$row["ITEM_NAME"]."</td>
+                                            <td>".$row["PK3"]."</td>
+                                            <td>".$row["UNIT_PRICE"]."</td>
+                                            <td>
+                                                <form method='post' >
+                                                    <input type='number' id='quantity1' name='quantity1' min='1' max='3'>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        ";
+                                        $row=oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS);
+                                        echo "
+                                        <tr>
+                                            <td>2</td>
+                                            <td>".$row["ITEM_NAME"]."</td>
+                                            <td>".$row["PK3"]."</td>
+                                            <td>".$row["UNIT_PRICE"]."</td>
+                                            <td>
+                                                <form method='post' >
+                                                    <input type='number' id='quantity2' name='quantity2' min='1' max='3'>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        ";
+                                        $row=oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS);
+                                        echo "
+                                        <tr>
+                                            <td>3</td>
+                                            <td>".$row["ITEM_NAME"]."</td>
+                                            <td>".$row["PK3"]."</td>
+                                            <td>".$row["UNIT_PRICE"]."</td>
+                                            <td>
+                                                <form method='post' >
+                                                    <input type='number' id='quantity3' name='quantity3' min='1' max='3'>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        ";
+                                        $row=oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS);
+                                        echo "
+                                        <tr>
+                                            <td>4</td>
+                                            <td>".$row["ITEM_NAME"]."</td>
+                                            <td>".$row["PK3"]."</td>
+                                            <td>".$row["UNIT_PRICE"]."</td>
+                                            <td>
+                                                <form method='post' >
+                                                    <input type='number' id='quantity4' name='quantity4' min='1' max='3'>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        ";
+                                        $row=oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS);
+                                        echo "
+                                        <tr>
+                                            <td>5</td>
+                                            <td>".$row["ITEM_NAME"]."</td>
+                                            <td>".$row["PK3"]."</td>
+                                            <td>".$row["UNIT_PRICE"]."</td>
+                                            <td>
+                                                <form method='post' >
+                                                    <input type='number' id='quantity5' name='quantity5' min='1' max='3'>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        ";
+                                        $row=oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS);
+                                        echo "
+                                        <tr>
+                                            <td>6</td>
+                                            <td>".$row["ITEM_NAME"]."</td>
+                                            <td>".$row["PK3"]."</td>
+                                            <td>".$row["UNIT_PRICE"]."</td>
+                                            <td>
+                                                <form method='post' >
+                                                    <input type='number' id='quantity5' name='quantity6' min='1' max='3'>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                        ";
+                                        
+
                                     }
                                 ?>
                             </tbody>
@@ -263,8 +352,19 @@
                         <!-- end Result Table -->
                         <!-- ============================================================== -->
                         <div class="col-md-12 text-center">
-                            <button type="button" class="btn btn-success">Submit</button>
-                            <button type="button" class="btn btn-danger">Cancel</button>
+                            <form method="post">
+                                <button type="submit1" class="btn btn-success" name="submit1" value="submit1val">Submit</button>
+                            </form>
+                            <!-- <button type="button" class="btn btn-danger" name="cancel">Cancel</button> -->
+                            <?php
+                                if($_SERVER['REQUEST_METHOD']=='POST'){
+                                    
+                                    if($_POST['submit1']=='submit1val'){
+                                        $order1=$_POST['quantity1'];
+                                        echo $order1;
+                                    }
+                                }
+                            ?>
                         </div>
                     </div>
 

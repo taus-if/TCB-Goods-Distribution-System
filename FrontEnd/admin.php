@@ -74,7 +74,7 @@ if (!$conn) {
             <li class="dropdown"><a href="#" class="active"><span><?php echo $uname ?></span> <i class="bi bi-chevron-down"></i></a>
               <ul>
                 <!-- <li><a href="admin_profile.php">Profile</a></li> -->
-                <li><a href="notification.html">Notification</a></li>
+                <li><a href="notification.php">Notification</a></li>
                 <li><a href="login.php">Log out</a></li>
               </ul>
             </li>
@@ -101,7 +101,7 @@ if (!$conn) {
 
           <div class="col-md-3 col-lg-3 ">
             <div class="card d-flex align-items-stretch outterround">
-              <a href="storage.html" class="stretched-link"></a>
+              <a href="storage.php" class="stretched-link"></a>
               <i class="bi bi-building custom-icon d-flex justify-content-center"></i>
               <div class="card_title d-flex justify-content-center">
                 <p>Storage</p>
@@ -165,7 +165,7 @@ if (!$conn) {
 
           <div class="col-md-4 col-lg-4 ">
             <div class="card d-flex align-items-stretch outterround">
-              <a href="admin.php" class="stretched-link"></a>
+              <a href="allocategoods.php" class="stretched-link"></a>
               <i class="bi bi-box-arrow-up-right custom-icon d-flex justify-content-center"></i>
               <div class="card_title d-flex justify-content-center">
                 <p>Allocate Goods</p>

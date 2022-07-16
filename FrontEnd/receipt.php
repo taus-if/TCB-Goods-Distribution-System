@@ -1,3 +1,28 @@
+<?php
+session_start();
+$uname = $_SESSION['uname'];
+$conn = oci_connect('XE', 'XE', 'localhost/xe')
+  or die(oci_error());
+
+if (!$conn) {
+  echo "not connected";
+} else {
+    $name = $_GET["name"];
+    $dealer_id = $_GET["id"];
+    $dealer = "select dealer-info.email,customer-info.mobile-no,customer-info.nid from customer-info natural join distribution-area natural join dealer-area natural join dealer-info 
+                where customer_info.name = $name and dealer-info.dealer-id = $dealer_id";
+    
+    $stidd = oci_parse($conn, $dealer);
+    $rr = oci_execute($stidd);
+    $items = "select item-name,total-spent,last-buy-date,amount(kg) from customer-expenditure where nid = $dealer->nid"
+    $stid = oci_parse($conn, $items);
+    $r = oci_execute($stid);
+}
+
+
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -231,39 +256,31 @@
             <div class="container d-flex justify-content-between">
 
                 <div class="logo">
-                    <!-- <h1><a href="index.php"><span>e</span>Business</a></h1> -->
-                    <!-- Uncomment below if you prefer to use an image logo -->
                     <div class="fullnavname">
-                        <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt=""
-                                class="img-fluid"><span class="navname">Trading Corporation of Bangladesh</span></a>
+                        <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt="" class="img-fluid"><span class="navname">Trading Corporation of Bangladesh</span></a>
                     </div>
-
                     <div class="shortnavname">
-
-                        <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt=""
-                                class="img-fluid"><span class="navname shortnavname">TCB</span></a>
+                        <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt="" class="img-fluid"><span class="navname shortnavname">TCB</span></a>
                     </div>
-
                 </div>
 
                 <nav id="navbar" class="navbar">
                     <ul>
                         <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
-                        <!-- <li><a class="nav-link scrollto active" href="">Admin</a></li> -->
-                        <li class="dropdown"><a href="#"><span>username</span> <i class="bi bi-chevron-down"></i></a>
+                        <li class="dropdown"><a href="#"><span><?php echo $uname ?></span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
-                              <li><a href="admin_profile.php">Profile</a></li>
-                              <!-- <li><a href="notification.html">Notification</a></li> -->
-                              <li><a href="/logout">Log out</a></li>
+                                <!-- <li><a href="admin_profile.php">Profile</a></li> -->
+                                <li><a href="/logout">Log out</a></li>
                             </ul>
-                          </li>
+                        </li>
 
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
-                </nav><!-- .navbar -->
-
+                </nav>
+                <!-- .navbar -->
             </div>
-        </header><!-- End Header -->
+        </header>
+        <!-- End Header -->
         
         <!-- Receipt Part -->
 
@@ -279,7 +296,13 @@
 
             <div class="contact">
               <div class="contact-content">
-                <div class="email">Email : company@gmail.com</div>
+                <div class="email">
+                  <?php
+                    
+                    echo dealer->email
+
+                   ?>
+                </div>
                 <!-- <div class="number">Number : 561-786-345</div> -->
               </div>
              </div>
@@ -294,7 +317,7 @@
 
             <div class="des">
 
-              <p class="issue">Issued : <span>Apr,12,2022</span></p>
+              <p class="issue">Issued : <?php echo $items-> last-buy-date?></p>
 
             </div>
 
@@ -309,10 +332,9 @@
             
             <div class="billed-sec">
               <div class="name">
-                Md.Navidul Hoque
+              <?php echo $name?>
               </div>
-              <p>hnavidul@gmail.com</p>
-              <p>+08801700763325</p>
+              <p><?php echo dealer-> mobile-no?></p>
               
             </div>
 
@@ -338,28 +360,20 @@
               <th>Product Name</th>
               <th>Qty</th>
               <th>Unit Price </th>
-              <th>Sub Total</th>
-              <th>Shipping</th>
               <th>Total</th>
             </tr>
-            <tr>
-              <td>1</td>
-              <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam, consectetur!</td>
-              <td>2 piece</td>
-              <td>250 BDT</td>
-              <td>250 BDT</td>
-              <td>0 BDT</td>
-              <td>500 BDT</td>
-            </tr>
-            <tr>
-              <td>1</td>
-              <td>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Totam, consectetur!</td>
-              <td>2 piece</td>
-              <td>250 BDT</td>
-              <td>250 BDT</td>
-              <td>0 BDT</td>
-              <td>500 BDT</td>
-            </tr>
+            <?php
+                                    while ($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
+                                      $n = 1;
+                                        echo "<tr>
+                                        <td>" . $n . "</td>
+                                        <td>" . $row["item-name"] . "</td>
+                                        <td>" . $row["amount(kg)"] . "</td>
+                                        <td>" . $row["total-spent"] . "</td>
+                                        // <td>" . $row["DEALER_ID"] . "</td> 
+                                    </tr>";
+                                    }
+            ?>
             
           </table>
           </div>

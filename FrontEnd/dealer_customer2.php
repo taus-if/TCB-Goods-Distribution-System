@@ -13,61 +13,77 @@ if (!$conn) {
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <title>Trading Corporation of Bangladesh</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
 
-    <title>Trading Corporation of Bangladesh</title>
-    <meta content="" name="description">
-    <meta content="" name="keywords">
+  <!-- Favicons -->
+  <link href="assets/img/favicon.png" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
-    <!-- Favicons -->
-    <link href="assets/img/favicon.png" rel="icon">
-    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900"
+    rel="stylesheet">
 
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,400i,600,700|Raleway:300,400,400i,500,500i,700,800,900" rel="stylesheet">
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="//cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
-    <style>
-      nav img{
-        width: 70px;
-      }
-    </style>
+  <!-- Template Main CSS File -->
+  <link href="assets/css/style.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="newcss.css"> -->
+    
   </head>
   <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a href="../index.php"> <img src="assets/img/tcblogo-removebg-preview (1).png" alt="" class="img-fluid"> </a>
-    <a class="navbar-brand" href="#">Trading Corporation of Bangladesh</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <header id="header" class="fixed-top d-flex align-items-center">
+      <div class="container d-flex justify-content-between">
 
-    <div class="collapse navbar-collapse float-end" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          <?php echo $uname ?>
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Profile</a>
-            <a class="dropdown-item" href="#">Log Out</a>
-        </li>
-      </ul>
-      <!-- <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form> -->
-    </div>
-  </nav>
+        <div class="logo">
+          <!-- <h1><a href="index.php"><span>e</span>Business</a></h1> -->
+          <!-- Uncomment below if you prefer to use an image logo -->
+          <div class="fullnavname">
+            <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt="" class="img-fluid"><span
+                class="navname">Trading Corporation of Bangladesh</span></a>
+          </div>
 
-  <main>
+          <div class="shortnavname">
+
+            <a href="../index.php"><img src="assets/img/tcblogo-removebg-preview (1).png" alt="" class="img-fluid"><span
+                class="navname shortnavname">TCB</span></a>
+          </div>
+
+        </div>
+
+        <nav id="navbar" class="navbar">
+          <ul>
+            <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
+            <!-- <li><a class="nav-link scrollto active" href="dealer2.php">Dealer</a></li> -->
+            <!-- <li><a class="nav-link scrollto" href="">Notification</a></li> -->
+            <li class="dropdown"><a href="#"><span><?php echo $uname?></span> <i class="bi bi-chevron-down"></i></a>
+              <ul>
+                <li><a href="dealer_profile.php">Profile</a></li>
+                <!-- <li><a href="notification.html">Notification</a></li> -->
+                <li><a href="/logout">Log out</a></li>
+              </ul>
+            </li>
+          </ul>
+          <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
+
+      </div>
+    </header><!-- End Header -->
+
+
+
+  <main id="main" style="margin-top: 80px;">
     <div class="container">
       <h1 class="text-center">Customers under me</h1>
     </div>
@@ -105,7 +121,28 @@ if (!$conn) {
     </div>
   </main>
 
+  <footer class="fixed-bottom">
+      <div class="footer-area-bottom">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+              <div class="copyright text-center">
+                <p>
+                  &copy; Copyright <strong>TCB BD </strong>. All Rights Reserved
+                </p>
+              </div>
+              <div class="credits">
 
+                Designed by <a href="">Rifat</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer><!-- End  Footer -->
+
+    
+    
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>

@@ -1,13 +1,17 @@
 <?php
 session_start();
-$uname = $_SESSION['uname'] ;//or 
+$uname = $_SESSION['uname']; //or 
 $conn = oci_connect('XE', 'XE', 'localhost/xe')
     or die(oci_error());
 
 if (!$conn) {
     echo "not connected";
 } else {
+    // if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+
+
 }
+// }
 
 ?>
 
@@ -71,7 +75,7 @@ if (!$conn) {
                         <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
                         <li class="dropdown"><a href="#"><span><?php echo $uname ?></span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
-                                <!-- <li><a href="dealer_profile.php">Profile</a></li> -->
+                                <li><a href="notification.php">Notification</a></li>
                                 <li><a href="/logout">Log out</a></li>
                             </ul>
                         </li>
@@ -106,13 +110,16 @@ if (!$conn) {
                                             <nav aria-label="breadcrumb">
                                                 <ol class="breadcrumb">
                                                     <li class="breadcrumb-item"><a href="dealer2.php" class="breadcrumb-link">Dealer</a></li>
-                                                    <li class="breadcrumb-item active" aria-current="page">Package
-                                                        Information</li>
+                                                    <li class="breadcrumb-item active" aria-current="page">Package Information</li>
                                                 </ol>
+                                                <!-- <div class="col-md-12 text-center">
+                                                    <button type="button" class="btn btn-success" id="demo" onclick="myFunction()">Update package</button>
+                                                </div> -->
+
                                             </nav>
                                         </div>
 
-                                    </div> 
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -129,7 +136,7 @@ if (!$conn) {
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Items No</th>
+                                <th>Items no</th>
                                 <th>Item Name</th>
                                 <th>Package 1</th>
                                 <th>Package 2</th>
@@ -156,13 +163,91 @@ if (!$conn) {
                                 </tr>
                                 ";
                             }
+                            // $row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS);
+                            // while($row['SL_NO']!=NULL)
+                            // {
+
+                            // }
                             ?>
                         </tbody>
 
                     </table>
-                    <div class="col-md-12 text-center">
-                        <button type="button" class="btn btn-success" id="demo" onclick="myFunction()">Update package</button>
+                    <div class="text-center col-md-12">
+                        <h2>Update Packages</h2>
                     </div>
+                    <!-- <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="dest_from">From</label>
+                            <span role="status" aria-live="polite" class="ui-helper-hidden-accessible">2 results are available, use up and down arrow keys to navigate.</span><input type="text" class="form-control jqchars  ui-autocomplete-input" id="dest_from" name="dest_from" placeholder="From Station" maxlength="15" value="" autocomplete="off">
+                        </div>
+                    </div> -->
+                    <div class="container">
+                        <div class="row">
+                            <div class=" text-center">
+                                <input class="" type='text' name="Pack_no" placeholder="Package no">
+                                <input type='text' name="item_name" placeholder="Item Name">
+                                <input type='text' name="amount" placeholder="Amount">
+
+                            </div>
+                            <div class="text-center" style="margin-top: 5px;">
+                                <!-- <button type="button" class="btn btn-primary">Cancel</button> -->
+                                <input type="submit" class="btn btn-warning" name="submit">
+                                <!--Update</button> // onclick="myFunction()" -->
+                            </div>
+                            <?php
+                            // $sqql = "select * from package";
+                            // $stiid = oci_parse($conn, $sqql);
+                            // $ri = oci_execute($stiid);
+                            //     while ($raw = oci_fetch_array($stiid, OCI_ASSOC + OCI_RETURN_NULLS)) {
+                            //         echo "
+                            //         <tr>
+                            //             <td>" . $raw['ITEM_NAME'] . "</td>
+                            //             <input type='text'>
+                            //             <td>" . $raw['UNIT'] . "</td>
+                            //             <br>
+                            //             </tr>";
+                            //         }
+
+                            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                                if (isset($_POST["submit"])) {
+
+                                    $pack_no = $_POST["Pack_no"];
+                                    $item_name = $_POST['item_name'];
+                                    $amount = $_POST['amount'];
+
+                                    $col = "pk" . $pack_no;
+                                    // echo $col;
+                                    $ssql = "UPDATE package
+                                    SET pk$pack_no = $amount
+                                        WHERE item_name='$item_name' ";
+
+                                    $sstid = oci_parse($conn, $ssql);
+                                    oci_execute($sstid);
+
+                                    // unset($pack_no);
+                                    // unset($item_name);
+                                    // unset($amount);
+
+                                    // $done = true;
+                                    // header("Location: " . $_SERVER['PHP_SELF']);
+                                    //  header("Location: admin_package.php");
+
+                                    // exit;
+                                }
+                            }
+                            ?>
+
+                        </div>
+                    </div>
+
+
+                    <!-- <ul class="form">
+                        <li>
+                            <input class="form-btn" type="button" name="name" value="Name">
+                            <input class="hidden-form" type="text" name="nm">
+                        </li>
+                    </ul> -->
+
 
                     <div class="page-breadcrumb">
                         <nav aria-label="breadcrumb">
@@ -215,11 +300,32 @@ if (!$conn) {
         <!-- Template Main JS File -->
         <script src="assets/js/main.js"></script>
         <script src="newjs.js"></script>
-        <script>
+        <!-- <script>
             function myFunction() {
-                document.getElementById("demo").style.color = "red";
+                // document.getElementById("demo").style.color = "red";
+                document.getElementById("demo").classList.toggle("show");
             }
-        </script>
+        </script> -->
+        <!-- <script>
+            $('.form-btn').click(function() {
+                $(this).next().toggleClass('show-form');
+            });
+
+            $('.form-btn').click(function() {
+                $(this).next().toggleClass('show-form');
+            });
+            .form {
+                float: left;
+                list - style: none;
+            }
+            .hidden - form {
+                visibility: hidden;
+            }
+            .show - form {
+                visibility: visible!important;
+            }
+    </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script> -->
 
     </div>
 

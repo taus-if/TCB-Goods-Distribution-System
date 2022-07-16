@@ -66,7 +66,7 @@ if (!$conn) {
                         <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
                         <li class="dropdown"><a href="#"><span><?php echo $uname ?></span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
-                                <!-- <li><a href="admin_profile.php">Profile</a></li> -->
+                                <li><a href="notification.php">Notification</a></li>
                                 <li><a href="/logout">Log out</a></li>
                             </ul>
                         </li>
@@ -174,6 +174,8 @@ if (!$conn) {
                                     $stidd = oci_parse($conn, $result);
                                     $rr = oci_execute($stidd);
                                     while ($row = oci_fetch_array($stidd, OCI_ASSOC + OCI_RETURN_NULLS)) {
+                                        $unome=$row["DEALER_ID"];
+                                        $_SESSION['aaa']=$unome;
                                         echo "<tr>
                                         <td>" . $row["APPLICANT_NAME"] . "</td>
                                         <td>" . $row["PERMANENT_ADDRESS"] . "</td>
@@ -206,6 +208,8 @@ if (!$conn) {
                                     // <td>12/05/22</td>
 
                                     while ($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
+                                        $unome=$row["DEALER_ID"];
+                                        $_SESSION['aaa']=$unome;
                                         echo
                                         "<tr>
                                             <td>" . $row["APPLICANT_NAME"] . "</td>

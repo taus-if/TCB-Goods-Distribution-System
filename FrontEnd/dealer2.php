@@ -121,7 +121,7 @@ if (!$conn) {
 
         <div class="row justify-content-center ">
 
-          <div class="col-md-3 col-lg-3 ">
+          <div class="col-md-4 col-lg-4 ">
             <div class="card d-flex align-items-stretch outterround">
               <a href="dealer_inventory.php" class="stretched-link"></a>
               <i class="bi bi-bag custom-icon d-flex justify-content-center"></i>
@@ -131,7 +131,7 @@ if (!$conn) {
             </div>
           </div>
 
-          <div class="col-md-3 col-lg-3 ">
+          <div class="col-md-4 col-lg-4 ">
             <div class="card d-flex align-items-stretch outterround">
               <a href="dealer_inventory2.php" class="stretched-link"></a>
               <i class="bi bi-bag custom-icon d-flex justify-content-center"></i>
@@ -141,7 +141,7 @@ if (!$conn) {
             </div>
           </div>
 
-          <div class="col-md-3 col-lg-3 ">
+          <div class="col-md-4 col-lg-4 ">
             <div class="card d-flex align-items-stretch outterround">
               <a href="dealer_customer2.php" class="stretched-link"></a>
               <i class="bi bi-file-earmark-person custom-icon d-flex justify-content-center"></i>
@@ -151,7 +151,11 @@ if (!$conn) {
             </div>
           </div>
 
-          <div class="col-md-3 col-lg-3 ">
+        </div>
+
+        <div class="row justify-content-center">
+
+          <div class="col-md-4 col-lg-4 ">
             <div class="card d-flex align-items-stretch outterround">
               <a href="package_info.php" class="stretched-link"></a>
               <i class="bi bi-box-seam custom-icon d-flex justify-content-center"></i>
@@ -161,13 +165,7 @@ if (!$conn) {
             </div>
           </div>
 
-          
-
-        </div>
-
-        <div class="row justify-content-center">
-
-          <div class="col-md-9 col-lg-9 ">
+          <!-- <div class="col-md-4 col-lg-4 ">
             <div class="card d-flex align-items-stretch outterround">
               <a href="Dealer_sell_Items.html" class="stretched-link"></a>
               <i class="bi bi-basket custom-icon d-flex justify-content-center"></i>
@@ -175,9 +173,9 @@ if (!$conn) {
                 <p>Sell Items</p>
               </div>
             </div>
-          </div>
+          </div> -->
 
-          <div class="col-md-3 col-lg-3 ">
+          <div class="col-md-4 col-lg-4  ">
             <div class="card d-flex align-items-stretch outterround">
               <a href="dealer_treasury.html" class="stretched-link"></a>
               <i class="bi bi-cash-coin custom-icon d-flex justify-content-center"></i>
@@ -186,13 +184,8 @@ if (!$conn) {
               </div>
             </div>
           </div>
-
-        </div>
-
-<<<<<<< HEAD
-        <div class="row justify-content-center">
-
-          <div class="col-md-12  ">
+          
+          <div class="col-md-4 ">
             <div class="card d-flex align-items-stretch outterround">
               <a href="Dealer_sell_Items.php" class="stretched-link"></a>
               <i class="bi bi-basket custom-icon d-flex justify-content-center"></i>
@@ -204,44 +197,49 @@ if (!$conn) {
 
         </div>
 
-=======
->>>>>>> 2fa4856c3f28ffbec31a8d026c4fd485c66e3ad0
+        <div class="row justify-content-center">
+
+         
+
       </div>
 
-    </main><!-- End #main -->
+      
+  </div>
+
+  </main><!-- End #main -->
 
 
 
-    <!-- ======= Footer ======= -->
-    <footer class="">
-      <div class="footer-area-bottom">
-        <div class="container">
-          <div class="row">
-            <div class="col-md-12 col-sm-12 col-xs-12">
-              <div class="copyright text-center">
-                <p>
-                  &copy; Copyright <strong>TCB BD </strong>. All Rights Reserved
-                </p>
-              </div>
+  <!-- ======= Footer ======= -->
+  <footer class="">
+    <div class="footer-area-bottom">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="copyright text-center">
+              <p>
+                &copy; Copyright <strong>TCB BD </strong>. All Rights Reserved
+              </p>
             </div>
           </div>
         </div>
       </div>
-    </footer><!-- End  Footer -->
+    </div>
+  </footer><!-- End  Footer -->
 
-    <div id="preloader"></div>
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <div id="preloader"></div>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
-    <!-- Vendor JS Files -->
-    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-    <script src="assets/vendor/php-email-form/validate.js"></script>
+  <!-- Vendor JS Files -->
+  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="assets/vendor/php-email-form/validate.js"></script>
 
-    <!-- Template Main JS File -->
-    <script src="assets/js/main.js"></script>
-    <!-- <script src="newjs.js"></script> -->
+  <!-- Template Main JS File -->
+  <script src="assets/js/main.js"></script>
+  <!-- <script src="newjs.js"></script> -->
 
   </div>
 

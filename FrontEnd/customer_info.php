@@ -149,8 +149,26 @@ if (!$conn) {
                         <!-- ============================================================== -->
                         <!-- Result Table -->
                         <!-- ============================================================== -->
+                        <!-- search button  -->
 
+                        <!-- by customer info  -->
+                        <div class="text-center">
+                            <form method="post">
+                                <input class="col-md-4" type="text" name="search1" placeholder="Search by customer info">
+                                <input class="" type="submit" name="submit">
+                                <!-- btn btn-info -->
+                            </form>
+
+                            <!-- by dealer  -->
+
+                            <form method="post">
+                                <input class="col-md-4 " type="text" name="search6" placeholder="Search by Dealer">
+                                <input class="" type="submit" name="submit2">
+                                <!-- btn btn-success -->
+                            </form>
+                        </div>
                         <table class="table">
+
                             <thead>
                                 <tr>
                                     <th>NAME</th>
@@ -159,46 +177,7 @@ if (!$conn) {
                                     <th>Income</th> <!-- Mobile no <br> -->
                                     <!-- <th>Dealer ID </th><br>Password -->
                                     <th>TCB card no</th>
-                                    <!-- <th>Organization name <br>Organization address <br>TIN number</th> -->
-                                    <!-- <th></th> -->
-                                </tr>
-                                <tr>
-                                    <th>
-                                        <form method="post">
-                                            <input class="col-lg-4" type="text" name="search1" placeholder="">
-                                            <input type="submit" name="submit">
-                                        </form>
-                                    </th>
-                                    <th>
-                                        <form method="post">
-                                            <input class="col-lg-4" type="text" name="search2" placeholder="">
-                                            <input type="submit" name="submit">
-                                        </form>
-                                    </th>
-                                    <th>
-                                        <form method="post">
-                                            <input class="col-lg-4" type="text" name="search3" placeholder="">
-                                            <input type="submit" name="submit">
-                                        </form>
-                                    </th>
-                                    <th>
-                                        <form method="post">
-                                            <input class="col-lg-4" type="text" name="search4" placeholder="">
-                                            <input type="submit" name="submit">
-                                        </form>
-                                    </th> <!-- Mobile no <br> -->
-                                    <th>
-                                        <form method="post">
-                                            <input class="col-lg-4" type="text" name="search5" placeholder="">
-                                            <input type="submit" name="submit">
-                                        </form>
-                                    </th><!-- <br>Password -->
-                                    <th>
-                                        <form method="post">
-                                            <input class="col-lg-4" type="text" name="search6" placeholder="">
-                                            <input type="submit" name="submit">
-                                        </form>
-                                    </th>
+                                    <th>Dealer name</th>
                                     <!-- <th>Organization name <br>Organization address <br>TIN number</th> -->
                                     <!-- <th></th> -->
                                 </tr>
@@ -208,11 +187,17 @@ if (!$conn) {
                                 if (isset($_POST["submit"])) {
 
                                     $name = $_POST["search1"];
-                                    $result = "SELECT * FROM customer_info WHERE name LIKE '%{$name}%' OR nid LIKE '%{$name}%' 
-                                                            OR occupation LIKE '%{$name}%' OR spouse LIKE '%{$name}%' OR 
-                                                            mobile_no LIKE '%{$name}%' OR tcb_card_no LIKE '%{$name}%' OR income LIKE '%{$name}%' OR 
-                                                            no_of_family_members LIKE '%{$name}%' OR area_code LIKE '%{$name}%' OR package_no LIKE '%{$name}%' OR
-                                                            date_of_birth LIKE '%{$name}%' OR age LIKE '%{$name}%' OR holding_no LIKE '%{$name}%' ";
+                                    $result = " SELECT customer_info.NAME, customer_info.MOBILE_NO, customer_info.DATE_OF_BIRTH,
+                                                customer_info.INCOME, customer_info.TCB_CARD_NO, dealer_info.APPLICANT_NAME
+                                                FROM customer_info , dealer_area, dealer_info 
+                                                WHERE customer_info.area_code=dealer_area.area_code and dealer_area.dealer_id=dealer_info.dealer_id AND
+                                                (customer_info.name LIKE '%{$name}%' OR customer_info.nid LIKE '%{$name}%' 
+                                                OR customer_info.occupation LIKE '%{$name}%' OR customer_info.spouse LIKE '%{$name}%' OR 
+                                                customer_info.mobile_no LIKE '%{$name}%' OR customer_info.tcb_card_no LIKE '%{$name}%' OR 
+                                                customer_info.income LIKE '%{$name}%' OR  customer_info.no_of_family_members LIKE '%{$name}%' OR 
+                                                customer_info.area_code LIKE '%{$name}%' OR customer_info.package_no LIKE '%{$name}%' OR
+                                                customer_info.date_of_birth LIKE '%{$name}%' OR customer_info.age LIKE '%{$name}%' OR 
+                                                customer_info.holding_no LIKE '%{$name}%' ) ";
 
                                     $stidd = oci_parse($conn, $result);
                                     $rr = oci_execute($stidd);
@@ -223,6 +208,42 @@ if (!$conn) {
                                         <td>" . $row["DATE_OF_BIRTH"] . "</td>
                                         <td>" . $row["INCOME"] . "</td>
                                         <td>" . $row["TCB_CARD_NO"] . "</td>  
+                                        <td>" . $row["APPLICANT_NAME"] . "</td> 
+                                    </tr>";
+                                    }
+
+                                    // while ($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
+                                    //     echo
+                                    //     "<tr>
+                                    //         <td>" . $row["APPLICANT_NAME"] . "</td>
+                                    //         <td>" . $row["PERMANENT_ADDRESS"] . "</td>
+                                    //         <td>" . $row["DATE_OF_BIRTH"] . "</td>
+                                    //         <td>" . $row["EMAIL"] . "</td>
+                                    //         <td>" . $row["DEALER_ID"] . "</td>  
+
+                                    //     </tr>";
+                                    // }
+                                } elseif (isset($_POST["submit2"])) {
+
+                                    $name = $_POST["search6"];
+                                    $result = " SELECT customer_info.NAME, customer_info.MOBILE_NO, customer_info.DATE_OF_BIRTH,
+                                                customer_info.INCOME, customer_info.TCB_CARD_NO, dealer_info.APPLICANT_NAME
+                                                FROM customer_info , dealer_area, dealer_info 
+                                                WHERE customer_info.area_code=dealer_area.area_code and dealer_area.dealer_id=dealer_info.dealer_id 
+                                                and ( dealer_info.applicant_name LIKE '%{$name}%' OR dealer_info.dealer_id LIKE '%{$name}%' 
+                                                OR dealer_info.organization_name LIKE '%{$name}%' OR dealer_info.email LIKE '%{$name}%' OR 
+                                                dealer_info.tin_number LIKE '%{$name}%' ) ";
+
+                                    $stidd = oci_parse($conn, $result);
+                                    $rr = oci_execute($stidd);
+                                    while ($row = oci_fetch_array($stidd, OCI_ASSOC + OCI_RETURN_NULLS)) {
+                                        echo "<tr>
+                                        <td>" . $row["NAME"] . "</td>
+                                        <td>" . $row["MOBILE_NO"] . "</td>
+                                        <td>" . $row["DATE_OF_BIRTH"] . "</td>
+                                        <td>" . $row["INCOME"] . "</td>
+                                        <td>" . $row["TCB_CARD_NO"] . "</td>
+                                        <td>" . $row["APPLICANT_NAME"] . "</td>  
                                         
                                     </tr>";
                                     }
@@ -244,7 +265,7 @@ if (!$conn) {
                                     $r = oci_execute($stid);
 
                                     $row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS);
-                                    while ($row<10) {
+                                    while ($row < 10) {
                                         echo
                                         "<tr>
                                             <td>" . $row["NAME"] . "</td>

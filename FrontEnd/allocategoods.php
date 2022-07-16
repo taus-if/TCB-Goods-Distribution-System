@@ -132,10 +132,11 @@ if (!$conn) {
               <thead>
                 <tr>
                   <th>dealer Id</th>
+                  <th>dealer Name</th>
                   <th>Item Name</th>
                   <th>Quantity</th>
-                  <!-- <th>Package 2</th>
-                                <th>Package 3</th>
+                   
+                  <!--              <th>Package 3</th>
                                 <th>Unit</th>
                                 <th></th> -->
                 </tr>
@@ -151,6 +152,7 @@ if (!$conn) {
                   echo "
                                 <tr>
                                     <td>" . $row['DEALER_ID'] . "</td>
+                                    <td>" . $row['APPLICANT_NAME']. "</td>
                                     <td>" . $row['ITEM_NAME'] . "</td>
                                     <td>" . $row['QUANTITY'] . "</td>
                                 </tr> ";
@@ -167,7 +169,75 @@ if (!$conn) {
 
             </table>
 
-            <table class="table">
+            <div class="text-center col-md-12">
+                        <h2>Allocate Goods to Dealers</h2>
+                    </div>
+                    <!-- <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="dest_from">From</label>
+                            <span role="status" aria-live="polite" class="ui-helper-hidden-accessible">2 results are available, use up and down arrow keys to navigate.</span><input type="text" class="form-control jqchars  ui-autocomplete-input" id="dest_from" name="dest_from" placeholder="From Station" maxlength="15" value="" autocomplete="off">
+                        </div>
+                    </div> -->
+                    <div class="container">
+                        <div class="row">
+                            <div class=" text-center">
+                                <input class="" type='text' name="deal_id" placeholder="Dealer ID">
+                                <input type='text' name="item_name" placeholder="Item Name">
+                                <input type='text' name="amount" placeholder="Amount to ADD">
+
+                            </div>
+                            <div class="text-center" style="margin-top: 5px;">
+                                <!-- <button type="button" class="btn btn-primary">Cancel</button> -->
+                                <input type="submit" class="btn btn-warning" name="submit">
+                                <!--Update</button> // onclick="myFunction()" -->
+                            </div>
+                            <?php
+                            // $sqql = "select * from package";
+                            // $stiid = oci_parse($conn, $sqql);
+                            // $ri = oci_execute($stiid);
+                            //     while ($raw = oci_fetch_array($stiid, OCI_ASSOC + OCI_RETURN_NULLS)) {
+                            //         echo "
+                            //         <tr>
+                            //             <td>" . $raw['ITEM_NAME'] . "</td>
+                            //             <input type='text'>
+                            //             <td>" . $raw['UNIT'] . "</td>
+                            //             <br>
+                            //             </tr>";
+                            //         }
+
+                            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                                if (isset($_POST["submit"])) {
+
+                                    $pack_no = $_POST["deal_id"];
+                                    $item_name = $_POST['item_name'];
+                                    $amount = $_POST['amount'];
+
+                                    $col = "pk" . $pack_no;
+                                    // echo $col;
+                                    $ssql = "UPDATE dealer_inventory2
+                                    SET quantity = ($amount + quantity)
+                                        WHERE item_name='$item_name' ";
+
+                                    $sstid = oci_parse($conn, $ssql);
+                                    oci_execute($sstid);
+
+                                    // unset($pack_no);
+                                    // unset($item_name);
+                                    // unset($amount);
+
+                                    // $done = true;
+                                    // header("Location: " . $_SERVER['PHP_SELF']);
+                                    //  header("Location: admin_package.php");
+
+                                    // exit;
+                                }
+                            }
+                            ?>
+
+                        </div>
+                    </div>
+
+            <!-- <table class="table">
               <thead>
                 <tr>
                   <th>Edit</th>
@@ -187,7 +257,7 @@ if (!$conn) {
                   <td data-label="Unit">Kg</td>
                   <td data-label="Prac">50</td>
                   <td data-label="Hit" id="av1">46</td>
-                  <!-- <td data-label="Missed">4</td> -->
+                  
                 </tr>
 
                 <tr>
@@ -197,7 +267,7 @@ if (!$conn) {
                   <td data-label="Unit">Kg</td>
                   <td data-label="Prac">50</td>
                   <td data-label="Hit">40</td>
-                  <!-- <td data-label="Missed">10</td> -->
+                  
                 </tr>
 
                 <tr>
@@ -207,7 +277,7 @@ if (!$conn) {
                   <td data-label="Unit">Litre</td>
                   <td data-label="Prac">15</td>
                   <td data-label="Hit">5</td>
-                  <!-- <td data-label="Missed">15</td> -->
+                  
                 </tr>
                 <tr>
                   <td data-label="edit"><button type="button">Login</button></td>
@@ -216,7 +286,7 @@ if (!$conn) {
                   <td data-label="Unit">Kg </td>
                   <td data-label="Prac">30</td>
                   <td data-label="Hit">25</td>
-                  <!-- <td data-label="Missed">4</td> -->
+                  
                 </tr>
 
                 <tr>
@@ -226,7 +296,7 @@ if (!$conn) {
                   <td data-label="Unit">kg </td>
                   <td data-label="Prac">50</td>
                   <td data-label="Hit">40</td>
-                  <!-- <td data-label="Missed">10</td> -->
+                  
                 </tr>
                 <script>
                   function adreto() {
@@ -246,7 +316,7 @@ if (!$conn) {
               </tbody>
 
 
-            </table>
+            </table> -->
 
             <div class="page-breadcrumb">
               <nav aria-label="breadcrumb">

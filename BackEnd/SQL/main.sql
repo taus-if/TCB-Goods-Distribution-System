@@ -236,7 +236,7 @@ insert into customer_info(nid, name, occupation, spouse, mobile_no, tcb_card_no,
 values('1903189467471', 'MN Alam Siddique', 'Shopkeeper', 'Alea begum','01782542129','3561783253', 'Male', 12000, to_date('19-05-1992', 'dd-mm-yyyy'),4,34, '10', 'ali road', '001', '3');
 
 insert into customer_info(nid, name, occupation, spouse, mobile_no, tcb_card_no, gender, income, date_of_birth,no_of_family_members,age, holding_no, road, area_code,package_no)
-values('1903189467788', 'Mahdi Muhtasim', 'Govt employee', 'Marjina begum','01782542548','3561789755', 'Male', 12000, to_date('19-05-1990', 'dd-mm-yyyy'),7,38, '16', 'ali road', '003', '1');
+values('1903189467788', 'Mahdi Motasim', ' Non Govt employee', 'Marjina khatun','01780042548','3561789799', 'Male', 125000, to_date('13-08-1988', 'dd-mm-yyyy'),7,39, '100', 'bisso road', '004', '1');
 
 
 
@@ -337,22 +337,60 @@ values('Lentil', 1000, to_date('28-06-2021', 'dd-mm-yyyy'), 'admin');
 
 
 insert into dealer_inventory2(item_name, quantity, dealer_id)
-values('Rice', 100, 123);
+values('Rice', 64, 123);
 
 insert into dealer_inventory2(item_name, quantity, dealer_id)
-values('Suger', 100, 123);
+values('Suger', 56, 123);
 
 insert into dealer_inventory2(item_name, quantity, dealer_id)
 values('Soyabin Oil', 100, 123);
 
 insert into dealer_inventory2(item_name, quantity, dealer_id)
-values('lentil', 100, 123);
+values('lentil', 101, 123);
 
 insert into dealer_inventory2(item_name, quantity, dealer_id)
-values('Onion', 100, 123);
+values('Onion', 52, 123);
 
 insert into dealer_inventory2(item_name, quantity, dealer_id)
 values('Potato', 100, 123);
+
+
+insert into dealer_inventory2(item_name, quantity, dealer_id)
+values('Rice', 35, 122);
+
+insert into dealer_inventory2(item_name, quantity, dealer_id)
+values('Suger', 92, 122);
+
+insert into dealer_inventory2(item_name, quantity, dealer_id)
+values('Soyabin Oil', 18, 122);
+
+insert into dealer_inventory2(item_name, quantity, dealer_id)
+values('lentil', 22, 122);
+
+insert into dealer_inventory2(item_name, quantity, dealer_id)
+values('Onion', 100, 122);
+
+insert into dealer_inventory2(item_name, quantity, dealer_id)
+values('Potato', 55, 122);
+
+
+insert into dealer_inventory2(item_name, quantity, dealer_id)
+values('Rice', 30, 121);
+
+insert into dealer_inventory2(item_name, quantity, dealer_id)
+values('Suger', 100, 121);
+
+insert into dealer_inventory2(item_name, quantity, dealer_id)
+values('Soyabin Oil', 10, 121);
+
+insert into dealer_inventory2(item_name, quantity, dealer_id)
+values('lentil', 100, 121);
+
+insert into dealer_inventory2(item_name, quantity, dealer_id)
+values('Onion', 50, 121);
+
+insert into dealer_inventory2(item_name, quantity, dealer_id)
+values('Potato', 60, 121);
 
 insert into dealer_inventory(item_name, date_added, quantity, dealer_id)
 values('Rice', to_date('14-06-2021', 'dd-mm-yyyy'), 100, 122);

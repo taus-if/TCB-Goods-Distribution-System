@@ -174,6 +174,8 @@ if (!$conn) {
                                     $stidd = oci_parse($conn, $result);
                                     $rr = oci_execute($stidd);
                                     while ($row = oci_fetch_array($stidd, OCI_ASSOC + OCI_RETURN_NULLS)) {
+                                        $unome=$row["DEALER_ID"];
+                                        $_SESSION['aaa']=$unome;
                                         echo "<tr>
                                         <td>" . $row["APPLICANT_NAME"] . "</td>
                                         <td>" . $row["PERMANENT_ADDRESS"] . "</td>
@@ -206,6 +208,8 @@ if (!$conn) {
                                     // <td>12/05/22</td>
 
                                     while ($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
+                                        $unome=$row["DEALER_ID"];
+                                        $_SESSION['aaa']=$unome;
                                         echo
                                         "<tr>
                                             <td>" . $row["APPLICANT_NAME"] . "</td>

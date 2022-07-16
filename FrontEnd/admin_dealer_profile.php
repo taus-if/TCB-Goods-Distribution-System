@@ -1,6 +1,6 @@
 <?php
 session_start();
-$unome = $_GET['$row["APPLICANT_NAME"]'];
+$unome = $_SESSION['aaa'];
 
 $uname = $_SESSION['uname'];
 $conn = oci_connect('XE', 'XE', 'localhost/xe')
@@ -9,7 +9,7 @@ $conn = oci_connect('XE', 'XE', 'localhost/xe')
 if (!$conn) {
     echo "not connected";
 } else {
-    $sql = "select * from dealer_info natural join dealer_area natural join dealer_inventory natural join distribution_area where dealer_id=$unome";
+    $sql = "select * from dealer_info natural join dealer_area natural join dealer_inventory natural join distribution_area where dealer_id='$unome'";
     $stid = oci_parse($conn, $sql);
     $r = oci_execute($stid);
 
@@ -175,7 +175,7 @@ if (!$conn) {
                                                     </div>
                                                     <div class="media">
                                                         <label>TIN number</label>
-                                                        <p><?php echo $aw['TIN_NUMBER'] ?></p>
+                                                        <p><?php echo $raw['TIN_NUMBER'] ?></p>
                                                     </div>
 
                                                     <!-- <div class="media">

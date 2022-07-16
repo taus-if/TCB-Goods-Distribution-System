@@ -9,7 +9,7 @@ $conn = oci_connect('XE', 'XE', 'localhost/xe')
 if (!$conn) {
     echo "not connected";
 } else {
-    $sql = "select * from dealer_info natural join dealer_area natural join dealer_inventory natural join distribution_area where dealer_id='$unome'";
+    $sql = "select * from dealer_info natural join dealer_area natural join dealer_inventory natural join distribution_area natural join info where dealer_id='$unome'";
     $stid = oci_parse($conn, $sql);
     $r = oci_execute($stid);
 
@@ -136,14 +136,13 @@ if (!$conn) {
                                 <div class="row align-items-center flex-row-reverse">
                                     <div class="col-lg-6">
                                         <div class="about-text go-to">
-                                            <h3 class="dark-color">About Me</h3>
+                                            <h3 class="dark-color">About <?php echo $unome ?></h3>
                                             <h6 class="theme-color lead">A Dealer of TCB food distribution system</h6>
                                             <p>
-                                                I, <mark><?php echo $raw["APPLICANT_NAME"] ?></mark> , deals products in <mark><?php echo "Area code " . $raw["AREA_CODE"] ?></mark>
-                                                <!-- which covers  <?php // while ($row) {echo  $row["UPAZILLA"] . "</td>" ;} 
-                                                                    ?> -->
-                                                of <?php echo $raw["ORGANIZATION_NAME"] ?>. My area is <?php echo $raw["UPAZILLA"] . " under " .
-                                                                                                            $raw["DISTRICT"] . " district. " ?>
+                                                dealer Id <?php echo $unome ?>, <mark><?php echo $raw["APPLICANT_NAME"] ?></mark> ,
+                                                deals products in <mark><?php echo "Area code " . $raw["AREA_CODE"] ?></mark>
+                                                of <?php echo $raw["ORGANIZATION_NAME"] ?> and his area is
+                                                <?php echo $raw["UPAZILLA"] . " under " . $raw["DISTRICT"] . " district. " ?>
                                             </p>
                                             <div class="row about-list">
                                                 <div class="col-md-6">
@@ -152,8 +151,9 @@ if (!$conn) {
                                                         <p> <?php echo $raw['DATE_OF_BIRTH'] ?></p>
                                                     </div>
                                                     <div class="media">
-                                                        <label>Age</label>
-                                                        <p>22 Yr</p>
+                                                        <label>E-mail</label>
+                                                        <p><?php echo $raw['EMAIL'] ?></p>
+
                                                     </div>
                                                     <!-- <div class="media">
                                                         <label>Chember</label>
@@ -170,8 +170,8 @@ if (!$conn) {
                                                         <p><?php echo $raw['DEALER_ID'] ?></p>
                                                     </div>
                                                     <div class="media">
-                                                        <label>E-mail</label>
-                                                        <p><?php echo $raw['EMAIL'] ?></p>
+                                                        <label>Password</label>
+                                                        <p><?php echo $raw['PASSWORD'] ?></p>
                                                     </div>
                                                     <div class="media">
                                                         <label>TIN number</label>
@@ -200,7 +200,7 @@ if (!$conn) {
                                                 <p class="m-0px font-w-600">Total Dealers</p>
                                             </div>
                                         </div> -->
-                                        <div class="col-6 col-lg-6">
+                                        <!-- <div class="col-6 col-lg-6">
                                             <div class="count-data text-center">
                                                 <h6 class="count h2" data-to="150" data-speed="150">150</h6>
                                                 <p class="m-0px font-w-600">Customres under me</p>
@@ -211,7 +211,7 @@ if (!$conn) {
                                                 <h6 class="count h2" data-to="850" data-speed="850">850</h6>
                                                 <p class="m-0px font-w-600">Availabe Packages</p>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <!-- <div class="col-6 col-lg-3">
                                             <div class="count-data text-center">
                                                 <h6 class="count h2" data-to="190" data-speed="190">190</h6>
@@ -222,24 +222,24 @@ if (!$conn) {
                                 </div>
                                 <div class="counter">
                                     <div class="row">
-                                        <div class="col-6 col-lg-3">
+                                        <div class="col-6 col-lg-4">
                                             <div class="count-data text-center">
-                                                <h6 class="count h2"><a href="dealer_inventory.php" style="color:#38CE24 ;">My Invetory</a></h6>
+                                                <h6 class="count h2"><a href="dealer_inventory.php" style="color:#38CE24 ;"><?php echo $unome ?>'s Invetory</a></h6>
                                             </div>
                                         </div>
-                                        <div class="col-6 col-lg-3">
+                                        <div class="col-6 col-lg-4">
                                             <div class="count-data text-center">
-                                                <h6 class="count h2"><a href="dealer_customer2.php" style="color:#38CE24 ;">My Customers</a></h6>
+                                                <h6 class="count h2"><a href="dealer_customer2.php" style="color:#38CE24 ;"><?php echo $unome ?>'s Customers</a></h6>
                                             </div>
                                         </div>
-                                        <div class="col-6 col-lg-3">
+                                        <!-- <div class="col-6 col-lg-3">
                                             <div class="count-data text-center">
                                                 <h6 class="count h2"><a href="package_info.php" style="color:#38CE24 ;">Package Info</a></h6>
                                             </div>
-                                        </div>
-                                        <div class="col-6 col-lg-3">
+                                        </div> -->
+                                        <div class="col-6 col-lg-4">
                                             <div class="count-data text-center">
-                                                <h6 class="count h2"><a href="dealer_treasury.html" style="color:#38CE24 ;">My Treasury</a></h6>
+                                                <h6 class="count h2"><a href="dealer_treasury.html" style="color:#38CE24 ;"><?php echo $unome ?>'s Treasury</a></h6>
                                             </div>
                                         </div>
                                     </div>

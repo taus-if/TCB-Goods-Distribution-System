@@ -36,7 +36,7 @@ insert into info(dealer_id, password) values('121', '121');
 insert into info(dealer_id, password) values('120', '120');
 
 create table package(
-    sl_no varchar2(8),
+    -- sl_no varchar2(8),
     item_name varchar2(30),
     pk1 number(4,1),
     pk2 number(4,1),
@@ -181,24 +181,30 @@ increment by 1
 nocycle;
 
 
+create sequence dealer_id_seq
+start with 1
+increment by 1
+nocycle;
 
-insert into package(sl_no, item_name, pk1, pk2, pk3, unit)
-values('1', 'Soyabin Oil', 3, 2, 1, 'ltr');
 
-insert into package(sl_no, item_name, pk1, pk2, pk3, unit)
-values('2', 'Sugar', 2, 2, 1, 'kg');
+
+insert into package( item_name, pk1, pk2, pk3, unit)
+values('Soyabin Oil', 3, 2, 1, 'ltr');
+
+insert into package( item_name, pk1, pk2, pk3, unit)
+values( 'Sugar', 2, 2, 1, 'kg');
 
 insert into package(sl_no, item_name, pk1, pk2, pk3, unit)
 values('3', 'Lentil', 2, 2, 1, 'kg');
 
-insert into package(sl_no, item_name, pk1, pk2, pk3, unit)
-values('4', 'Rice', 5, 5, 3, 'kg');
+insert into package( item_name, pk1, pk2, pk3, unit)
+values('Rice', 5, 5, 3, 'kg');
 
-insert into package(sl_no, item_name, pk1, pk2, pk3, unit)
-values('5', 'Onion', 3, 2, 1, 'kg');
+insert into package(item_name, pk1, pk2, pk3, unit)
+values( 'Onion', 3, 2, 1, 'kg');
 
-insert into package(sl_no, item_name, pk1, pk2, pk3, unit)
-values('6', 'Potato', 3, 3, 2, 'kg');
+insert into package(item_name, pk1, pk2, pk3, unit)
+values('Potato', 3, 3, 2, 'kg');
 
 
 

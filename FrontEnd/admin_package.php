@@ -7,11 +7,87 @@ $conn = oci_connect('XE', 'XE', 'localhost/xe')
 if (!$conn) {
     echo "not connected";
 } else {
-    // if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        if (isset($_POST["submit1"])) {
 
+            $pack_no = $_POST["Pack_no"];
+            $item_name = $_POST['item_name'];
+            $amount = $_POST['amount'];
+            echo $pack_no . $amount;
+            if ($pack_no == 1) {
+                $ssql = "UPDATE package
+                             SET pk1 = '$amount'
+                             WHERE item_name='$item_name' ";
+
+                $sstid = oci_parse($conn, $ssql);
+                oci_execute($sstid);
+            } elseif ($pack_no == 2) {
+                $ssql = "UPDATE package
+                             SET pk2 = '$amount'
+                             WHERE item_name='$item_name' ";
+
+                $sstid = oci_parse($conn, $ssql);
+                oci_execute($sstid);
+            } elseif ($pack_no == 3) {
+                $ssql = "   UPDATE package
+                                SET pk3 = '$amount'
+                                WHERE item_name='$item_name' ";
+
+                $sstid = oci_parse($conn, $ssql);
+                oci_execute($sstid);
+            } else {
+                "<script> alert('Your Package number is wrong');</script>";
+            }
+            // $ssql = "UPDATE package
+            // SET pk$pack_no = $amount
+            //     WHERE item_name='$item_name' ";
+
+            // $sstid = oci_parse($conn, $ssql);
+            // oci_execute($sstid);
+
+            // unset($pack_no);
+            // unset($item_name);
+            // unset($amount);
+
+            // $done = true;
+            // header("Location: " . $_SERVER['PHP_SELF']);
+            //  header("Location: admin_package.php");
+
+            // exit;
+        } elseif (isset($_POST["submit2"])) {
+
+            // $pack_no = $_POST["Pack_no"];
+            $item_name = $_POST['aitem_name'];
+            $amount1 = $_POST['amount1'];
+            $amount2 = $_POST['amount2'];
+            $amount3 = $_POST['amount3'];
+            $unit = $_POST['unit'];
+            // if ($pack_no == 1) {
+            $ssql = "insert into package(item_name, pk1, pk2, pk3, unit)
+            values('$item_name', '$amount1', '$amount2', '$amount3', '$unit') ";
+
+            $sstid = oci_parse($conn, $ssql);
+            oci_execute($sstid);
+            // } 
+
+        } elseif (isset($_POST["submit3"])) {
+
+            // $pack_no = $_POST["Pack_no"];
+            $item_name = $_POST['ritem_name'];
+            // if ($pack_no == 1) {
+            $ssql = "DELETE FROM package
+                     WHERE item_name='$item_name' ";
+
+            $sstid = oci_parse($conn, $ssql);
+            oci_execute($sstid);
+            // } 
+
+        } else {
+            echo "<script> alert('No Submit Button Works');</script>";
+        }
+    }
 }
-// }
 
 ?>
 
@@ -22,7 +98,7 @@ if (!$conn) {
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Trading Corporation of Bangladesh</title>
+    <title>Admin package</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -136,7 +212,7 @@ if (!$conn) {
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Items no</th>
+                                <!-- <th>Items no</th> -->
                                 <th>Item Name</th>
                                 <th>Package 1</th>
                                 <th>Package 2</th>
@@ -154,7 +230,6 @@ if (!$conn) {
                             while ($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
                                 echo "
                                 <tr>
-                                    <td>" . $row['SL_NO'] . "</td>
                                     <td>" . $row['ITEM_NAME'] . "</td>
                                     <td>" . $row['PK1'] . "</td>
                                     <td>" . $row['PK2'] . "</td>
@@ -173,68 +248,78 @@ if (!$conn) {
 
                     </table>
                     <div class="text-center col-md-12">
-                        <h2>Update Packages</h2>
+                        <h2>Update Amounts in Packages</h2>
                     </div>
-                    <!-- <div class="col-md-6">
-                        <div class="form-group">
-                            <label for="dest_from">From</label>
-                            <span role="status" aria-live="polite" class="ui-helper-hidden-accessible">2 results are available, use up and down arrow keys to navigate.</span><input type="text" class="form-control jqchars  ui-autocomplete-input" id="dest_from" name="dest_from" placeholder="From Station" maxlength="15" value="" autocomplete="off">
-                        </div>
-                    </div> -->
                     <div class="container">
                         <div class="row">
-                            <div class=" text-center">
-                                <input class="" type='text' name="Pack_no" placeholder="Package no">
-                                <input type='text' name="item_name" placeholder="Item Name">
-                                <input type='text' name="amount" placeholder="Amount">
-
-                            </div>
-                            <div class="text-center" style="margin-top: 5px;">
-                                <!-- <button type="button" class="btn btn-primary">Cancel</button> -->
-                                <input type="submit" class="btn btn-warning" name="submit">
-                                <!--Update</button> // onclick="myFunction()" -->
-                            </div>
+                            <form method="post">
+                                <div class=" text-center">
+                                    <input class="" type='text' name="Pack_no" placeholder="Package no">
+                                    <input type='text' name="item_name" placeholder="Item Name">
+                                    <input type='text' name="amount" placeholder="Amount">
+                                </div>
+                                <div class="text-center" style="margin-top: 5px; margin-bottom:10px">
+                                    <!-- <button type="button" class="btn btn-primary">Cancel</button> -->
+                                    <input type="submit" class="btn btn-warning" name="submit1">
+                                    <!--Update</button> // onclick="myFunction()" -->
+                                </div>
+                            </form>
                             <?php
-                            // $sqql = "select * from package";
-                            // $stiid = oci_parse($conn, $sqql);
-                            // $ri = oci_execute($stiid);
-                            //     while ($raw = oci_fetch_array($stiid, OCI_ASSOC + OCI_RETURN_NULLS)) {
-                            //         echo "
-                            //         <tr>
-                            //             <td>" . $raw['ITEM_NAME'] . "</td>
-                            //             <input type='text'>
-                            //             <td>" . $raw['UNIT'] . "</td>
-                            //             <br>
-                            //             </tr>";
-                            //         }
+                                // $pack_no = $_POST["Pack_no"];
+                                // $item_name = $_POST['item_name'];
+                                // $amount = $_POST['amount'];
+                                // echo $pack_no . $amount;
+                            ?>
 
-                            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                                if (isset($_POST["submit"])) {
+                        </div>
+                    </div>
 
-                                    $pack_no = $_POST["Pack_no"];
-                                    $item_name = $_POST['item_name'];
-                                    $amount = $_POST['amount'];
+                    <div class="text-center col-md-12">
+                        <h2>Add Items </h2>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <form method="post">
+                                <div class=" text-center">
+                                    <!-- <input class="" type='text' name="Pack_no" placeholder="Package no"> -->
+                                    <input type='text' name="aitem_name" placeholder="Item Name">
+                                    <input type='text' name="amount1" placeholder="Amount in Package 1">
+                                    <input type='text' name="amount2" placeholder="Amount in Package 2">
+                                    <input type='text' name="amount3" placeholder="Amount in Package 3">
+                                    <input type='text' name="unit" placeholder="Unit of Item">
+                                </div>
+                                <div class="text-center" style="margin-top: 5px; margin-bottom:10px">
+                                    <!-- <button type="button" class="btn btn-primary">Cancel</button> -->
+                                    <input type="submit" class="btn btn-info" name="submit2">
+                                    <!--Update</button> // onclick="myFunction()" -->
+                                </div>
+                            </form>
+                            <?php
 
-                                    $col = "pk" . $pack_no;
-                                    // echo $col;
-                                    $ssql = "UPDATE package
-                                    SET pk$pack_no = $amount
-                                        WHERE item_name='$item_name' ";
+                            ?>
 
-                                    $sstid = oci_parse($conn, $ssql);
-                                    oci_execute($sstid);
+                        </div>
+                    </div>
 
-                                    // unset($pack_no);
-                                    // unset($item_name);
-                                    // unset($amount);
+                    <div class="text-center col-md-12">
+                        <h2>Remove Items</h2>
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <form method="post">
+                                <div class=" text-center">
+                                    <!-- <input class="" type='text' name="Pack_no" placeholder="Package no"> -->
+                                    <input type='text' name="ritem_name" placeholder="Item Name to Remove">
+                                    <!-- <input type='text' name="amount" placeholder="Amount"> -->
+                                </div>
+                                <div class="text-center" style="margin-top: 5px; margin-bottom:10px">
+                                    <!-- <button type="button" class="btn btn-primary">Cancel</button> -->
+                                    <input type="submit" class="btn btn-danger" name="submit3">
+                                    <!--Update</button> // onclick="myFunction()" -->
+                                </div>
+                            </form>
+                            <?php
 
-                                    // $done = true;
-                                    // header("Location: " . $_SERVER['PHP_SELF']);
-                                    //  header("Location: admin_package.php");
-
-                                    // exit;
-                                }
-                            }
                             ?>
 
                         </div>

@@ -11,21 +11,18 @@ if (!$conn) {
     $sql = "select * from main_inventory";
     $stid = oci_parse($conn, $sql);
     $r = oci_execute($stid);
-    
-    if($_SERVER['REQUEST_METHOD']=='POST'){
 
-      if($_POST['addbtn']=='addvalue'){
-        $amount=(int) ($_POST['amount']);
-        $item=$_POST['product'];
-        $sql1 = "update main_inventory set Quantity=Quantity+$amount where ITEM_NAME='$item'";
-        $stid1=oci_parse($conn, $sql1);
-        oci_execute($stid1);
-        unset($amount);
-        unset($item);
-        header("Location: ".$_SERVER['PHP_SELF']);
-        exit;
-      }
-    }
+                  if($_SERVER['REQUEST_METHOD']=='POST'){
+
+                    if($_POST['addbtn']=='addval'){
+                      $amount=(int) ($_POST['amount']);
+                      $item=$_POST['product'];
+                      $sql1 = "update main_inventory set QUANTITY=(QUANTITY+$amount) where lower(ITEM_NAME)=lower('$item')";
+                      $stid1=oci_parse($conn, $sql1);
+                      oci_execute($stid1);
+                      header("Refresh:0");
+                    }
+                  }
 }
 ?>
 <!DOCTYPE html>
@@ -35,7 +32,7 @@ if (!$conn) {
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Trading Corporation of Bangladesh</title>
+    <title>Admin Storage</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
 
@@ -392,6 +389,7 @@ if (!$conn) {
                   <div class="sent-message">Your message has been sent. Thank you!</div>
                 </div>
                 <div class="text-center"><button type="submit" name="addbtn" type="submit" value="addval">Add</button></div>
+                
               </form>
                         </div>
                     </div>

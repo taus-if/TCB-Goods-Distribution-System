@@ -76,7 +76,7 @@
 
                 <nav id="navbar" class="navbar">
                     <ul>
-                        <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
+                        <li><a class="nav-link scrollto" href="dealer2.php">Home</a></li>
                         <li class="dropdown"><a href="#"><span><?php echo $uname; ?></span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                               <li><a href="dealer_profile.php">Profile</a></li>
@@ -167,8 +167,9 @@
                                         $r9=oci_execute($stid9);
                                         $GLOBALS['day']=$day;
                                     }else{
-                                        $GLOBALS['day']=1;
+                                        $GLOBALS['day']=100;
                                     }
+                                    // echo $GLOBALS['day'];
 
                                 ?>
                             </tbody>
@@ -294,7 +295,7 @@
                                                 $iname=$row['ITEM_NAME'];
                                                 $uprice=$row['UNIT_PRICE'];
                                                 $price=$uprice*$orderarr[$i];
-                                                echo $i;
+                                                // echo $i;
                                                 $total_price=$total_price+$price;
                                                 // echo $total_price;
                                                 // echo " ";
@@ -308,6 +309,10 @@
                                                 $r2=oci_execute($stid2);
                                                 $i=$i+1;
                                             }
+                                            $sql8="update customer_info set last_buy_date=sysdate where tcb_card_no='$cust_id'";
+                                            $stid8=oci_parse($conn, $sql8);
+                                            $r8=oci_execute($stid8);
+                                            echo "sell done";
                                         }else{
                                             echo "not able to purchase";
                                         }

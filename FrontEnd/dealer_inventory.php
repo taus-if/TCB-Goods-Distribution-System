@@ -153,7 +153,7 @@ if (!$conn) {
             <div class="row">
               <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                 <div class="page-header">
-                  <h2 class="pageheader-title" style="text-align: center;">MY INVENTORY</h2>
+                  <h2 class="pageheader-title" style="text-align: center;">INVENTORY RECORDS</h2>
                   <div>
                     <div class="page-breadcrumb">
                       <nav aria-label="breadcrumb">
@@ -209,9 +209,7 @@ if (!$conn) {
             <table class="table">
               <thead>
                 <tr>
-                  <th>Items No</th>
                   <th>Item Name</th>
-                  <th>Unit</th>
                   <th>Quantity</th>
                   <th>Date Added</th>
                   <th></th>
@@ -224,9 +222,7 @@ if (!$conn) {
               while ($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)) {
                 echo "
                     <tr>
-                    <td>1</td>
                     <td>" . $row['ITEM_NAME'] . "</td>
-                    <td>Kg</td>
                     <td>" . $row['QUANTITY'] . "</td>
                     <td>" . $row['DATE_ADDED'] . "</td>
                   </tr>

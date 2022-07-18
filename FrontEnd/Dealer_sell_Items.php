@@ -78,7 +78,7 @@
                         <li class="dropdown"><a href="#"><span><?php echo $uname; ?></span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                               <li><a href="dealer_profile.php">Profile</a></li>
-                              <li><a href="/logout">Log out</a></li>
+                              <li><a href="log_out.php">Log out</a></li>
                             </ul>
                           </li>
                     </ul>

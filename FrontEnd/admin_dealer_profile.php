@@ -1,7 +1,7 @@
 <?php
 session_start();
-$unome = $_SESSION['aaa'];
-
+// $unome = $_SESSION['aaa'];
+$unome = $_GET['un'];
 $uname = $_SESSION['uname'];
 $conn = oci_connect('XE', 'XE', 'localhost/xe')
     or die(oci_error());
@@ -78,7 +78,7 @@ if (!$conn) {
                         <li class="dropdown"><a href="#"><span><?php echo $uname ?></span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <li><a href="notification.php">Notification</a></li>
-                                <li><a href="/logout">Log out</a></li>
+                                <li><a href="log_out.php">Log out</a></li>
                             </ul>
                         </li>
 

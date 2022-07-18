@@ -1,5 +1,7 @@
 <?php
 session_start();
+echo "
+Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia, sed veniam. Blanditiis, voluptate dicta placeat totam ratione dignissimos quia, id quam harum voluptas debitis perspiciatis nemo obcaecati. Ex nisi quod in dolorum saepe ea iste ipsa! Minus inventore, iusto in distinctio tempore laboriosam aliquid maiores, dolores expedita reiciendis, temporibus quisquam. Numquam, consequatur? Nihil omnis voluptate facilis tempora, libero quasi mollitia nulla voluptatum earum delectus nostrum vel quibusdam ullam aspernatur commodi necessitatibus! Cum delectus hic neque ipsa necessitatibus quibusdam magni reprehenderit, non ipsum adipisci fuga, ipsam reiciendis inventore quod eveniet vero illum incidunt omnis iure obcaecati fugit repellat. Animi labore esse eos autem neque distinctio suscipit totam possimus, odio nobis numquam fugit odit voluptas reiciendis, assumenda molestiae ipsa accusamus mollitia nihil. Libero, culpa at aut rerum suscipit molestiae explicabo nulla vero error accusamus non. Dignissimos dolorem beatae ipsa labore velit inventore sit nihil sint optio voluptas exercitationem illo, voluptatibus dolor aliquam est rem saepe magni, perferendis quasi. Esse dolorum quisquam perferendis, in accusamus porro ullam unde adipisci dolorem a magnam facilis ut aliquam nemo odio. Debitis dolorem iure voluptatum amet provident reprehenderit ea minus ipsum quibusdam pariatur quae necessitatibus esse aperiam ullam labore aliquid hic totam optio illo, perspiciatis, repellendus consequatur soluta quia! Corrupti ut earum ratione veniam, adipisci dolorem id asperiores rerum nemo voluptatibus doloremque! Ullam, ex deserunt doloremque eaque soluta esse beatae ratione atque, obcaecati nihil at aliquam alias sapiente autem! Nulla reiciendis, fuga nostrum inventore quos nemo, ullam dolorem, omnis numquam itaque quam atque totam minima quo delectus. Ipsam, iste soluta quod repellendus expedita dolores quam doloribus fuga libero commodi exercitationem laboriosam ducimus unde voluptates, eveniet pariatur assumenda nihil esse? Et blanditiis laudantium error quasi non, consequatur similique aspernatur facere sed sit, culpa quidem assumenda dolor? Veritatis nobis recusandae eaque illo, vitae hic sunt quisquam voluptas aperiam ipsa a animi corrupti quam nisi? Dignissimos quidem cum modi harum vero reprehenderit, aliquid, adipisci error sequi provident natus. Dicta a vero in architecto ratione voluptatum ad rem aspernatur nam ipsum error aliquid libero exercitationem ipsa quasi sed autem quas facilis explicabo fugiat perspiciatis, tempore hic. Illo consequatur eaque in, tempora vitae animi tempore, laboriosam neque ipsam totam suscipit accusamus cumque nisi libero cum corporis assumenda? Non eveniet perferendis nam ab voluptate adipisci a, voluptates dolor natus sunt similique rerum magnam neque tempore et voluptatibus cum minima molestias unde assumenda error! Ullam numquam architecto dolore! Corporis nesciunt laborum animi mollitia aspernatur.";
 $uname = $_SESSION['uname'];
 $conn = oci_connect('XE', 'XE', 'localhost/xe')
     or die(oci_error());
@@ -67,7 +69,7 @@ if (!$conn) {
                         <li class="dropdown"><a href="#"><span><?php echo $uname ?></span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <li><a href="notification.php">Notification</a></li>
-                                <li><a href="/logout">Log out</a></li>
+                                <li><a href="log_out.php">Log out</a></li>
                             </ul>
                         </li>
 
@@ -182,9 +184,10 @@ if (!$conn) {
                                         <td>" . $row["DATE_OF_BIRTH"] . "</td>
                                         <td>" . $row["EMAIL"] . "</td>
                                         <td>" . $row["DEALER_ID"] . "</td> 
-                                        <td> <a href='admin_dealer_profile.php'> Profile </a> </td> 
+                                        <td> <a href='admin_dealer'> Profile </a> </td> 
                                         
                                     </tr>";
+                                    echo '<a href="#">fsdakfj</a>';
                                     }
                                     //$_GET['$row["APPLICANT_NAME"]']
 
@@ -217,7 +220,7 @@ if (!$conn) {
                                             <td>" . $row["DATE_OF_BIRTH"] . "</td>
                                             <td>" . $row["EMAIL"] . "</td>
                                             <td>" . $row["DEALER_ID"] . "</td>  
-                                            <td> <a href='admin_dealer_profile.php'> Profile </a> </td>
+                                            <td> <a href='admin_dealer_profile.php?un=".$row["DEALER_ID"]."'> Profile </a> </td>
                                             
                                         </tr>";
                                     }

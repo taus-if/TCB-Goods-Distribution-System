@@ -14,7 +14,7 @@ if (!$conn) {
     
     $stidd = oci_parse($conn, $dealer);
     $rr = oci_execute($stidd);
-    $items = "select item-name,total-spent,last-buy-date,amount(kg) from customer-expenditure where nid = $dealer->nid"
+    $items = "select item-name,total-spent,last-buy-date,amount(kg) from customer-expenditure where nid = $dealer->nid";
     $stid = oci_parse($conn, $items);
     $r = oci_execute($stid);
 }
@@ -270,7 +270,7 @@ if (!$conn) {
                         <li class="dropdown"><a href="#"><span><?php echo $uname ?></span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <!-- <li><a href="admin_profile.php">Profile</a></li> -->
-                                <li><a href="/logout">Log out</a></li>
+                                <li><a href="log_out.php">Log out</a></li>
                             </ul>
                         </li>
 
@@ -299,7 +299,7 @@ if (!$conn) {
                 <div class="email">
                   <?php
                     
-                    echo dealer->email
+                    echo $dealer->email;
 
                    ?>
                 </div>
@@ -334,7 +334,7 @@ if (!$conn) {
               <div class="name">
               <?php echo $name?>
               </div>
-              <p><?php echo dealer-> mobile-no?></p>
+              <p><?php echo $dealer-> mobile-no?></p>
               
             </div>
 

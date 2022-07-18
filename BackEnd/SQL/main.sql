@@ -3,6 +3,8 @@ drop sequence dealer_id_seq;
 
 drop trigger dealer_record_trigger;
 
+drop VIEW admin_dealer_profile_view ;
+
 drop table dealer_area;
 drop table items_distributed;
 drop table cust_exp;
@@ -473,3 +475,14 @@ today:=sysdate;
 select round(today-x) into var from dual;
 return var;
 end;
+
+-- admin_dealer_profile_view  - VIEW create 
+CREATE OR REPLACE VIEW admin_dealer_profile_view 
+AS
+SELECT *
+FROM dealer_info natural join dealer_area natural join 
+    dealer_inventory natural join distribution_area natural join info;
+-- WHERE  ;
+-- CUSTOMER JOIN DEPOSITOR
+-- USING(CUST_ID) JOIN ACCOUNT USING
+-- (ACCOUNT_ID)

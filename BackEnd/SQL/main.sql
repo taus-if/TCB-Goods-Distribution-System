@@ -1,5 +1,8 @@
 drop sequence tcb_card_no_seq;
+drop sequence dealer_id_seq;
+
 drop trigger dealer_record_trigger;
+
 drop table dealer_area;
 drop table items_distributed;
 drop table cust_exp;

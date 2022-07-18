@@ -16,8 +16,11 @@ if (!$conn) {
       $dealid = $_POST['deal_id'];
 
       $sql2 = "update dealer_inventory2 set quantity = (quantity+ $amount) where lower(item_name) = lower('$item') and dealer_id = '$dealid'";
+      $sql = "update main_inventory set quantity = (quantity - $amount) where lower(item_name) = lower('$item')";
 
       $stid1=oci_parse($conn, $sql2);
+      oci_execute($stid1);
+      $stid1=oci_parse($conn, $sql);
       oci_execute($stid1);
       header("Refresh:0");
     }

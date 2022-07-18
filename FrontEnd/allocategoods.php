@@ -15,6 +15,8 @@ if (!$conn) {
       $item=$_POST['item_name'];
       $dealid = $_POST['deal_id'];
 
+      if($item!= "nai"){
+
       $sql2 = "update dealer_inventory2 set quantity = (quantity+ $amount) where lower(item_name) = lower('$item') and dealer_id = '$dealid'";
       $sql = "update main_inventory set quantity = (quantity - $amount) where lower(item_name) = lower('$item')";
 
@@ -22,6 +24,11 @@ if (!$conn) {
       oci_execute($stid1);
       $stid1=oci_parse($conn, $sql);
       oci_execute($stid1);
+      }
+      else
+      {
+        echo "<script> alert('Please select item name'); </script>";
+      }
       header("Refresh:0");
     }
   }
@@ -200,10 +207,35 @@ if (!$conn) {
                     <div class="container">
                         <div class="row">
                           <form action="allocategoods.php" method="post">
-                            <div class=" text-center">
-                                <input class="" type='text' name="deal_id" placeholder="Dealer ID">
-                                <input type='text' name="item_name" placeholder="Item Name">
-                                <input type='text' name="amount" placeholder="Amount to ADD">
+                            <div class=" text-center row">
+                              <div class="col">
+                                <!-- <input class="" type='text' name="deal_id" placeholder="Dealer ID"> -->
+                                <div class="form-group w-70">
+                                  <input type="text" class="form-control" id="deal_id" name="deal_id" aria-describedby="emailHelp"
+                                    placeholder="Dealer ID" required>
+
+                                </div>
+                              </div>
+                              <div class="col">
+                                <!-- <input type='text' name="item_name" placeholder="Item Name"> -->
+                                <select class="form-select" aria-label="Default select example" name="item_name">
+                                  <option selected value="nai">Select Item Name</option>
+                                  <option value="rice">Rice</option>
+                                  <option value="sugar">Sugar</option>
+                                  <option value="lentil">Lentil</option>
+                                  <option value="soyabin oil">Soyabin Oil</option>
+                                  <option value="onion">Onion</option>
+                                  <option value="potato">Potato</option>
+                                  </select>
+                              </div>
+                              <div class="col">
+                                <!-- <input type='text' name="amount" placeholder="Amount to ADD"> -->
+                                <div class="form-group w-70">
+                                  <input type="text" class="form-control" id="amount" name="amount" aria-describedby="emailHelp"
+                                    placeholder="Amount to add" required>
+
+                                </div>
+                              </div>
 
                             </div>
                           

@@ -452,6 +452,17 @@ values('Rafat', 'adreto.khan@gmail.com', 'Emni', 'Best website in town RN');
 insert into feedback(fname, femail, fsubject, fmessage)
 values('Nijami', 'Nijami.khan@gmail.com', 'kisuna', 'Glad to see this site published');
 
+-- admin_dealer_profile_view  - VIEW create 
+CREATE OR REPLACE VIEW admin_dealer_profile_view 
+AS
+SELECT *
+FROM dealer_info natural join dealer_area natural join 
+    dealer_inventory natural join distribution_area natural join info;
+-- WHERE  ;
+-- CUSTOMER JOIN DEPOSITOR
+-- USING(CUST_ID) JOIN ACCOUNT USING
+-- (ACCOUNT_ID)
+
 
 create or replace trigger dealer_record_trigger
 before insert
@@ -476,13 +487,4 @@ select round(today-x) into var from dual;
 return var;
 end;
 
--- admin_dealer_profile_view  - VIEW create 
-CREATE OR REPLACE VIEW admin_dealer_profile_view 
-AS
-SELECT *
-FROM dealer_info natural join dealer_area natural join 
-    dealer_inventory natural join distribution_area natural join info;
--- WHERE  ;
--- CUSTOMER JOIN DEPOSITOR
--- USING(CUST_ID) JOIN ACCOUNT USING
--- (ACCOUNT_ID)
+

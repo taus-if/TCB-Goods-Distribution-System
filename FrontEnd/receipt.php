@@ -14,7 +14,7 @@ if (!$conn) {
     
     $stidd = oci_parse($conn, $dealer);
     $rr = oci_execute($stidd);
-    $items = "select item_name,totalspent,last_buy_date,amount from customer_expenditure where nid = $dealer->nid"
+    $items = "select item_name,totalspent,last_buy_date,amount from customer_expenditure where nid = $dealer.nid";
     $stid = oci_parse($conn, $items);
     $r = oci_execute($stid);
 }
@@ -99,7 +99,7 @@ if (!$conn) {
         color: #fff;
         padding: 20px;
         height: 135px;
-        background-color: #6a1b9a;
+        background-color: #38CE24;
       }
 
       .top-section .contact,
@@ -270,7 +270,7 @@ if (!$conn) {
                         <li class="dropdown"><a href="#"><span><?php echo $uname ?></span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <!-- <li><a href="admin_profile.php">Profile</a></li> -->
-                                <li><a href="/logout">Log out</a></li>
+                                <li><a href="log_out.php">Log out</a></li>
                             </ul>
                         </li>
 
@@ -290,8 +290,9 @@ if (!$conn) {
            <div class="top-section">
             <div class="address">
               <div class="address-content">
-                <h2>TCB</h2>
+                <h2>TCB - </h2>
               </div>
+              <p>Tranding Corporation of Bangladesh</p>
             </div>
 
             <div class="contact">
@@ -299,7 +300,7 @@ if (!$conn) {
                 <div class="email">
                   <?php
                     
-                    echo $dealer->email
+                    echo $dealer->email;
 
                    ?>
                 </div>

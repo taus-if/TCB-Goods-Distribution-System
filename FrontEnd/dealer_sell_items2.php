@@ -57,7 +57,7 @@ if (!$conn) {
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" href="#">Profile</a>
-            <a class="dropdown-item" href="#">Log Out</a>
+            <a class="dropdown-item" href="log_out.php">Log Out</a>
         </li>
       </ul>
       <!-- <form class="form-inline my-2 my-lg-0">

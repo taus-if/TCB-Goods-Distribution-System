@@ -36,6 +36,8 @@ if(!$conn){
             //$_SESSION['profile'] = $username;  
             $familynum = (int) ($_POST['familynum']);
 
+            $totincome = $cusincome;
+
             /*if(isset($cusname) && isset($cusocc) && isset($gender) && isset($spname) && isset($holdingno) && isset($roadno) && isset($wardno) && isset($union) && isset($upazilla) && isset($district) && isset($dob) && isset($cusincome) ){ */
             $sql = "insert into customer_info(nid, name, occupation, spouse, mobile_no, tcb_card_no, gender, income, date_of_birth,no_of_family_members,age, holding_no, road, area_code,package_no)
             values('$cust_nid', '$cusname', '$cusocc', '$spname','$mobile',concat('C',lpad(tcb_card_no_seq.nextval,6,'0')), '$gender', $cusincome, to_date('$dob', 'mm/dd/yyyy'), $familynum, TRUNC(months_between(sysdate, to_date('$dob','mm/dd/yyyy')) / 12), '$holdingno', '$roadno', '$arcode', '1')";
@@ -62,6 +64,8 @@ if(!$conn){
                     $fam_inc = $_POST['fam-inc-'.$i];
                     $fam_name = $_POST['fam-name-'.$i];
 
+                    $totincome = $totincome + $fam_inc;
+
                     $sqlex = "insert into family_info(member_nid, member_name, member_occupation, member_income, nid)
                     values('$fam_nid', '$fam_name', '$fam_occ', $fam_inc, '$cust_nid')";
                     $stid=oci_parse($conn, $sqlex);
@@ -70,6 +74,15 @@ if(!$conn){
                     unset($fam_occ);
                     unset($fam_inc);
                 }
+
+                $pack = '1';
+                $avgincome = $totincome/(double)($familynum+1);
+                if($avgincome<=3000) $pack = '3';
+                else if($avgincome<=5000) $pack = '2';
+
+                $sql = "update customer_info set package_no = '$pack' where nid = '$cust_nid'";
+                $stid=oci_parse($conn, $sql);
+                oci_execute($stid); 
 
                 unset($cust_nid);
                 unset($cusname);
@@ -182,7 +195,7 @@ if(!$conn){
                             <ul>
                                 <!-- <li><a href="admin_profile.php">Profile</a></li> -->
                                 <li><a href="notification.php">Notification</a></li>
-                                <li><a href="login.php">Log out</a></li>
+                                <li><a href="log_out.php">Log out</a></li>
                             </ul>
                         </li>
                     </ul>

@@ -17,9 +17,11 @@ if (!$conn) {
                     if($_POST['addbtn']=='addval'){
                       $amount=(int) ($_POST['amount']);
                       $item=$_POST['product'];
+                      if($item!="nai"){
                       $sql1 = "update main_inventory set QUANTITY=(QUANTITY+$amount) where lower(ITEM_NAME)=lower('$item')";
                       $stid1=oci_parse($conn, $sql1);
                       oci_execute($stid1);
+                      }
                       header("Refresh:0");
                     }
                   }
@@ -94,7 +96,7 @@ if (!$conn) {
                           <ul>
                             <li><a href="admin_profile.php">Profile</a></li>
                             <li><a href="notification.php">Notification</a></li>
-                            <li><a href="/logout">Log out</a></li>
+                            <li><a href="log_out.php">Log out</a></li>
                           </ul>
                         </li>
                     </ul>
@@ -377,10 +379,20 @@ if (!$conn) {
                   <div class="row">
                         <form action="storage.php" method="post" class="php-email-form">
                 <div class="form-group">
-                  <input type="text" name="amount" class="form-control" id="amount" placeholder="Enter amount">
+                                  <select class="form-select" aria-label="Default select example" name="product">
+                                  <option selected value="nai">Select Item Name</option>
+                                  <option value="rice">Rice</option>
+                                  <option value="sugar">Sugar</option>
+                                  <option value="lentil">Lentil</option>
+                                  <option value="soyabin oil">Soyabin Oil</option>
+                                  <option value="onion">Onion</option>
+                                  <option value="potato">Potato</option>
+                                  </select>
+                  <!-- <input type="text" name="amount" class="form-control" id="amount" placeholder="Enter amount"> -->
                 </div>
                 <div class="form-group mt-3">
-                  <input type="text" class="form-control" name="product" id="product" placeholder="Enter Product">
+                  <!-- <input type="text" class="form-control" name="product" id="product" placeholder="Enter Product"> -->
+                  <input type="text" name="amount" class="form-control" id="amount" placeholder="Enter amount">
                 </div>
                 
                 <div class="my-3">

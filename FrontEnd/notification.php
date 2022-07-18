@@ -76,7 +76,7 @@ if (!$conn) {
                             <ul>
                                 <!-- <li><a href="admin_profile.php">Profile</a></li> -->
                                 <!-- <li><a href="notification.php">Notification</a></li> -->
-                                <li><a href="/logout">Log out</a></li>
+                                <li><a href="log_out.php">Log out</a></li>
                             </ul>
                         </li>
 

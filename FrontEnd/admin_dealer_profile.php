@@ -1,7 +1,7 @@
 <?php
 session_start();
-$unome = $_SESSION['aaa'];
-
+// $unome = $_SESSION['aaa'];
+$unome = $_GET['un'];
 $uname = $_SESSION['uname'];
 $conn = oci_connect('XE', 'XE', 'localhost/xe')
     or die(oci_error());
@@ -9,7 +9,7 @@ $conn = oci_connect('XE', 'XE', 'localhost/xe')
 if (!$conn) {
     echo "not connected";
 } else {
-    $sql = "select * from dealer_info natural join dealer_area natural join dealer_inventory natural join distribution_area natural join info where dealer_id='$unome'";
+    $sql = "select * from admin_dealer_profile_view where dealer_id='$unome'";
     $stid = oci_parse($conn, $sql);
     $r = oci_execute($stid);
 
@@ -78,7 +78,7 @@ if (!$conn) {
                         <li class="dropdown"><a href="#"><span><?php echo $uname ?></span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <li><a href="notification.php">Notification</a></li>
-                                <li><a href="/logout">Log out</a></li>
+                                <li><a href="log_out.php">Log out</a></li>
                             </ul>
                         </li>
 

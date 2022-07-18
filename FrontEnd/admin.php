@@ -88,11 +88,11 @@ if (!$conn) {
 
 
     <main id="main" style="margin-top: 80px;" class="d-flex align-items-center">
-    //<?php
+    <?php
         // $sql = "select * from admin where username = '$uname' ";
         // $stid = oci_parse($conn, $sql);
         // $r = oci_execute($stid);
-    //?>
+    ?>
 
       <div class="container features">
 

@@ -229,11 +229,12 @@
                               $sql = "select * from package";
                               $stid = oci_parse($conn, $sql);
                               $r = oci_execute($stid);
+                              $sl_no=1;
 
                               while($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)){
                                 echo "
                                 <tr>
-                                    <td>".$row['SL_NO']."</td>
+                                    <td>$sl_no</td>
                                     <td>".$row['ITEM_NAME']."</td>
                                     <td>".$row['PK1']."</td>
                                     <td>".$row['PK2']."</td>
@@ -241,6 +242,7 @@
                                     <td>".$row['UNIT']."</td>
                                 </tr>
                                 ";
+                                $sl_no=$sl_no+1;
                               }
                               ?>
                             </tbody>

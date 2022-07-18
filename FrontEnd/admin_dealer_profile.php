@@ -9,7 +9,7 @@ $conn = oci_connect('XE', 'XE', 'localhost/xe')
 if (!$conn) {
     echo "not connected";
 } else {
-    $sql = "select * from dealer_info natural join dealer_area natural join dealer_inventory natural join distribution_area natural join info where dealer_id='$unome'";
+    $sql = "select * from admin_dealer_profile_view where dealer_id='$unome'";
     $stid = oci_parse($conn, $sql);
     $r = oci_execute($stid);
 

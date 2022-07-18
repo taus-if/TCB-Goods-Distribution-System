@@ -3,6 +3,8 @@ drop sequence dealer_id_seq;
 
 drop trigger dealer_record_trigger;
 
+drop VIEW admin_dealer_profile_view ;
+
 drop table dealer_area;
 drop table items_distributed;
 drop table cust_exp;
@@ -168,7 +170,7 @@ create table dealer_inventory(
 
 create table dealer_inventory2(
     item_name varchar2(40),
-    quantity number(10,2),
+    quantity number(10,2) check(quantity>0),
     dealer_id varchar2(30),
     
     constraint dealer_inventory2_dealer_id_fk foreign key(dealer_id) references dealer_info(dealer_id) on delete cascade,
@@ -384,13 +386,13 @@ insert into dealer_inventory2(item_name, quantity, dealer_id)
 values('Rice', 35, 122);
 
 insert into dealer_inventory2(item_name, quantity, dealer_id)
-values('Suger', 92, 122);
+values('Sugar', 92, 122);
 
 insert into dealer_inventory2(item_name, quantity, dealer_id)
 values('Soyabin Oil', 18, 122);
 
 insert into dealer_inventory2(item_name, quantity, dealer_id)
-values('lentil', 22, 122);
+values('Lentil', 22, 122);
 
 insert into dealer_inventory2(item_name, quantity, dealer_id)
 values('Onion', 100, 122);
@@ -403,13 +405,13 @@ insert into dealer_inventory2(item_name, quantity, dealer_id)
 values('Rice', 30, 121);
 
 insert into dealer_inventory2(item_name, quantity, dealer_id)
-values('Suger', 100, 121);
+values('Sugar', 100, 121);
 
 insert into dealer_inventory2(item_name, quantity, dealer_id)
 values('Soyabin Oil', 10, 121);
 
 insert into dealer_inventory2(item_name, quantity, dealer_id)
-values('lentil', 100, 121);
+values('Lentil', 100, 121);
 
 insert into dealer_inventory2(item_name, quantity, dealer_id)
 values('Onion', 50, 121);
@@ -450,8 +452,19 @@ values('Rafat', 'adreto.khan@gmail.com', 'Emni', 'Best website in town RN');
 insert into feedback(fname, femail, fsubject, fmessage)
 values('Nijami', 'Nijami.khan@gmail.com', 'kisuna', 'Glad to see this site published');
 
+-- admin_dealer_profile_view  - VIEW create 
+CREATE OR REPLACE VIEW admin_dealer_profile_view 
+AS
+SELECT *
+FROM dealer_info natural join dealer_area natural join 
+    dealer_inventory natural join distribution_area natural join info;
+-- WHERE  ;
+-- CUSTOMER JOIN DEPOSITOR
+-- USING(CUST_ID) JOIN ACCOUNT USING
+-- (ACCOUNT_ID)
 
-create or replace trigger dealer_record_trigger
+
+create or replace trigger dealer_record_trigger1
 before insert
 on dealer_inventory2
 for each row
@@ -460,6 +473,23 @@ begin
 
 insert into dealer_inventory(item_name, date_added, quantity, dealer_id)
 values(:new.item_name, sysdate, :new.quantity, :new.dealer_id);
+
+end;
+
+create or replace trigger dealer_record_trigger
+before update
+on dealer_inventory2
+for each row
+
+begin
+
+dbms_output.put_line(:new.quantity);
+dbms_output.put_line(:old.quantity);
+
+if :new.quantity>:old.quantity then
+insert into dealer_inventory(item_name, date_added, quantity, dealer_id)
+values(:new.item_name, sysdate, :new.quantity, :new.dealer_id);
+end if;
 
 end;
 
@@ -473,3 +503,5 @@ today:=sysdate;
 select round(today-x) into var from dual;
 return var;
 end;
+
+

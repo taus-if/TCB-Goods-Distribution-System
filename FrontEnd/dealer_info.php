@@ -182,10 +182,10 @@ if (!$conn) {
                                         <td>" . $row["DATE_OF_BIRTH"] . "</td>
                                         <td>" . $row["EMAIL"] . "</td>
                                         <td>" . $row["DEALER_ID"] . "</td> 
-                                        <td> <a href='admin_dealer'> Profile </a> </td> 
+                                        <td> <a href='admin_dealer_profile.php'> Profile </a> </td> 
                                         
                                     </tr>";
-                                    echo '<a href="#">fsdakfj</a>';
+                                    // echo '<a href="#">fsdakfj</a>';
                                     }
                                     //$_GET['$row["APPLICANT_NAME"]']
 

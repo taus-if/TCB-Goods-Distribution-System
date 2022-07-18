@@ -80,7 +80,7 @@
                         <li class="dropdown"><a href="#"><span><?php echo $uname; ?></span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                               <li><a href="dealer_profile.php">Profile</a></li>
-                              <li><a href="/logout">Log out</a></li>
+                              <li><a href="login.php">Log out</a></li>
                             </ul>
                           </li>
                     </ul>
@@ -283,7 +283,7 @@
                                             $iname=$row['ITEM_NAME'];
                                             $uprice=$row['UNIT_PRICE'];
                                             $price=$uprice*$orderarr[$i];
-                                            $i=$i+1;
+                                            echo $i;
                                             $total_price=$total_price+$price;
                                             // echo $total_price;
                                             // echo " ";
@@ -295,6 +295,7 @@
                                             $sql2="update dealer_inventory2 set quantity='$qn' where item_name='$in' and dealer_id='$di'";
                                             $stid2=oci_parse($conn, $sql2);
                                             $r2=oci_execute($stid2);
+                                            $i=$i+1;
                                         }
                                     }
                                 }

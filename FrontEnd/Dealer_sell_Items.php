@@ -78,7 +78,7 @@
                         <li class="dropdown"><a href="#"><span><?php echo $uname; ?></span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                               <li><a href="dealer_profile.php">Profile</a></li>
-                              <li><a href="/logout">Log out</a></li>
+                              <li><a href="login.php">Log out</a></li>
                             </ul>
                           </li>
                     </ul>
@@ -171,7 +171,7 @@
                                 ?>
                             </tbody>
                         </table>
-                        <div class="text-center"><button class="btn btn-success"><a href="sell_to_customer.php">Choose Items</a></button></div>
+                        <div class="text-center"><button class="btn btn-success"><a href="sell_to_customer.php" style="color: white">Choose Items</a></button></div>
                         <div class="page-breadcrumb">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb"></ol>

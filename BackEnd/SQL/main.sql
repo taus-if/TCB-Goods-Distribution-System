@@ -446,3 +446,14 @@ insert into dealer_inventory(item_name, date_added, quantity, dealer_id)
 values(:new.item_name, sysdate, :new.quantity, :new.dealer_id);
 
 end;
+
+create or replace function lastbuy(x in date)
+return number
+as
+today date;
+var number;
+begin
+today:=sysdate;
+select round(today-x) into var from dual;
+return var;
+end;

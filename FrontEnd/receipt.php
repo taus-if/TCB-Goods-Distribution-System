@@ -99,7 +99,7 @@ if (!$conn) {
         color: #fff;
         padding: 20px;
         height: 135px;
-        background-color: #6a1b9a;
+        background-color: #38CE24;
       }
 
       .top-section .contact,
@@ -290,8 +290,9 @@ if (!$conn) {
            <div class="top-section">
             <div class="address">
               <div class="address-content">
-                <h2>TCB</h2>
+                <h2>TCB - </h2>
               </div>
+              <p>Tranding Corporation of Bangladesh</p>
             </div>
 
             <div class="contact">

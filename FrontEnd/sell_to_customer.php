@@ -308,6 +308,7 @@
                                                 $r2=oci_execute($stid2);
                                                 $i=$i+1;
                                             }
+                                            // header("Location: receipt.php"); 
                                         }else{
                                             echo "not able to purchase";
                                         }

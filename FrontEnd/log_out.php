@@ -8,3 +8,5 @@ session_destroy();
 
 header("Location: login.php"); 
 ?>
+
+<!-- header("Location: receipt.php");  -->

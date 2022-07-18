@@ -148,16 +148,26 @@
                                     $sql = "select tcb_card_no, name, package_no, mobile_no, last_buy_date from customer_info where tcb_card_no ='$cust_id'";
                                     $stid = oci_parse($conn, $sql);
                                     $r = oci_execute($stid);
-                                    while($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)){
-                                        echo "
-                                        <tr>
-                                            <td>".$row["TCB_CARD_NO"]."</td>
-                                            <td>".$row["NAME"]."</td>
-                                            <td>".$row["PACKAGE_NO"]."</td>
-                                            <td>".$row["MOBILE_NO"]."</td>
-                                            <td>".$row["LAST_BUY_DATE"]."</td>
-                                        </tr>
-                                        ";
+                                    $row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS);
+                                    echo "
+                                    <tr>
+                                        <td>".$row["TCB_CARD_NO"]."</td>
+                                        <td>".$row["NAME"]."</td>
+                                        <td>".$row["PACKAGE_NO"]."</td>
+                                        <td>".$row["MOBILE_NO"]."</td>
+                                        <td>".$row["LAST_BUY_DATE"]."</td>
+                                    </tr>
+                                    ";
+                                    $GLOBALS['last_buy']=$row["LAST_BUY_DATE"];
+                                    if($GLOBALS['last_buy']!=NULL){
+                                        $sql9='BEGIN :var:=lastbuy(:lb); END;';
+                                        $stid9= oci_parse($conn, $sql9);
+                                        oci_bind_by_name($stid9, ':lb', $last_buy);
+                                        oci_bind_by_name($stid9, ':var', $day);
+                                        $r9=oci_execute($stid9);
+                                        $GLOBALS['day']=$day;
+                                    }else{
+                                        $GLOBALS['day']=1;
                                     }
 
                                 ?>
@@ -265,37 +275,41 @@
                             <?php
                                 if($_SERVER['REQUEST_METHOD']=='POST'){
                                     if($_POST['submit1']=='submit1val'){
-                                        $odr=$GLOBALS['total_order'];
-                                        $orderarr=array($odr+10);
-                                        for($x=1;$x<=$odr;$x++){
-                                            $s="quantity".$x;
-                                            $orderarr[$x]=$_POST[$s];
-                                        }
-                                        $sql="select package.item_name, pk3, unit_price from package, goods where package.item_name=goods.item_name";
-                                        $stid= oci_parse($conn, $sql);
-                                        $r= oci_execute($stid);
-                                        $i=1;
-                                        $total_price=0;
-                                        $sql1="select * from dealer_inventory2 where dealer_id='$uname'";
-                                        $stid1=oci_parse($conn, $sql1);
-                                        $r1=oci_execute($stid1);
-                                        while($row=oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)){
-                                            $iname=$row['ITEM_NAME'];
-                                            $uprice=$row['UNIT_PRICE'];
-                                            $price=$uprice*$orderarr[$i];
-                                            echo $i;
-                                            $total_price=$total_price+$price;
-                                            // echo $total_price;
-                                            // echo " ";
-                                            $row1=oci_fetch_array($stid1, OCI_ASSOC+OCI_RETURN_NULLS);
-                                            $row1['QUANTITY']=$row1['QUANTITY']-$orderarr[$i];
-                                            $qn=$row1['QUANTITY'];
-                                            $in=$row1['ITEM_NAME'];
-                                            $di=$row1['DEALER_ID'];
-                                            $sql2="update dealer_inventory2 set quantity='$qn' where item_name='$in' and dealer_id='$di'";
-                                            $stid2=oci_parse($conn, $sql2);
-                                            $r2=oci_execute($stid2);
-                                            $i=$i+1;
+                                        if($GLOBALS['day']>30){
+                                            $odr=$GLOBALS['total_order'];
+                                            $orderarr=array($odr+10);
+                                            for($x=1;$x<=$odr;$x++){
+                                                $s="quantity".$x;
+                                                $orderarr[$x]=$_POST[$s];
+                                            }
+                                            $sql="select package.item_name, pk3, unit_price from package, goods where package.item_name=goods.item_name";
+                                            $stid= oci_parse($conn, $sql);
+                                            $r= oci_execute($stid);
+                                            $i=1;
+                                            $total_price=0;
+                                            $sql1="select * from dealer_inventory2 where dealer_id='$uname'";
+                                            $stid1=oci_parse($conn, $sql1);
+                                            $r1=oci_execute($stid1);
+                                            while($row=oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)){
+                                                $iname=$row['ITEM_NAME'];
+                                                $uprice=$row['UNIT_PRICE'];
+                                                $price=$uprice*$orderarr[$i];
+                                                echo $i;
+                                                $total_price=$total_price+$price;
+                                                // echo $total_price;
+                                                // echo " ";
+                                                $row1=oci_fetch_array($stid1, OCI_ASSOC+OCI_RETURN_NULLS);
+                                                $row1['QUANTITY']=$row1['QUANTITY']-$orderarr[$i];
+                                                $qn=$row1['QUANTITY'];
+                                                $in=$row1['ITEM_NAME'];
+                                                $di=$row1['DEALER_ID'];
+                                                $sql2="update dealer_inventory2 set quantity='$qn' where item_name='$in' and dealer_id='$di'";
+                                                $stid2=oci_parse($conn, $sql2);
+                                                $r2=oci_execute($stid2);
+                                                $i=$i+1;
+                                            }
+                                        }else{
+                                            echo "not able to purchase";
                                         }
                                     }
                                 }

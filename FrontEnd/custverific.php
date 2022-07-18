@@ -2,6 +2,7 @@
 if (!isset($_SESSION)) {
     session_start();
 }
+$uname = $_SESSION['uname'];
 $exist = false;
 
 $conn = oci_connect('XE', 'XE', 'localhost/xe')
@@ -107,7 +108,13 @@ if(!$conn){
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
-                    <li><a class="nav-link scrollto active" href="">Admin</a></li>
+                    <li class="dropdown"><a href="#" class="active"><span><?php echo $uname ?></span> </span> <i class="bi bi-chevron-down"></i></a>
+                            <ul>
+                              <!-- <li><a href="admin_profile.php">Profile</a></li> -->
+                              <li><a href="notification.php">Notification</a></li>
+                              <li><a href="login.php">Log out</a></li>
+                            </ul>
+                          </li>
 
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>

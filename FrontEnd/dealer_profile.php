@@ -8,7 +8,7 @@ session_start();
 {
     $uname = $_SESSION['uname'];
 }
-    $conn = oci_connect('XE', 'XE', 'localhost/xe')
+$conn = oci_connect('XE', 'XE', 'localhost/xe')
     or die(oci_error());
 
 if (!$conn) {
@@ -19,6 +19,16 @@ if (!$conn) {
     $r = oci_execute($stid);
 
     $raw = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS);
+
+    $sqll = "SELECT COUNT(tcb_card_no)
+    FROM customer_info , dealer_area, dealer_info 
+    WHERE customer_info.area_code=dealer_area.area_code and dealer_area.dealer_id=dealer_info.dealer_id and dealer_info.dealer_id=$uname";
+
+    // $sql = "select * from admin where username = '$uname' ";
+    $stidl = oci_parse($conn, $sqll);
+    $rr = oci_execute($stidl);
+    // $row = oci_fetch($stidl);
+    $row = oci_fetch_array($stidl, OCI_ASSOC + OCI_RETURN_NULLS);
 }
 
 ?>
@@ -83,7 +93,7 @@ if (!$conn) {
                         <li class="dropdown"><a href="#"><span><?php echo $uname ?></span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <!-- <li><a href="profile.html">Profile</a></li> -->
-                                <li><a href="login.php">Log out</a></li>
+                                <li><a href="log_out.php">Log out</a></li>
                             </ul>
                         </li>
 
@@ -145,15 +155,16 @@ if (!$conn) {
                                             <h6 class="theme-color lead">A Dealer of TCB food distribution system</h6>
                                             <p>
                                                 I, <mark><?php echo $raw["APPLICANT_NAME"] ?></mark> , deals products in <mark><?php echo "Area code " . $raw["AREA_CODE"] ?></mark>
-                                                 <!-- which covers  <?php // while ($row) {echo  $row["UPAZILLA"] . "</td>" ;} ?> -->
-                                                 of <?php echo $raw["ORGANIZATION_NAME"] ?>. My area is <?php echo $raw["UPAZILLA"] . " under " .
-                                                 $raw["DISTRICT"] . " district. "?>
+                                                <!-- which covers  <?php // while ($row) {echo  $row["UPAZILLA"] . "</td>" ;} 
+                                                                    ?> -->
+                                                of <?php echo $raw["ORGANIZATION_NAME"] ?>. My area is <?php echo $raw["UPAZILLA"] . " under " .
+                                                                                                            $raw["DISTRICT"] . " district. " ?>
                                             </p>
                                             <div class="row about-list">
                                                 <div class="col-md-6">
                                                     <div class="media">
                                                         <label>Birthday</label>
-                                                        <p> <?php echo $raw[ 'DATE_OF_BIRTH' ] ?></p>
+                                                        <p> <?php echo $raw['DATE_OF_BIRTH'] ?></p>
                                                     </div>
                                                     <div class="media">
                                                         <label>Age</label>
@@ -165,23 +176,23 @@ if (!$conn) {
                                                     </div> -->
                                                     <div class="media">
                                                         <label>Address</label>
-                                                        <p><?php echo $raw[ 'PERMANENT_ADDRESS' ] ?></p>
+                                                        <p><?php echo $raw['PERMANENT_ADDRESS'] ?></p>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="media">
                                                         <label>Username</label>
-                                                        <p><?php echo $raw[ 'DEALER_ID' ] ?></p>
+                                                        <p><?php echo $raw['DEALER_ID'] ?></p>
                                                     </div>
                                                     <div class="media">
                                                         <label>E-mail</label>
-                                                        <p><?php echo $raw[ 'EMAIL' ] ?></p>
+                                                        <p><?php echo $raw['EMAIL'] ?></p>
                                                     </div>
                                                     <div class="media">
                                                         <label>TIN number</label>
-                                                        <p><?php echo $aw[ 'TIN_NUMBER' ] ?></p>
+                                                        <p><?php echo $raw['TIN_NUMBER'] ?></p>
                                                     </div>
-                                                    
+
                                                     <!-- <div class="media">
                                                         <label>Freelance</label>
                                                         <p>Available</p>
@@ -204,9 +215,13 @@ if (!$conn) {
                                                 <p class="m-0px font-w-600">Total Dealers</p>
                                             </div>
                                         </div> -->
+                                        <?php
+
+                                        ?>
                                         <div class="col-6 col-lg-6">
                                             <div class="count-data text-center">
-                                                <h6 class="count h2" data-to="150" data-speed="150">150</h6>
+                                                <h6 class="count h2" data-to="150" data-speed="150"><?php echo $row['COUNT(TCB_CARD_NO)'] ?></h6>
+
                                                 <p class="m-0px font-w-600">Customres under me</p>
                                             </div>
                                         </div>
@@ -233,7 +248,7 @@ if (!$conn) {
                                         </div>
                                         <div class="col-6 col-lg-3">
                                             <div class="count-data text-center">
-                                                <h6 class="count h2" ><a href="dealer_customer2.php" style="color:#38CE24 ;">My Customers</a></h6>
+                                                <h6 class="count h2"><a href="dealer_customer2.php" style="color:#38CE24 ;">My Customers</a></h6>
                                             </div>
                                         </div>
                                         <div class="col-6 col-lg-3">

@@ -67,7 +67,7 @@ if (!$conn) {
                         <li class="dropdown"><a href="#"><span><?php echo $uname ?></span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <li><a href="notification.php">Notification</a></li>
-                                <li><a href="/logout">Log out</a></li>
+                                <li><a href="log_out.php">Log out</a></li>
                             </ul>
                         </li>
 
@@ -182,9 +182,10 @@ if (!$conn) {
                                         <td>" . $row["DATE_OF_BIRTH"] . "</td>
                                         <td>" . $row["EMAIL"] . "</td>
                                         <td>" . $row["DEALER_ID"] . "</td> 
-                                        <td> <a href='admin_dealer_profile.php'> Profile </a> </td> 
+                                        <td> <a href='admin_dealer'> Profile </a> </td> 
                                         
                                     </tr>";
+                                    echo '<a href="#">fsdakfj</a>';
                                     }
                                     //$_GET['$row["APPLICANT_NAME"]']
 
@@ -217,7 +218,7 @@ if (!$conn) {
                                             <td>" . $row["DATE_OF_BIRTH"] . "</td>
                                             <td>" . $row["EMAIL"] . "</td>
                                             <td>" . $row["DEALER_ID"] . "</td>  
-                                            <td> <a href='admin_dealer_profile.php'> Profile </a> </td>
+                                            <td> <a href='admin_dealer_profile.php?un=".$row["DEALER_ID"]."'> Profile </a> </td>
                                             
                                         </tr>";
                                     }

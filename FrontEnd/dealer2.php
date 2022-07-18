@@ -77,7 +77,7 @@ if (!$conn) {
               <ul>
                 <li><a href="dealer_profile.php">Profile</a></li>
                 <!-- <li><a href="notification.html">Notification</a></li> -->
-                <li><a href="login.php">Log out</a></li>
+                <li><a href="log_out.php">Log out</a></li>
               </ul>
             </li>
             <!-- <li><a class="nav-link scrollto" href="">Notification</a></li> -->

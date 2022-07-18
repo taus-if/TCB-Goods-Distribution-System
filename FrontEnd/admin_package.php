@@ -152,7 +152,7 @@ if (!$conn) {
                         <li class="dropdown"><a href="#"><span><?php echo $uname ?></span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <li><a href="notification.php">Notification</a></li>
-                                <li><a href="/logout">Log out</a></li>
+                                <li><a href="log_out.php">Log out</a></li>
                             </ul>
                         </li>
                     </ul>

@@ -80,7 +80,7 @@
                         <li class="dropdown"><a href="#"><span><?php echo $uname; ?></span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                               <li><a href="dealer_profile.php">Profile</a></li>
-                              <li><a href="login.php">Log out</a></li>
+                              <li><a href="log_out.php">Log out</a></li>
                             </ul>
                           </li>
                     </ul>
@@ -308,6 +308,7 @@
                                                 $r2=oci_execute($stid2);
                                                 $i=$i+1;
                                             }
+                                            // header("Location: receipt.php"); 
                                         }else{
                                             echo "not able to purchase";
                                         }

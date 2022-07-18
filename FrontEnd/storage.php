@@ -21,6 +21,9 @@ if (!$conn) {
                       $sql1 = "update main_inventory set QUANTITY=(QUANTITY+$amount) where lower(ITEM_NAME)=lower('$item')";
                       $stid1=oci_parse($conn, $sql1);
                       oci_execute($stid1);
+                      $sql = "update main_inventory set date_added = sysdate where lower(ITEM_NAME)=lower('$item')";
+                      $stid1=oci_parse($conn, $sql);
+                      oci_execute($stid1);
                       }
                       header("Refresh:0");
                     }
@@ -92,7 +95,7 @@ if (!$conn) {
                     <ul>
                         <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
                         <!-- <li><a class="nav-link scrollto active" href="admin.php">Admin</a></li> -->
-                        <li class="dropdown"><a href="#"><span>username</span> <i class="bi bi-chevron-down"></i></a>
+                        <li class="dropdown"><a href="#" class="active"><span>username</span> <i class="bi bi-chevron-down"></i></a>
                           <ul>
                             <li><a href="admin_profile.php">Profile</a></li>
                             <li><a href="notification.php">Notification</a></li>

@@ -149,7 +149,7 @@ if (!$conn) {
                 <nav id="navbar" class="navbar">
                     <ul>
                         <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
-                        <li class="dropdown"><a href="#"><span><?php echo $uname ?></span> <i class="bi bi-chevron-down"></i></a>
+                        <li class="dropdown"><a href="#" class="active"><span><?php echo $uname ?></span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <li><a href="notification.php">Notification</a></li>
                                 <li><a href="log_out.php">Log out</a></li>
@@ -185,7 +185,7 @@ if (!$conn) {
                                         <div class="page-breadcrumb">
                                             <nav aria-label="breadcrumb">
                                                 <ol class="breadcrumb">
-                                                    <li class="breadcrumb-item"><a href="dealer2.php" class="breadcrumb-link">Dealer</a></li>
+                                                    <li class="breadcrumb-item"><a href="admin.php" class="breadcrumb-link">Admin</a></li>
                                                     <li class="breadcrumb-item active" aria-current="page">Package Information</li>
                                                 </ol>
                                                 <!-- <div class="col-md-12 text-center">

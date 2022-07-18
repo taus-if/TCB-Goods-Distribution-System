@@ -9,12 +9,12 @@ if (!$conn) {
 } else {
     $name = $_GET["name"];
     $dealer_id = $_GET["id"];
-    $dealer = "select dealer-info.email,customer-info.mobile-no,customer-info.nid from customer-info natural join distribution-area natural join dealer-area natural join dealer-info 
-                where customer_info.name = $name and dealer-info.dealer-id = $dealer_id";
+    $dealer = "select dealer_info.email,customer_info.mobile_no,customer_info.nid from customer_info natural join distribution_area natural join dealer_area natural join dealer_info 
+                where customer_info.name = $name and dealer_info.dealer_id = $dealer_id";
     
     $stidd = oci_parse($conn, $dealer);
     $rr = oci_execute($stidd);
-    $items = "select item-name,total-spent,last-buy-date,amount(kg) from customer-expenditure where nid = $dealer->nid";
+    $items = "select item_name,totalspent,last_buy_date,amount from customer_expenditure where nid = $dealer->nid";
     $stid = oci_parse($conn, $items);
     $r = oci_execute($stid);
 }
@@ -303,7 +303,6 @@ if (!$conn) {
 
                    ?>
                 </div>
-                <!-- <div class="number">Number : 561-786-345</div> -->
               </div>
              </div>
            </div>
@@ -317,7 +316,7 @@ if (!$conn) {
 
             <div class="des">
 
-              <p class="issue">Issued : <?php echo $items-> last-buy-date?></p>
+              <p class="issue">Issued : <?php echo $items-> last_buy_date?></p>
 
             </div>
 
@@ -334,7 +333,7 @@ if (!$conn) {
               <div class="name">
               <?php echo $name?>
               </div>
-              <p><?php echo $dealer-> mobile-no?></p>
+              <p><?php echo $dealer-> mobile_no ?></p>
               
             </div>
 
@@ -367,11 +366,11 @@ if (!$conn) {
                                       $n = 1;
                                         echo "<tr>
                                         <td>" . $n . "</td>
-                                        <td>" . $row["item-name"] . "</td>
-                                        <td>" . $row["amount(kg)"] . "</td>
-                                        <td>" . $row["total-spent"] . "</td>
-                                        // <td>" . $row["DEALER_ID"] . "</td> 
-                                    </tr>";
+                                        <td>" . $row["item_name"] . "</td>
+                                        <td>" . $row["amount"] . "</td>
+                                        <td>" . $row["totalspent"] . "</td>
+                                        </tr>";
+                                      $n = $n + 1;
                                     }
             ?>
             

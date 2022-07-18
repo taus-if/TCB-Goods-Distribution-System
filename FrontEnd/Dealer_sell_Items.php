@@ -171,7 +171,7 @@
                                 ?>
                             </tbody>
                         </table>
-                        <div class="text-center"><button class="btn btn-success"><a href="sell_to_customer.php">Choose Items</a></button></div>
+                        <div class="text-center"><button class="btn btn-success"><a href="sell_to_customer.php" style="color: white">Choose Items</a></button></div>
                         <div class="page-breadcrumb">
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb"></ol>

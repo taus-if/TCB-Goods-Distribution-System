@@ -197,8 +197,8 @@ values('Soyabin Oil', 3, 2, 1, 'ltr');
 insert into package( item_name, pk1, pk2, pk3, unit)
 values( 'Sugar', 2, 2, 1, 'kg');
 
-insert into package(sl_no, item_name, pk1, pk2, pk3, unit)
-values('3', 'Lentil', 2, 2, 1, 'kg');
+insert into package(item_name, pk1, pk2, pk3, unit)
+values('Lentil', 2, 2, 1, 'kg');
 
 insert into package( item_name, pk1, pk2, pk3, unit)
 values('Rice', 5, 5, 3, 'kg');
@@ -243,6 +243,12 @@ values('1903189467258', 'Tesan Arafat', 'Shopkeeper', 'Kayenat khan','0178256912
 
 insert into customer_info(nid, name, occupation, spouse, mobile_no, tcb_card_no, gender, income, date_of_birth,no_of_family_members,age, holding_no, road, area_code,package_no)
 values('1903189467471', 'MN Alam Siddique', 'Shopkeeper', 'Alea begum','01782542129','3561783253', 'Male', 12000, to_date('19-05-1992', 'dd-mm-yyyy'),4,34, '10', 'ali road', '001', '3');
+
+insert into customer_info(nid, name, occupation, spouse, mobile_no, tcb_card_no, gender, income, date_of_birth,no_of_family_members,age, holding_no, road, area_code,package_no, last_buy_date)
+values('1903189467481', 'MN Alam Siddique', 'Shopkeeper', 'Alea begum','01782542129','3561783263', 'Male', 12000, to_date('19-05-1992', 'dd-mm-yyyy'),4,34, '10', 'ali road', '001', '3', to_date('19-05-2022', 'dd-mm-yyyy'));
+
+insert into customer_info(nid, name, occupation, spouse, mobile_no, tcb_card_no, gender, income, date_of_birth,no_of_family_members,age, holding_no, road, area_code,package_no, last_buy_date)
+values('1903189467491', 'MN Alam Siddique', 'Shopkeeper', 'Alea begum','01782542129','3561783273', 'Male', 12000, to_date('19-05-1992', 'dd-mm-yyyy'),4,34, '10', 'ali road', '001', '3', to_date('15-07-2022', 'dd-mm-yyyy'));
 
 insert into customer_info(nid, name, occupation, spouse, mobile_no, tcb_card_no, gender, income, date_of_birth,no_of_family_members,age, holding_no, road, area_code,package_no)
 values('1903189467788', 'Mahdi Motasim', ' Non Govt employee', 'Marjina khatun','01780042548','3561789799', 'Male', 125000, to_date('13-08-1988', 'dd-mm-yyyy'),7,39, '100', 'bisso road', '004', '1');
@@ -445,4 +451,15 @@ begin
 insert into dealer_inventory(item_name, date_added, quantity, dealer_id)
 values(:new.item_name, sysdate, :new.quantity, :new.dealer_id);
 
+end;
+
+create or replace function lastbuy(x in date)
+return number
+as
+today date;
+var number;
+begin
+today:=sysdate;
+select round(today-x) into var from dual;
+return var;
 end;

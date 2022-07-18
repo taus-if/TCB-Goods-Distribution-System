@@ -1,3 +1,17 @@
+<?php
+  session_start();
+  $uname = $_SESSION['uname'];
+  $conn = oci_connect('XE', 'XE', 'localhost/xe')
+  or die(oci_error());
+
+  if(!$conn){
+    echo "not connected";
+  }else{
+    
+  }
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,7 +78,7 @@
             <li><a class="nav-link scrollto" href="../index.php">Home</a></li>
             <!-- <li><a class="nav-link scrollto active" href="dealer2.php">Dealer</a></li> -->
             <!-- <li><a class="nav-link scrollto" href="">Notification</a></li> -->
-            <li class="dropdown"><a href="#"><span>username</span> <i class="bi bi-chevron-down"></i></a>
+            <li class="dropdown"><a href="#"><span><?php echo $uname ?></span> <i class="bi bi-chevron-down"></i></a>
               <ul>
                 <li><a href="dealer_profile.php">Profile</a></li>
                 <!-- <li><a href="notification.html">Notification</a></li> -->

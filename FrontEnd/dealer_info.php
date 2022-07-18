@@ -185,7 +185,7 @@ if (!$conn) {
                                         <td> <a href='admin_dealer'> Profile </a> </td> 
                                         
                                     </tr>";
-                                    echo '<a href="#">fsdakfj</a>';
+                                    // echo '<a href="#">fsdakfj</a>';
                                     }
                                     //$_GET['$row["APPLICANT_NAME"]']
 

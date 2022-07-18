@@ -14,7 +14,7 @@ if (!$conn) {
     
     $stidd = oci_parse($conn, $dealer);
     $rr = oci_execute($stidd);
-    $items = "select item_name,totalspent,last_buy_date,amount from customer_expenditure where nid = $dealer->nid";
+    $items = "select item_name,totalspent,last_buy_date,amount from customer_expenditure where nid = $dealer.nid";
     $stid = oci_parse($conn, $items);
     $r = oci_execute($stid);
 }

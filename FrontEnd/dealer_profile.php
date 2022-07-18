@@ -83,7 +83,7 @@ if (!$conn) {
                         <li class="dropdown"><a href="#"><span><?php echo $uname ?></span> <i class="bi bi-chevron-down"></i></a>
                             <ul>
                                 <!-- <li><a href="profile.html">Profile</a></li> -->
-                                <li><a href="/logout">Log out</a></li>
+                                <li><a href="login.php">Log out</a></li>
                             </ul>
                         </li>
 

@@ -1,5 +1,8 @@
 drop sequence tcb_card_no_seq;
+drop sequence dealer_id_seq;
+
 drop trigger dealer_record_trigger;
+
 drop table dealer_area;
 drop table items_distributed;
 drop table cust_exp;
@@ -36,7 +39,7 @@ insert into info(dealer_id, password) values('121', '121');
 insert into info(dealer_id, password) values('120', '120');
 
 create table package(
-    sl_no varchar2(8),
+    -- sl_no varchar2(8),
     item_name varchar2(30),
     pk1 number(4,1),
     pk2 number(4,1),
@@ -188,23 +191,23 @@ nocycle;
 
 
 
-insert into package(sl_no, item_name, pk1, pk2, pk3, unit)
-values('1', 'Soyabin Oil', 3, 2, 1, 'ltr');
+insert into package( item_name, pk1, pk2, pk3, unit)
+values('Soyabin Oil', 3, 2, 1, 'ltr');
 
-insert into package(sl_no, item_name, pk1, pk2, pk3, unit)
-values('2', 'Sugar', 2, 2, 1, 'kg');
+insert into package( item_name, pk1, pk2, pk3, unit)
+values( 'Sugar', 2, 2, 1, 'kg');
 
 insert into package(sl_no, item_name, pk1, pk2, pk3, unit)
 values('3', 'Lentil', 2, 2, 1, 'kg');
 
-insert into package(sl_no, item_name, pk1, pk2, pk3, unit)
-values('4', 'Rice', 5, 5, 3, 'kg');
+insert into package( item_name, pk1, pk2, pk3, unit)
+values('Rice', 5, 5, 3, 'kg');
 
-insert into package(sl_no, item_name, pk1, pk2, pk3, unit)
-values('5', 'Onion', 3, 2, 1, 'kg');
+insert into package(item_name, pk1, pk2, pk3, unit)
+values( 'Onion', 3, 2, 1, 'kg');
 
-insert into package(sl_no, item_name, pk1, pk2, pk3, unit)
-values('6', 'Potato', 3, 3, 2, 'kg');
+insert into package(item_name, pk1, pk2, pk3, unit)
+values('Potato', 3, 3, 2, 'kg');
 
 
 
@@ -442,4 +445,15 @@ begin
 insert into dealer_inventory(item_name, date_added, quantity, dealer_id)
 values(:new.item_name, sysdate, :new.quantity, :new.dealer_id);
 
+end;
+
+create or replace function lastbuy(x in date)
+return number
+as
+today date;
+var number;
+begin
+today:=sysdate;
+select round(today-x) into var from dual;
+return var;
 end;

@@ -28,6 +28,7 @@ if(!$conn){
             $union = $_POST['union'];
             $district = $_POST['district'];
             $upazilla = $_POST['upazilla'];
+            $arcode = $_POST['areacode'];
             
             $cusincome = (double) ($_POST['cus_income']);
             $dob = $_POST['dob'];
@@ -37,7 +38,7 @@ if(!$conn){
 
             /*if(isset($cusname) && isset($cusocc) && isset($gender) && isset($spname) && isset($holdingno) && isset($roadno) && isset($wardno) && isset($union) && isset($upazilla) && isset($district) && isset($dob) && isset($cusincome) ){ */
             $sql = "insert into customer_info(nid, name, occupation, spouse, mobile_no, tcb_card_no, gender, income, date_of_birth,no_of_family_members,age, holding_no, road, area_code,package_no)
-            values('$cust_nid', '$cusname', '$cusocc', '$spname','$mobile',concat('C',lpad(tcb_card_no_seq.nextval,6,'0')), '$gender', $cusincome, to_date('$dob', 'mm/dd/yyyy'), $familynum, TRUNC(months_between(sysdate, to_date('$dob','mm/dd/yyyy')) / 12), '$holdingno', '$roadno', '002', '1')";
+            values('$cust_nid', '$cusname', '$cusocc', '$spname','$mobile',concat('C',lpad(tcb_card_no_seq.nextval,6,'0')), '$gender', $cusincome, to_date('$dob', 'mm/dd/yyyy'), $familynum, TRUNC(months_between(sysdate, to_date('$dob','mm/dd/yyyy')) / 12), '$holdingno', '$roadno', '$arcode', '1')";
 
             $sql2 = "insert into family_info(member_nid, member_name, member_occupation, member_income, nid)
             values('$cust_nid', '$cusname', '$cusocc', $cusincome, '$cust_nid')";
@@ -82,6 +83,7 @@ if(!$conn){
                 unset($union);
                 unset($dob);
                 unset($district);
+                unset($arcode);
                 unset($cusincome);
                 unset($familynum);
                 unset($mobile);
@@ -290,6 +292,13 @@ if(!$conn){
                         </div>
 
                     </div>
+
+                </div>
+
+                <div class="form-group w-70 mt-3">
+                    <label for="exampleInputEmail1">Area Code</label>
+                    <input type="text" class="form-control" id="areacode" name="areacode" aria-describedby="emailHelp"
+                        placeholder="Enter Area Code" required>
 
                 </div>
 

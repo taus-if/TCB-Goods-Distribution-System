@@ -77,7 +77,8 @@ create table customer_info(
     last_buy_date date,
     constraint customer_info_nid_pk primary key(nid),
     constraint customer_info_area_code_fk foreign key(area_code) references distribution_area(area_code) on delete cascade,
-    constraint customer_info_username_fk foreign key(username) references admin(username) on delete cascade
+    constraint customer_info_username_fk foreign key(username) references admin(username) on delete cascade,
+    constraint customer_info_income_ck check(income>=0)
 );
 
 create table family_info(
@@ -87,7 +88,8 @@ create table family_info(
     member_income number(10,3),
     nid varchar2(20),
     constraint family_info_member_nid_pk primary key(member_nid),
-    constraint family_info_nid_fk foreign key(nid) references customer_info(nid) on delete cascade
+    constraint family_info_nid_fk foreign key(nid) references customer_info(nid) on delete cascade,
+    constraint family_info_member_income_ck check(member_income>=0)
 );
 
 
@@ -150,7 +152,8 @@ create table main_inventory(
     username varchar2(40),
 
     constraint main_inventory_item_name_pk primary key(item_name),
-    constraint main_inventory_username_fk foreign key(username) references admin(username) on delete cascade
+    constraint main_inventory_username_fk foreign key(username) references admin(username) on delete cascade,
+    constraint main_inventory_quantity_ck check(quantity>=0)
 
 );
 
@@ -168,7 +171,8 @@ create table dealer_inventory2(
     quantity number(10,2),
     dealer_id varchar2(30),
     
-    constraint dealer_inventory2_dealer_id_fk foreign key(dealer_id) references dealer_info(dealer_id) on delete cascade
+    constraint dealer_inventory2_dealer_id_fk foreign key(dealer_id) references dealer_info(dealer_id) on delete cascade,
+    constraint dealer_inventory_quantity_ck check(quantity>=0)
 );
 
 create table feedback(
@@ -230,28 +234,28 @@ values('004', '1', 'keshobpur', 'balutila', 'Rajshahi');
 
 
 insert into customer_info(nid, name, occupation, spouse, mobile_no, tcb_card_no, gender, income, date_of_birth,no_of_family_members,age, holding_no, road, area_code,package_no)
-values('1903189467218', 'Easin Arafat', 'Shopkeeper', 'Kayenat khan','01782569124','2561785210', 'Male', 10000, to_date('19-05-1992', 'dd-mm-yyyy'),5,34, '10', 'ali road', '002', '1');
+values('1903189467218', 'Easin Arafat', 'Shopkeeper', 'Kayenat khan','01782569124','2561785210', 'male', 10000, to_date('19-05-1992', 'dd-mm-yyyy'),5,34, '10', 'ali road', '002', '1');
 
 insert into customer_info(nid, name, occupation, spouse, mobile_no, tcb_card_no, gender, income, date_of_birth,no_of_family_members,age, holding_no, road, area_code,package_no)
-values('1903189467451', 'MN Alam', 'Shopkeeper', 'Alea begum','01782542124','3561783210', 'Male', 12000, to_date('19-05-1992', 'dd-mm-yyyy'),4,34, '10', 'ali road', '001', '2');
+values('1903189467451', 'MN Alam', 'Shopkeeper', 'Alea begum','01782542124','3561783210', 'male', 12000, to_date('19-05-1992', 'dd-mm-yyyy'),4,34, '10', 'ali road', '001', '2');
 
 insert into customer_info(nid, name, occupation, spouse, mobile_no, tcb_card_no, gender, income, date_of_birth,no_of_family_members,age, holding_no, road, area_code,package_no)
-values('1903189467784', 'Mahdi Muhtasim', 'Govt employee', 'Marjina begum','01782542548','3561783755', 'Male', 12000, to_date('19-05-1990', 'dd-mm-yyyy'),7,38, '16', 'ali road', '003', '3');
+values('1903189467784', 'Mahdi Muhtasim', 'Govt employee', 'Marjina begum','01782542548','3561783755', 'male', 12000, to_date('19-05-1990', 'dd-mm-yyyy'),7,38, '16', 'ali road', '003', '3');
 
 insert into customer_info(nid, name, occupation, spouse, mobile_no, tcb_card_no, gender, income, date_of_birth,no_of_family_members,age, holding_no, road, area_code,package_no)
-values('1903189467258', 'Tesan Arafat', 'Shopkeeper', 'Kayenat khan','01782569124','2523785210', 'Male', 10000, to_date('19-05-1992', 'dd-mm-yyyy'),5,34, '10', 'ali road', '002', '2');
+values('1903189467258', 'Tesan Arafat', 'Shopkeeper', 'Kayenat khan','01782569124','2523785210', 'male', 10000, to_date('19-05-1992', 'dd-mm-yyyy'),5,34, '10', 'ali road', '002', '2');
 
 insert into customer_info(nid, name, occupation, spouse, mobile_no, tcb_card_no, gender, income, date_of_birth,no_of_family_members,age, holding_no, road, area_code,package_no)
-values('1903189467471', 'MN Alam Siddique', 'Shopkeeper', 'Alea begum','01782542129','3561783253', 'Male', 12000, to_date('19-05-1992', 'dd-mm-yyyy'),4,34, '10', 'ali road', '001', '3');
+values('1903189467471', 'MN Alam Siddique', 'Shopkeeper', 'Alea begum','01782542129','3561783253', 'male', 12000, to_date('19-05-1992', 'dd-mm-yyyy'),4,34, '10', 'ali road', '001', '3');
 
 insert into customer_info(nid, name, occupation, spouse, mobile_no, tcb_card_no, gender, income, date_of_birth,no_of_family_members,age, holding_no, road, area_code,package_no, last_buy_date)
-values('1903189467481', 'MN Alam Siddique', 'Shopkeeper', 'Alea begum','01782542129','3561783263', 'Male', 12000, to_date('19-05-1992', 'dd-mm-yyyy'),4,34, '10', 'ali road', '001', '3', to_date('19-05-2022', 'dd-mm-yyyy'));
+values('1903189467481', 'MN Alam Siddique', 'Shopkeeper', 'Alea begum','01782542129','3561783263', 'male', 12000, to_date('19-05-1992', 'dd-mm-yyyy'),4,34, '10', 'ali road', '001', '3', to_date('19-05-2022', 'dd-mm-yyyy'));
 
 insert into customer_info(nid, name, occupation, spouse, mobile_no, tcb_card_no, gender, income, date_of_birth,no_of_family_members,age, holding_no, road, area_code,package_no, last_buy_date)
-values('1903189467491', 'MN Alam Siddique', 'Shopkeeper', 'Alea begum','01782542129','3561783273', 'Male', 12000, to_date('19-05-1992', 'dd-mm-yyyy'),4,34, '10', 'ali road', '001', '3', to_date('15-07-2022', 'dd-mm-yyyy'));
+values('1903189467491', 'MN Alam Siddique', 'Shopkeeper', 'Alea begum','01782542129','3561783273', 'male', 12000, to_date('19-05-1992', 'dd-mm-yyyy'),4,34, '10', 'ali road', '001', '3', to_date('15-07-2022', 'dd-mm-yyyy'));
 
 insert into customer_info(nid, name, occupation, spouse, mobile_no, tcb_card_no, gender, income, date_of_birth,no_of_family_members,age, holding_no, road, area_code,package_no)
-values('1903189467788', 'Mahdi Motasim', ' Non Govt employee', 'Marjina khatun','01780042548','3561789799', 'Male', 125000, to_date('13-08-1988', 'dd-mm-yyyy'),7,39, '100', 'bisso road', '004', '1');
+values('1903189467788', 'Mahdi Motasim', ' Non Govt employee', 'Marjina khatun','01780042548','3561789799', 'male', 125000, to_date('13-08-1988', 'dd-mm-yyyy'),7,39, '100', 'bisso road', '004', '1');
 
 
 
@@ -350,6 +354,12 @@ values('Soyabin Oil', 1000, to_date('28-06-2021', 'dd-mm-yyyy'), 'admin');
 insert into main_inventory(item_name, quantity, date_added, username)
 values('Lentil', 1000, to_date('28-06-2021', 'dd-mm-yyyy'), 'admin');
 
+insert into main_inventory(item_name, quantity, date_added, username)
+values('Potato', 1000, to_date('28-06-2021', 'dd-mm-yyyy'), 'admin');
+
+insert into main_inventory(item_name, quantity, date_added, username)
+values('Onion', 1000, to_date('28-06-2021', 'dd-mm-yyyy'), 'admin');
+
 
 insert into dealer_inventory2(item_name, quantity, dealer_id)
 values('Rice', 64, 123);
@@ -361,7 +371,7 @@ insert into dealer_inventory2(item_name, quantity, dealer_id)
 values('Soyabin Oil', 100, 123);
 
 insert into dealer_inventory2(item_name, quantity, dealer_id)
-values('lentil', 101, 123);
+values('Lentil', 101, 123);
 
 insert into dealer_inventory2(item_name, quantity, dealer_id)
 values('Onion', 52, 123);

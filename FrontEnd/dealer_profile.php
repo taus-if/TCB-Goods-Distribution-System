@@ -218,19 +218,19 @@ if (!$conn) {
                                         <?php
 
                                         ?>
-                                        <div class="col-6 col-lg-6">
+                                        <div class="col-6 col-lg-12">
                                             <div class="count-data text-center">
                                                 <h6 class="count h2" data-to="150" data-speed="150"><?php echo $row['COUNT(TCB_CARD_NO)'] ?></h6>
 
                                                 <p class="m-0px font-w-600">Customres under me</p>
                                             </div>
                                         </div>
-                                        <div class="col-6 col-lg-6">
+                                        <!-- <div class="col-6 col-lg-6">
                                             <div class="count-data text-center">
                                                 <h6 class="count h2" data-to="850" data-speed="850">850</h6>
                                                 <p class="m-0px font-w-600">Availabe Packages</p>
                                             </div>
-                                        </div>
+                                        </div> -->
                                         <!-- <div class="col-6 col-lg-3">
                                             <div class="count-data text-center">
                                                 <h6 class="count h2" data-to="190" data-speed="190">190</h6>

@@ -8,26 +8,11 @@ session_start();
 if (!$conn) {
     echo "not connected";
 } else {
-    $sql = "select * from main_inventory";
+    $sql = "select * from feedback";
     $stid = oci_parse($conn, $sql);
     $r = oci_execute($stid);
 
-                  if($_SERVER['REQUEST_METHOD']=='POST'){
-
-                    if($_POST['addbtn']=='addval'){
-                      $amount=(int) ($_POST['amount']);
-                      $item=$_POST['product'];
-                      if($item!="nai"){
-                      $sql1 = "update main_inventory set QUANTITY=(QUANTITY+$amount) where lower(ITEM_NAME)=lower('$item')";
-                      $stid1=oci_parse($conn, $sql1);
-                      oci_execute($stid1);
-                      $sql = "update main_inventory set date_added = sysdate where lower(ITEM_NAME)=lower('$item')";
-                      $stid1=oci_parse($conn, $sql);
-                      oci_execute($stid1);
-                      }
-                      header("Refresh:0");
-                    }
-                  }
+                  
 }
 ?>
 <!DOCTYPE html>
@@ -174,14 +159,14 @@ if (!$conn) {
                         <div class="row">
                             <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
                                 <div class="page-header">
-                                    <h2 class="pageheader-title" style="text-align: center;">STORAGE</h2>
+                                    <h2 class="pageheader-title" style="text-align: center;">Feedbacks</h2>
                                     <div>
                                         <div class="page-breadcrumb">
                                             <nav aria-label="breadcrumb">
                                                 <ol class="breadcrumb">
                                                     <li class="breadcrumb-item"><a href="admin.php"
                                                             class="breadcrumb-link">Admin</a></li>
-                                                    <li class="breadcrumb-item active" aria-current="page">Storage</li>
+                                                    <li class="breadcrumb-item active" aria-current="page">Feedback</li>
                                                 </ol>
                                             </nav>
                                         </div>
@@ -231,11 +216,11 @@ if (!$conn) {
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Item no</th>
-                                    <th>Item Name</th>
-                                    <th>Quantity</th>
-                                    <th>Date Added</th>
-                                    <th>username</th>
+                                    <th>Name</th>
+                                    <th>Email</th>
+                                    <th>Subject</th>
+                                    <th>Message</th>
+                                    
                                     
                                 </tr>
                             </thead>
@@ -245,11 +230,11 @@ if (!$conn) {
                               while($raw = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS)){
                               ?>
                                 <tr>
-                                    <td data-label="Pers No"><?php echo $i+1 ?></td>
-                                    <td data-label="Pers No"><?php echo $raw[ 'ITEM_NAME' ] ?></td>
-                                    <td data-label="Name"><?php echo $raw[ 'QUANTITY' ] ?></td>
-                                    <td data-label="Unit"><?php echo $raw[ 'DATE_ADDED' ] ?></td>
-                                    <td data-label="Prac"><?php echo $raw[ 'USERNAME' ] ?></td>
+                                    
+                                    <td data-label="Pers No"><?php echo $raw[ 'FNAME' ] ?></td>
+                                    <td data-label="Name"><?php echo $raw[ 'FEMAIL' ] ?></td>
+                                    <td data-label="Unit"><?php echo $raw[ 'FSUBJECT' ] ?></td>
+                                    <td data-label="Prac"><?php echo $raw[ 'FMESSAGE' ] ?></td>
                                     
                                 </tr>
                                 
@@ -378,47 +363,7 @@ if (!$conn) {
 
                     <!-- ============================================================== -->
                 </div>
-                <div class="container">
-                  <div class="row">
-                        <form action="storage.php" method="post" class="php-email-form">
-                <div class="form-group">
-                                  <select class="form-select" aria-label="Default select example" name="product">
-                                  <option selected value="nai">Select Item Name</option>
-                                  <?php
-                                  $sql = "select * from package";
-                                  $stid=oci_parse($conn, $sql);
-                                  oci_execute($stid);
-                                  while($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS))
-                                  {
-                                    $prod = $row['ITEM_NAME'];
-                                    $prodlower = strtolower($prod);
-                                    echo "<option value='$prodlower'>$prod</option>";
-                                  }
-                                  ?>
-                                  <!-- <option value="rice">Rice</option>
-                                  <option value="sugar">Sugar</option>
-                                  <option value="lentil">Lentil</option>
-                                  <option value="soyabin oil">Soyabin Oil</option>
-                                  <option value="onion">Onion</option>
-                                  <option value="potato">Potato</option> -->
-                                  </select>
-                  <!-- <input type="text" name="amount" class="form-control" id="amount" placeholder="Enter amount"> -->
-                </div>
-                <div class="form-group mt-3">
-                  <!-- <input type="text" class="form-control" name="product" id="product" placeholder="Enter Product"> -->
-                  <input type="text" name="amount" class="form-control" id="amount" placeholder="Enter amount">
-                </div>
                 
-                <div class="my-3">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-                </div>
-                <div class="text-center"><button type="submit" name="addbtn" type="submit" value="addval">Add</button></div>
-                
-              </form>
-                        </div>
-                    </div>
         </main><!-- End #main -->
 
 

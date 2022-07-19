@@ -63,12 +63,12 @@ if(!$conn){
                 oci_execute($stid); 
             }
 
-            $sqlpack = "select * from package";
-            $stidpack=oci_parse($conn, $sqlpack);
-            oci_execute($stidpack); 
-            while($raw = oci_fetch_array($stidpack, OCI_ASSOC + OCI_RETURN_NULLS))
+            $sql = "select item_name from package";
+            $stid=oci_parse($conn, $sql);
+            oci_execute($stid); 
+            while($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS))
             {
-                $product = $raw['ITEM_NAME'];
+                $product = $row['ITEM_NAME'];
                 $sqlpackin = "insert into dealer_inventory2(item_name, quantity, dealer_id) values('$product', 0, concat('D',lpad($dealerid,5,'0')))";
                 $stidpackin = oci_parse($conn, $sqlpackin);
                 oci_execute($stidpackin); 

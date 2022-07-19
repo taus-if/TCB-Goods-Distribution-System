@@ -18,21 +18,21 @@ if (!$conn) {
             if ($pack_no == 1) {
                 $ssql = "UPDATE package
                              SET pk1 = '$amount'
-                             WHERE item_name='$item_name' ";
+                             WHERE lower(item_name)=lower('$item_name') ";
 
                 $sstid = oci_parse($conn, $ssql);
                 oci_execute($sstid);
             } elseif ($pack_no == 2) {
                 $ssql = "UPDATE package
                              SET pk2 = '$amount'
-                             WHERE item_name='$item_name' ";
+                             WHERE lower(item_name)=lower('$item_name') ";
 
                 $sstid = oci_parse($conn, $ssql);
                 oci_execute($sstid);
             } elseif ($pack_no == 3) {
                 $ssql = "   UPDATE package
                                 SET pk3 = '$amount'
-                                WHERE item_name='$item_name' ";
+                                WHERE lower(item_name)=lower('$item_name') ";
 
                 $sstid = oci_parse($conn, $ssql);
                 oci_execute($sstid);

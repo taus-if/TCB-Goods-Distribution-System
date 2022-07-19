@@ -142,7 +142,7 @@ if (!$conn) {
 
         <div class="row justify-content-center">
 
-          <div class="col-md-4 col-lg-4 ">
+          <div class="col-md-3 col-lg-3 ">
             <div class="card d-flex align-items-stretch outterround">
               <a href="adddealer.php" class="stretched-link"></a>
               <i class="bi bi-person-plus custom-icon d-flex justify-content-center"></i>
@@ -152,7 +152,7 @@ if (!$conn) {
             </div>
           </div>
 
-          <div class="col-md-4 col-lg-4 ">
+          <div class="col-md-3 col-lg-3 ">
             <div class="card d-flex align-items-stretch outterround">
               <a href="custverific.php" class="stretched-link"></a>
               <i class="bi bi-bag-plus custom-icon d-flex justify-content-center"></i>
@@ -162,12 +162,22 @@ if (!$conn) {
             </div>
           </div>
 
-          <div class="col-md-4 col-lg-4 ">
+          <div class="col-md-3 col-lg-3 ">
             <div class="card d-flex align-items-stretch outterround">
               <a href="allocategoods.php" class="stretched-link"></a>
               <i class="bi bi-box-arrow-up-right custom-icon d-flex justify-content-center"></i>
               <div class="card_title d-flex justify-content-center">
                 <p>Allocate Goods</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 col-lg-3 ">
+            <div class="card d-flex align-items-stretch outterround">
+              <a href="feedback.php" class="stretched-link"></a>
+              <i class="bi bi-chat-dots custom-icon d-flex justify-content-center"></i>
+              <div class="card_title d-flex justify-content-center">
+                <p>Feedback</p>
               </div>
             </div>
           </div>

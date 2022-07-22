@@ -224,7 +224,6 @@ if (!$conn) {
                                     //     </tr>";
                                     // }
                                 } elseif (isset($_POST["submit2"])) {
-
                                     $name = $_POST["search6"];
                                     $result = " SELECT customer_info.NAME, customer_info.MOBILE_NO, customer_info.DATE_OF_BIRTH,
                                                 customer_info.INCOME, customer_info.TCB_CARD_NO, dealer_info.APPLICANT_NAME

@@ -9,7 +9,8 @@ $conn = oci_connect('XE', 'XE', 'localhost/xe')
 if (!$conn) {
     echo "not connected";
 } else {
-    $sql = "select * from admin_dealer_profile_view where dealer_id='$unome'";
+    $sql = "select * from dealer_info natural join dealer_area natural join 
+    dealer_inventory natural join distribution_area natural join info where dealer_id='$unome'";
     $stid = oci_parse($conn, $sql);
     $r = oci_execute($stid);
 
@@ -224,7 +225,7 @@ if (!$conn) {
                                     <div class="row">
                                         <div class="col-6 col-lg-4">
                                             <div class="count-data text-center">
-                                                <h6 class="count h2"><a href="dealer_inventory.php" style="color:#38CE24 ;"><?php echo $unome ?>'s Invetory</a></h6>
+                                                <h6 class="count h2"><a href="dealer_inventory.php" style="color:#38CE24 ;"><?php echo $unome ?>'s Inventory</a></h6>
                                             </div>
                                         </div>
                                         <div class="col-6 col-lg-4">

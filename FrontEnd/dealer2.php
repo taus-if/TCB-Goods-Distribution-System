@@ -155,7 +155,7 @@ if (!$conn) {
 
         <div class="row justify-content-center">
 
-          <div class="col-md-4 col-lg-4 ">
+          <div class="col-md-6 col-lg-6 ">
             <div class="card d-flex align-items-stretch outterround">
               <a href="package_info.php" class="stretched-link"></a>
               <i class="bi bi-box-seam custom-icon d-flex justify-content-center"></i>
@@ -175,7 +175,7 @@ if (!$conn) {
             </div>
           </div> -->
 
-          <div class="col-md-4 col-lg-4  ">
+          <!-- <div class="col-md-4 col-lg-4  ">
             <div class="card d-flex align-items-stretch outterround">
               <a href="dealer_treasury.php" class="stretched-link"></a>
               <i class="bi bi-cash-coin custom-icon d-flex justify-content-center"></i>
@@ -183,9 +183,9 @@ if (!$conn) {
                 <p>Treasury</p>
               </div>
             </div>
-          </div>
+          </div> -->
           
-          <div class="col-md-4 ">
+          <div class="col-md-6 ">
             <div class="card d-flex align-items-stretch outterround">
               <a href="Dealer_sell_Items.php" class="stretched-link"></a>
               <i class="bi bi-basket custom-icon d-flex justify-content-center"></i>

@@ -63,6 +63,19 @@ if(!$conn){
                 oci_execute($stid); 
             }
 
+            $sql = "select item_name from package";
+            $stid=oci_parse($conn, $sql);
+            oci_execute($stid); 
+            while($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS))
+            {
+                $product = $row['ITEM_NAME'];
+                $sqlpackin = "insert into dealer_inventory2(item_name, quantity, dealer_id) values('$product', 0, concat('D',lpad($dealerid,5,'0')))";
+                $stidpackin = oci_parse($conn, $sqlpackin);
+                oci_execute($stidpackin); 
+            }
+
+
+
                 unset($deal_name);
                 unset($deal_add);
                 unset($deal_ogname);
@@ -188,7 +201,6 @@ if(!$conn){
             <div class="col-sm-10 col-md-8 col-lg-6 outterround">
 
                 <div class="h1 d-flex justify-content-center" style="margin-bottom: 30px;">Dealer Information</div>
-
 
                 <div class="form-group w-70">
                     <label for="exampleInputEmail1">Applicant Name</label>

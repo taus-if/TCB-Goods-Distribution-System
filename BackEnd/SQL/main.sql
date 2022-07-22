@@ -170,7 +170,7 @@ create table dealer_inventory(
 
 create table dealer_inventory2(
     item_name varchar2(40),
-    quantity number(10,2) check(quantity>0),
+    quantity number(10,2),
     dealer_id varchar2(30),
     
     constraint dealer_inventory2_dealer_id_fk foreign key(dealer_id) references dealer_info(dealer_id) on delete cascade,
@@ -257,10 +257,40 @@ insert into customer_info(nid, name, occupation, spouse, mobile_no, tcb_card_no,
 values('1903189467491', 'MN Alam Siddique', 'Shopkeeper', 'Alea begum','01782542129','3561783273', 'male', 12000, to_date('19-05-1992', 'dd-mm-yyyy'),4,34, '10', 'ali road', '001', '3', to_date('15-07-2022', 'dd-mm-yyyy'));
 
 insert into customer_info(nid, name, occupation, spouse, mobile_no, tcb_card_no, gender, income, date_of_birth,no_of_family_members,age, holding_no, road, area_code,package_no)
-values('1903189467788', 'Mahdi Motasim', ' Non Govt employee', 'Marjina khatun','01780042548','3561789799', 'male', 125000, to_date('13-08-1988', 'dd-mm-yyyy'),7,39, '100', 'bisso road', '004', '1');
+values('1903189467788', 'Mahdi Motasim', 'Non Govt employee', 'Marjina khatun','01780042548','3561789799', 'male', 125000, to_date('13-08-1988', 'dd-mm-yyyy'),7,39, '100', 'bisso road', '004', '1');
 
 
 
+
+
+insert into family_info(member_nid, member_name, member_occupation, member_income, nid)
+values('1903189467218', 'Easin Arafat', 'Shopkeeper', 10000, '1903189467218');
+
+
+insert into family_info(member_nid, member_name, member_occupation, member_income, nid)
+values('1903189467451', 'MN Alam', 'Shopkeeper', 12000, '1903189467451');
+
+
+insert into family_info(member_nid, member_name, member_occupation, member_income, nid)
+values('1903189467784', 'Mahdi Muhtasim', 'Govt employee', 12000, '1903189467784');
+
+
+insert into family_info(member_nid, member_name, member_occupation, member_income, nid)
+values('1903189467258', 'Tesan Arafat', 'Shopkeeper', 10000, '1903189467258');
+
+
+insert into family_info(member_nid, member_name, member_occupation, member_income, nid)
+values('1903189467471', 'MN Alam Siddique', 'Shopkeeper', 12000, '1903189467471');
+
+
+insert into family_info(member_nid, member_name, member_occupation, member_income, nid)
+values('1903189467481', 'MN Alam Siddique', 'Shopkeeper', 12000, '1903189467481');
+
+insert into family_info(member_nid, member_name, member_occupation, member_income, nid)
+values('1903189467491', 'MN Alam Siddique', 'Shopkeeper', 12000, '1903189467491');
+
+insert into family_info(member_nid, member_name, member_occupation, member_income, nid)
+values('1903189467788', 'Mahdi Motasim', 'Non Govt employee', 12000, '1903189467788');
 
 insert into family_info(member_nid, member_name, member_occupation, member_income, nid)
 values('1389241854182', 'Jaima Hasan', 'Student', '0', '1903189467218');

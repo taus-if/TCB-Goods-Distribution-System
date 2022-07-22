@@ -220,12 +220,24 @@ if (!$conn) {
                                 <!-- <input type='text' name="item_name" placeholder="Item Name"> -->
                                 <select class="form-select" aria-label="Default select example" name="item_name">
                                   <option selected value="nai">Select Item Name</option>
-                                  <option value="rice">Rice</option>
+                                  <?php
+                                  $sql = "select * from package";
+                                  $stid=oci_parse($conn, $sql);
+                                  oci_execute($stid);
+                                  while($row = oci_fetch_array($stid, OCI_ASSOC + OCI_RETURN_NULLS))
+                                  {
+                                    $prod = $row['ITEM_NAME'];
+                                    $prodlower = strtolower($prod);
+                                    echo "<option value='$prodlower'>$prod</option>";
+                                  }
+                                  ?>
+
+                                  <!-- <option value="rice">Rice</option>
                                   <option value="sugar">Sugar</option>
                                   <option value="lentil">Lentil</option>
                                   <option value="soyabin oil">Soyabin Oil</option>
                                   <option value="onion">Onion</option>
-                                  <option value="potato">Potato</option>
+                                  <option value="potato">Potato</option> -->
                                   </select>
                               </div>
                               <div class="col">

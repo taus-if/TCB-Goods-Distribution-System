@@ -463,6 +463,38 @@ FROM dealer_info natural join dealer_area natural join
 -- USING(CUST_ID) JOIN ACCOUNT USING
 -- (ACCOUNT_ID)
 
+--Cursor
+DECLARE
+CURSOR cust_cursor
+IS
+SELECT name, income, mobile_no, tcb_card_no, date_of_birth FROM customer_info ;--WHERE employee_id LIKE 'E%';
+
+cust_val cust_cursor%ROWTYPE;
+
+BEGIN
+OPEN cust_cursor;
+-- Loop
+-- FETCH cust_cursor INTO cust_val;
+-- DBMS_OUTPUT.PUT_LINE(cust_val.name);
+-- exit when cust_cursor%NOTFOUND;
+-- end Loop;
+procedure F_Function (my_cursor out sys_refcursor);
+-- CLOSE cust_cursor;
+END;
+
+
+-- cursor procedure
+CREATE FUNCTION F_Function( p1 number, p2 number)
+  RETURN SYS_REFCURSOR
+AS
+  my_cursor SYS_REFCURSOR;
+BEGIN
+  OPEN my_cursor FOR SELECT * FROM cutomer_info 
+                           WHERE (income>p1)
+                                      AND (income<p2);
+  RETURN my_cursor;
+END F_Function;
+
 
 create or replace trigger dealer_record_trigger1
 before insert
